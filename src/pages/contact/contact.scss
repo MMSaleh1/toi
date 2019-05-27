@@ -1,0 +1,57 @@
+page-contact {
+    .header {
+        .toolbar-title {
+            padding-right: 14px !important;
+        }
+        background: rgba(199, 198, 176, 0.23);
+        .toolbar-background {
+            background: none;
+        }
+    }
+    ion-card {
+        &.card {
+            border-radius: 10px;
+            .card-content {
+                padding: 1.6rem 2rem;
+                .item {
+                    padding-left: 0;
+                    ion-avatar {
+                        margin-right: 5px;
+                    }
+                    ion-icon {
+                        font-size: 1.3em;
+                    }
+                    p {
+                        font-size: 1.45rem;
+                        color: #c3c3c3;
+                        margin-bottom: 5px;
+                        font-weight: 300;
+                        &.address {}
+                    }
+                }
+                .text-input {
+                    height: 90px;
+                    margin: 10px 0;
+                    font-weight: 300;
+                }
+                p {
+                    &.address {
+                        font-size: 1.4rem;
+                        color: #555555;
+                        margin-bottom: 10px;
+                        font-weight: 400;
+                    }
+                }
+                .map {
+                    margin-left: -2rem;
+                    margin-right: -2rem;
+                    margin-bottom: -1.6rem;
+                }
+            }
+            h2 {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+            }
+        }
+    }
+}

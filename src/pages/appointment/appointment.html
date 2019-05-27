@@ -1,0 +1,104 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title padding-top padding-bottom>
+            Hair Straightning
+            <span>
+            <ion-icon name="md-notifications" class="text-white"></ion-icon>
+            </span>
+        </ion-title>
+    </ion-navbar>
+    <p text-center class="text-white">April, 2018</p>
+    <ion-scroll scrollX="true" style="height:60px;white-space: nowrap;">
+        <h4 text-center class="text-white">12<span>WED</span></h4>
+        <h4 text-center class="text-white active">13<span>THU</span></h4>
+        <h4 text-center class="text-white">14<span>FRI</span></h4>
+        <h4 text-center class="text-white">15<span>SAT</span></h4>
+        <h4 text-center class="text-white">16<span>SUN</span></h4>
+        <h4 text-center class="text-white">17<span>MON</span></h4>
+        <h4 text-center class="text-white">18<span>TUE</span></h4>
+        <h4 text-center class="text-white">19<span>WED</span></h4>
+        <h4 text-center class="text-white">20<span>THU</span></h4>
+    </ion-scroll>
+</ion-header>
+
+<ion-content class="bg-img" padding>
+    <div class="time">
+        <h2 class="text-white">Availble Times</h2>
+        <ion-row>
+            <ion-col col-4>
+                <ion-card class="text-white zoomIn animated delay-1">
+                    <p>10:00AM</p>
+                </ion-card>
+            </ion-col>
+            <ion-col col-4>
+                <ion-card class="text-white zoomIn animated delay-2">
+                    <p>11:00AM</p>
+                </ion-card>
+            </ion-col>
+            <ion-col col-4>
+                <ion-card class="text-white disable zoomIn animated delay-3">
+                    <p>12:00AM</p>
+                </ion-card>
+            </ion-col>
+            <ion-col col-4>
+                <ion-card class="text-white zoomIn animated delay-4">
+                    <p>01:30PM</p>
+                </ion-card>
+            </ion-col>
+            <ion-col col-4>
+                <ion-card class="text-white zoomIn animated delay-5">
+                    <p>02:15PM</p>
+                </ion-card>
+            </ion-col>
+            <ion-col col-4>
+                <ion-card class="text-white zoomIn animated delay-6">
+                    <p>03:00PM</p>
+                </ion-card>
+            </ion-col>
+            <ion-col col-4>
+                <ion-card class="text-white active zoomIn animated delay-7">
+                    <p>04:30PM</p>
+                </ion-card>
+            </ion-col>
+            <ion-col col-4>
+                <ion-card class="text-white zoomIn animated delay-8">
+                    <p>05:00PM</p>
+                </ion-card>
+            </ion-col>
+            <ion-col col-4>
+                <ion-card class="text-white zoomIn animated delay-9">
+                    <p>06:15PM</p>
+                </ion-card>
+            </ion-col>
+            <ion-col col-4>
+                <ion-card class="text-white zoomIn animated delay-10">
+                    <p>01:30PM</p>
+                </ion-card>
+            </ion-col>
+            <ion-col col-4>
+                <ion-card class="text-white zoomIn animated delay-11">
+                    <p>02:00PM</p>
+                </ion-card>
+            </ion-col>
+            <ion-col col-4>
+                <ion-card class="text-white zoomIn animated delay-12">
+                    <p>03:00PM</p>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+        <div class="select_box fadeInUp animated delay-12">
+            <ion-list>
+                <ion-item>
+                    <ion-label class="text-white">Appointment for</ion-label>
+                    <ion-select [(ngModel)]="self" class="text-white">
+                        <ion-option value="me">My Self</ion-option>
+                        <ion-option value="other">Other</ion-option>
+                    </ion-select>
+                </ion-item>
+            </ion-list>
+        </div>
+    </div>
+    <div class="fixed">
+        <button ion-button full class="btn bg-theme">Book an Appointment</button>
+    </div>
+</ion-content>

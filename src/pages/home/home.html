@@ -1,0 +1,69 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title padding-top padding-bottom>
+            <!-- <img src="assets/imgs/logo-home.png" width="140"> -->
+            <div class="Header-Name">Glam & Go</div>
+            <span>
+            <ion-icon name="md-notifications" class="text-white"></ion-icon>
+            </span>
+        </ion-title>
+        <ion-scroll scrollX="true" style="height:76px;white-space: nowrap;">
+            <ion-card class="menu-items" (click)="about()">
+                <ion-card-content>
+                    <img src="assets/imgs/img_about_us.png"> About us
+                </ion-card-content>
+            </ion-card>
+            <ion-card class="menu-items" (click)="testimonials()">
+                <ion-card-content>
+                    <img src="assets/imgs/img_testimonials.png"> Testimonials
+                </ion-card-content>
+            </ion-card>
+            <ion-card class="menu-items" (click)="myappointment()">
+                <ion-card-content>
+                    <img src="assets/imgs/img_appointments.png"> Appointments
+                </ion-card-content>
+            </ion-card>
+            <ion-card class="menu-items" (click)="blog()">
+                <ion-card-content>
+                    <img src="assets/imgs/img_blogs.png"> Blog
+                </ion-card-content>
+            </ion-card>
+            <ion-card class="menu-items" (click)="contact()">
+                <ion-card-content>
+                    <img src="assets/imgs/img_contact_us.png"> Contact us
+                </ion-card-content>
+            </ion-card>
+            <ion-card class="menu-items" (click)="profile()">
+                <ion-card-content>
+                    <img src="assets/imgs/img_my_profile.png"> My Profile
+                </ion-card-content>
+            </ion-card>
+        </ion-scroll>
+    </ion-navbar>
+</ion-header>
+<ion-content padding class="bg-img">
+
+    <h2 class="text-white">Make an Appointment</h2>
+    <ion-scroll [scrollY]="true" *ngIf='ready' class="vertical-scroll">
+            <ion-card *ngFor="let item of cates" class="fadeInUp animated delay-1">
+                    <figure><img [src]="item.image"></figure>
+                    <h3>{{item.name}}</h3>
+                </ion-card>
+    </ion-scroll>
+    <!-- <ion-card (click)="services()" class="fadeInUp animated delay-1">
+        <figure><img src="assets/imgs/makeup.png"></figure>
+        <h3>Make Up</h3>
+    </ion-card>
+    <ion-card (click)="services()" class="fadeInUp animated delay-2">
+        <figure><img src="assets/imgs/hair-care.png"></figure>
+        <h3>Hair Care</h3>
+    </ion-card>
+    <ion-card (click)="services()" class="fadeInUp animated delay-3">
+        <figure><img src="assets/imgs/bridal.png"></figure>
+        <h3>Bridal</h3>
+    </ion-card>
+    <ion-card (click)="services()" class="fadeInUp animated delay-4">
+        <figure><img src="assets/imgs/other.png"></figure>
+        <h3>Other</h3>
+    </ion-card> -->
+</ion-content>

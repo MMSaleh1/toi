@@ -1,0 +1,46 @@
+page-testimonials {
+    .header {
+        .toolbar-title {
+            padding-right: 14px !important;
+        }
+        background: rgba(199, 198, 176, 0.23);
+        .toolbar-background {
+            background: none;
+        }
+    }
+    ion-card {
+        &.card {
+            border-radius: 10px;
+            .card-content {
+                padding: 1.6rem 1.6rem;
+                display: flex;
+                h2 {
+                    font-size: 1.6rem;
+                    font-weight: 500;
+                    margin: 0;
+                }
+                p {
+                    line-height: 1.55;
+                    font-size: 1.35rem;
+                    margin-bottom: 1.2rem;
+                }
+                figure {
+                    min-width: 70px;
+                    min-height: 70px;
+                    max-width: 70px;
+                    max-height: 70px;
+                    margin: 0;
+                    margin-right: 2rem;
+                    position: relative;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    img {
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

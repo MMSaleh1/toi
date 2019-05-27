@@ -1,0 +1,114 @@
+page-appointment {
+    .header {
+        .toolbar-title {
+            padding-right: 12px !important;
+        }
+        background: rgba(199, 198, 176, 0.23);
+        .toolbar-background {
+            background: none;
+        }
+        ion-scroll {
+            margin: 0 10px;
+            h2 {
+                margin: 0;
+                margin-bottom: 18px;
+                font-size: 1.5rem;
+                font-weight: 400;
+                letter-spacing: .5px;
+            }
+            h4 {
+                font-size: 2rem;
+                font-weight: 400;
+                padding: 10px 0;
+                display: inline-block;
+                width: 40px;
+                margin: 0;
+                line-height: 18px;
+                margin-left: 10px;
+                &.active {
+                    font-weight: 500;
+                    background: rgba(175, 175, 175, 0.1);
+                    border-bottom: 5px solid #ec008c;
+                }
+                span {
+                    display: block;
+                    font-size: 1rem;
+                    font-weight: 300;
+                    margin-top: 2px;
+                }
+            }
+        }
+    }
+    .time {
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 15px;
+            margin-top: 10px !important;
+            margin-left: 15px;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: rgba(216, 216, 216, 0.1);
+            width: 80px;
+            margin: auto;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            box-shadow: none;
+            &.disable {
+                p {
+                    opacity: 0.1;
+                }
+            }
+            &.active {
+                background: #ec008c !important;
+            }
+            p {
+                text-align: center;
+                line-height: 33px;
+                color: #fff;
+                font-size: 1rem;
+                font-weight: 300;
+                letter-spacing: .5px;
+            }
+        }
+        .select_box {
+            margin-top: 30px;
+            .list {
+                margin: 0;
+                .item {
+                    background: none;
+                    border: none;
+                    .input-wrapper {
+                        height: 21px;
+                    }
+                    .label {
+                        font-size: 1.5rem;
+                        color: #fff;
+                        margin: 0;
+                    }
+                    .select {
+                        padding: 0;
+                        .select-icon {
+                            color: #fff;
+                            width: 18px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .fixed {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        left: 0;
+        .btn {
+            border-radius: 0px;
+            height: 60px;
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 400;
+        }
+    }
+}

@@ -1,0 +1,164 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title padding-top padding-bottom>
+            My Appointment
+            <span>
+            <ion-icon name="md-notifications" class="text-white"></ion-icon>
+            </span>
+        </ion-title>
+    </ion-navbar>
+    <div class="defult-tab bg-white">
+        <ion-segment [(ngModel)]="appointment">
+            <ion-segment-button value="upcoming" class="text-white">
+                Upcoming
+            </ion-segment-button>
+            <ion-segment-button value="past" class="text-white">
+                Past
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+</ion-header>
+
+<ion-content padding class="bg-img">
+    <div [ngSwitch]="appointment">
+        <div *ngSwitchCase="'upcoming'" class="fadeInUp animated delay-1">
+            <ion-card class="fadeInUp animated delay-2">
+                <ion-card-header>
+                    <ion-row>
+                        <ion-col col-4>
+                            <div class="text">
+                                <p>Thursday</p>
+                                <h6>13<sup>th</sup> June</h6>
+                            </div>
+                        </ion-col>
+                        <ion-col col-4>
+                            <div class="text">
+                                <p>Time</p>
+                                <h6>4:30pm</h6>
+                            </div>
+                        </ion-col>
+                        <ion-col col-4>
+                            <div class="text">
+                                <p>For</p>
+                                <h6>My Self</h6>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-card-header>
+                <ion-card-content>
+                    <div class="text">
+                        <p>Appointment</p>
+                        <h6 class="d-flex">Hair Strainghning
+                            <ion-icon name="md-more"></ion-icon>
+                        </h6>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+
+            <ion-card class="fadeInUp animated delay-4">
+                <ion-card-header>
+                    <ion-row>
+                        <ion-col col-4>
+                            <div class="text">
+                                <p>Thursday</p>
+                                <h6>13<sup>th</sup> June</h6>
+                            </div>
+                        </ion-col>
+                        <ion-col col-4>
+                            <div class="text">
+                                <p>Time</p>
+                                <h6>4:30pm</h6>
+                            </div>
+                        </ion-col>
+                        <ion-col col-4>
+                            <div class="text">
+                                <p>For</p>
+                                <h6>Friend</h6>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-card-header>
+                <ion-card-content>
+                    <div class="text">
+                        <p>Appointment</p>
+                        <h6 class="d-flex">Pedicure Manicure
+                            <ion-icon name="md-more"></ion-icon>
+                        </h6>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+        </div>
+
+        <div *ngSwitchCase="'past'" class="fadeInUp animated delay-1">
+            <ion-card class="fadeInUp animated delay-2">
+                <ion-card-header>
+                    <ion-row>
+                        <ion-col col-4>
+                            <div class="text">
+                                <p>Thursday</p>
+                                <h6>13<sup>th</sup> June</h6>
+                            </div>
+                        </ion-col>
+                        <ion-col col-4>
+                            <div class="text">
+                                <p>Time</p>
+                                <h6>4:30pm</h6>
+                            </div>
+                        </ion-col>
+                        <ion-col col-4>
+                            <div class="text">
+                                <p>For</p>
+                                <h6>Friend</h6>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-card-header>
+                <ion-card-content>
+                    <div class="text">
+                        <p>Appointment</p>
+                        <h6 class="d-flex">Pedicure Manicure
+                            <ion-icon name="md-more"></ion-icon>
+                        </h6>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+
+            <ion-card class="fadeInUp animated delay-4">
+                <ion-card-header>
+                    <ion-row>
+                        <ion-col col-4>
+                            <div class="text">
+                                <p>Thursday</p>
+                                <h6>13<sup>th</sup> June</h6>
+                            </div>
+                        </ion-col>
+                        <ion-col col-4>
+                            <div class="text">
+                                <p>Time</p>
+                                <h6>4:30pm</h6>
+                            </div>
+                        </ion-col>
+                        <ion-col col-4>
+                            <div class="text">
+                                <p>For</p>
+                                <h6>My Self</h6>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-card-header>
+                <ion-card-content>
+                    <div class="text">
+                        <p>Appointment</p>
+                        <h6 class="d-flex">Hair Strainghning
+                            <ion-icon name="md-more"></ion-icon>
+                        </h6>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+        </div>
+    </div>
+
+    <div class="fixed">
+        <button ion-button full class="btn bg-theme">Book a New Appointment</button>
+    </div>
+</ion-content>

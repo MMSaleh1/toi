@@ -1,0 +1,48 @@
+page-signin {
+    h2.heading {
+        position: relative;
+        font-size: 1.6rem;
+        font-weight: 400;
+        letter-spacing: .5px;
+        margin-top: 0;
+        margin-bottom: 33px;
+        &::before {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 2px;
+            display: block;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto 0;
+            background: #ec008c;
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 2px;
+            display: block;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto 0;
+            background: #ec008c;
+        }
+    }
+    p {
+        margin-top: 30px;
+        font-weight: 300;
+        letter-spacing: .5px;
+        span {
+            font-weight: 500;
+        }
+    }
+
+    .Header-Name{
+        color: white;
+        margin-top: 27vh;
+        font-size: 3rem;
+    }
+}

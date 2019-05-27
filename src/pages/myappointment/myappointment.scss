@@ -1,0 +1,88 @@
+page-myappointment {
+    .header {
+        .toolbar-title {
+            padding-right: 14px !important;
+        }
+        background: rgba(199, 198, 176, 0.23);
+        .toolbar-background {
+            background: none;
+        }
+        .defult-tab {
+            .segment {
+                .segment-button {
+                    font-size: 1.6rem;
+                    text-transform: unset;
+                    font-weight: 400;
+                    opacity: 1;
+                    border-width: 4px;
+                    height: 45px;
+                    letter-spacing: .5px;
+                    border-color: transparent !important;
+                    &.segment-activated {
+                        border-bottom-color: #ec008c !important;
+                    }
+                }
+            }
+        }
+    }
+    .card {
+        width: 100%;
+        margin: 0;
+        margin-bottom: 15px;
+        border-radius: 10px;
+        padding: 0;
+        .card-header {
+            padding: 0;
+            border-bottom: 1px solid #9999;
+            padding: 10px 15px;
+        }
+        .card-content {
+            padding: 10px 15px;
+            .text {
+                width: 100%;
+            }
+        }
+        .text {
+            width: 100%;
+            margin: 0 auto;
+            p {
+                color: #999999;
+                font-size: 1.2rem;
+                margin-right: auto;
+                font-weight: 400;
+                letter-spacing: .5px;
+            }
+            h6 {
+                font-size: 1.7rem;
+                font-weight: 600;
+                letter-spacing: .5px;
+                color: #000;
+                line-height: 23px;
+            }
+        }
+    }
+    .d-flex {
+        display: flex;
+        align-items: center;
+        ion-icon {
+            margin-left: auto;
+        }
+    }
+    .fixed {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        left: 0;
+        .btn {
+            border-radius: 0px;
+            height: 60px;
+            text-transform: unset;
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 400;
+        }
+    }
+    ion-segment-button {
+        background: none !important;
+    }
+}

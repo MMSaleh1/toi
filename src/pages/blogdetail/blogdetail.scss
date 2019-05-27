@@ -1,0 +1,43 @@
+page-blogdetail {
+    ion-header {
+        h2 {
+            padding: 0 16px;
+            font-size: 1.8rem;
+            font-weight: 400;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+        }
+        img {
+            position: absolute;
+            top: 0;
+            z-index: -1;
+        }
+        &.header {
+            height: 224px;
+            .toolbar-title {
+                padding-right: 14px !important;
+            }
+            background: rgba(199, 198, 176, 0);
+            .toolbar-background {
+                background: none;
+            }
+        }
+    }
+    ion-card {
+        &.card {
+            border-radius: 10px;
+            .card-content {
+                padding: 1.6rem 2rem;
+                p {
+                    line-height: 1.6;
+                    font-size: 1.35rem;
+                    margin-bottom: 1.6rem;
+                    small {
+                        color: #c1c1c1;
+                    }
+                }
+            }
+        }
+    }
+}

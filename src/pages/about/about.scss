@@ -1,0 +1,50 @@
+page-about {
+    .header {
+        .toolbar-title {
+            padding-right: 14px !important;
+        }
+        background: rgba(199, 198, 176, 0.23);
+        .toolbar-background {
+            background: none;
+        }
+    }
+    ion-card {
+        &.card {
+            border-radius: 10px;
+            .card-content {
+                padding: 1.5rem 2rem;
+                h2 {
+                    font-size: 2rem;
+                    font-weight: 500;
+                    margin-bottom: 1rem;
+                }
+                p {
+                    line-height: 1.55;
+                    font-size: 1.35rem;
+                }
+                .scroll-gallery {
+                    ion-scroll {
+                        position: absolute;
+                        width: 100%;
+                        left: 0;
+                        .scroll-content {
+                            margin-top: auto;
+                            height: 90px;
+                            img {
+                                display: inline-block;
+                                width: 140px;
+                                margin: 0 .4rem;
+                                &:first-child {
+                                    margin-left: 2.5rem;
+                                }
+                                &:last-child {
+                                    margin-right: 2.5rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

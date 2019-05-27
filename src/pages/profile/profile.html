@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            My Profile
+            <span (click)="signin()">
+            Logout
+            </span>
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-img">
+    <ion-card class="fadeInUp animated delay-2">
+        <ion-card-content>
+            <ion-list>
+                <ion-item>
+                    <ion-avatar item-start>
+                        <ion-icon name="md-person" class="text-theme"></ion-icon>
+                    </ion-avatar>
+                    <ion-label floating>Full Name</ion-label>
+                    <ion-input type="text" placeholder="Your Name" value="Sam Smith"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-avatar item-start>
+                        <ion-icon name="md-mail" class="text-theme"></ion-icon>
+                    </ion-avatar>
+                    <ion-label floating>Email Address</ion-label>
+                    <ion-input type="email" placeholder="Your Email Address" value="samsmith@gmail.com"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-avatar item-start>
+                        <ion-icon name="md-call" class="text-theme"></ion-icon>
+                    </ion-avatar>
+                    <ion-label floating>Contact Number</ion-label>
+                    <ion-input type="text" placeholder="Your COntact Number" value="+1 987 654 3210"></ion-input>
+                </ion-item>
+            </ion-list>
+            <button ion-button full class="btn bg-theme">Sumnit</button>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
