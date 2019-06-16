@@ -42,7 +42,29 @@ page-signin {
 
     .Header-Name{
         color: white;
-        margin-top: 27vh;
+        margin-top: 23vh;
         font-size: 3rem;
     }
+    .form-container{
+        margin-top: 36px;
+    }
+    .login-button{
+        width: 40%;
+        margin: auto;
+        border-radius: 30px;
+        background-color: color($colors,primary);
+    }
+    ion-input{
+        background-color: color($colors,light);
+        border-radius: 20px;
+        color: #fff;
+    }
+    .difault-form .item .text-input{
+        padding-left: 3rem;
+    }
+    .difault-form .list .item-block .item-inner{
+        background-color: transparent;
+    }
+   
 }
+ 
