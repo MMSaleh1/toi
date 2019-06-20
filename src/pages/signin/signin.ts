@@ -1,3 +1,4 @@
+import { TabsPage } from './../tabs/tabs';
 import { Component } from '@angular/core';
 import { NavController ,LoadingController, IonicPage } from 'ionic-angular';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
@@ -34,7 +35,7 @@ export class SigninPage {
     this.navCtrl.setRoot(SignupPage);
     }
     home(){
-    this.navCtrl.setRoot(HomePage);
+    this.navCtrl.setRoot(TabsPage);
     }
      async onSignin(){
       let loading = this.loadCtrl.create({
@@ -55,7 +56,7 @@ export class SigninPage {
           loading.dismiss(); 
            this.user = User.getInstance();
            this.storage.set('user',this.user);
-           this.navCtrl.setRoot(HomePage);
+           this.navCtrl.setRoot(TabsPage);
            this.user.addresses = await this.userProvider.getAddress(this.user.id);
         }else{
           loading.dismiss();

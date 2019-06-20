@@ -32,24 +32,39 @@ $app-direction: ltr;
 // to match your app's branding. Ionic uses a Sass map of
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
-
-.color1{
-  color: #ccc2b2;
- }
- .color2{
-     color: #0a0909;
- }
- .color3{
-     color: #f1efee;
- 
- }
 $colors: (
   primary:    #ccc2b2,
   secondary:  #f1efee,
   danger:     #f53d3d,
   light:      #231f20,
   dark:       #0a0909,
+  golden:       #f9a618
 );
+
+//Tabs Icon Colors
+$tabs-wp-tab-color: color($colors, primary);
+$tabs-wp-tab-icon-color: color($colors, primary);
+$tabs-wp-tab-color-active: color($colors, golden);
+$tabs-wp-tab-icon-color-active: color($colors, golden);
+
+$tabs-md-tab-icon-color: color($colors, primary);
+$tabs-md-tab-text-color: color($colors, primary);
+$tabs-md-tab-icon-color-active: color($colors, golden);
+$tabs-md-tab-text-color-active: color($colors, golden);
+
+$tabs-ios-tab-text-color: color($colors, primary);
+$tabs-ios-tab-icon-color: color($colors, primary);
+$tabs-ios-tab-icon-color-active: color($colors, golden);
+$tabs-ios-tab-text-color-active: color($colors, golden);
+
+.tabs-md .tabbar{
+  background-color: transparent !important; 
+
+}
+
+.tabs-ios .tabbar{
+  background-color: transparent !important;
+}
 
 
 // App iOS Variables

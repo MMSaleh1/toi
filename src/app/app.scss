@@ -1,3 +1,37 @@
+//auto complete style
+@import "../../node_modules/ionic2-auto-complete/auto-complete";
+//menu
+.menu-container{
+    background-color: color($colors,dark);
+}
+.logo-container{
+    width: 50%;
+    margin: auto;
+    .logo{
+        width: 100%;
+    }
+}
+.menu-list{
+    background-color: transparent;
+
+}
+.menu-item{
+    text-align: center;
+    background-color: transparent;
+    color: color($colors,primary);
+}
+.img-container{
+    width: 30%;
+    margin: auto;
+    border-radius: 50%;
+}
+.user-img{
+
+    border-radius: 50%;
+    width: 100%;
+}
+
+
 //Text Color
 .text-white {
     color: #fff !important;

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { RootProvider} from '../root/root';
+import { Events } from 'ionic-angular';
 /*
   Generated class for the UserProvider provider.
 
@@ -35,7 +36,8 @@ export class UserProvider extends RootProvider {
   public user: User; 
 
 
-  constructor(public http: HttpClient, public storage : Storage) {
+
+  constructor(public http: HttpClient, public storage : Storage , public event : Events) {
     super(http);
   }
 
@@ -60,6 +62,7 @@ export class UserProvider extends RootProvider {
             console.log(data);
           })
           this.user = User.getInstance(data[0].ID,Username,password,email);
+          this.event.publish('logedin');
           resolve(data[0].ID);
 
         }else{
@@ -77,6 +80,7 @@ export class UserProvider extends RootProvider {
         if(data != null && data != undefined && data.length>0){
           console.log(data[0].Id+ "  : "+data[0].Username+"  :  "+data[0].Password+"  :  "+data[0].Email)
           this.user = User.getInstance(data[0].Id,data[0].Username,data[0].Password,data[0].Email);
+          this.event.publish('logedin');
           console.log(this.user);
           resolve(true);
         }else{

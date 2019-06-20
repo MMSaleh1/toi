@@ -1,0 +1,11 @@
+page-tabs {
+    .tab-button-icon{
+        color: color($colors,secondary);
+    }
+    .tabs-ios .tab-button.icon-only {
+        min-height: 41px;
+        height: 9vh;
+        background-color: color($colors,dark);
+    }
+  
+}

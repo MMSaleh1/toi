@@ -1,1 +1,21 @@
 <ion-nav [root]="rootPage"></ion-nav>
+
+<ion-menu [content]="mycontent" side="start" menuId="first" class="side-menu">
+    <ion-content class="menu-container">
+      <div class="logo-container">
+        <img class="logo" src="../assets//imgs//logo.png">
+      </div>
+      <diV *ngIf="isLogedin">
+        <div class="img-container"><img class="user-img" src="../assets/imgs/signup_male.png"></div>
+      </diV>
+      <ion-list class="menu-list">
+        <ion-item class="menu-item">About Us</ion-item>
+        <ion-item class="menu-item">Terms and conditions</ion-item>
+        <ion-item class="menu-item">Contact Us</ion-item>
+        <ion-item class="menu-item">Rate this app</ion-item>
+        <ion-item class="menu-item">Log out</ion-item>
+      </ion-list>
+    </ion-content>
+</ion-menu>
+
+<ion-nav #mycontent [root]="rootPage"></ion-nav>

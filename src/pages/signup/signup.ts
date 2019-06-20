@@ -1,3 +1,4 @@
+import { TabsPage } from './../tabs/tabs';
 import { Component } from '@angular/core';
 import { NavController ,LoadingController } from 'ionic-angular';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
@@ -29,7 +30,7 @@ export class SignupPage {
     })
   }
    home(){
-    this.navCtrl.setRoot(HomePage);
+    this.navCtrl.setRoot(TabsPage);
     }
     
     signin(){
@@ -62,7 +63,7 @@ export class SignupPage {
             if(add!= "-1"){
             
             console.log(this.userProvider.user);
-           this.navCtrl.setRoot(HomePage);
+           this.navCtrl.setRoot(TabsPage);
             
         }else{
             alert("this user name is used Please try a new one");
