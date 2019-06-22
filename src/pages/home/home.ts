@@ -32,7 +32,6 @@ export class HomePage {
     this.cates = await this.itemProv.getCategoriesNop();
     this.ready = true;
     console.log(this.cates);
-    this.setCategories();
     return true;
   }
 
@@ -40,18 +39,6 @@ export class HomePage {
    
  
    
-  }
-
-  setCategories(){
-    this.categorySlider = new Array();
-    let counter = 0;
-    for(let i = 0;i<this.cates.length;i=i+2){
-      this.categorySlider[counter] = new Array();
-      this.categorySlider[counter][0]=this.cates[i];
-      this.categorySlider[counter][1]=this.cates[i+1];
-      counter++;
-    }
-    console.log(this.categorySlider);
   }
 
 
