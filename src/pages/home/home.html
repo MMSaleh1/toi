@@ -14,7 +14,7 @@
     <ion-slides slidesPerView="1"pager="true"  class="slider">
         <ion-slide class="slide"   *ngFor="let item of cates">  
             <img class="slide-image" [src]="item.image">
-            <button ion-button class="cate-button">{{item.name}}</button>
+            <button ion-button class="cate-button" (tap)="toServices(item)">{{item.name}} </button>
         </ion-slide>
     </ion-slides>
 </div>
