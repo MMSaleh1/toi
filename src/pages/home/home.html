@@ -8,12 +8,12 @@
 
     </ion-navbar>
 </ion-header>
-<ion-content padding scrollY="false" >
+<ion-content class="bg-img" padding scrollY="false" >
     <div class="search-container">
     <ion-auto-complete [dataProvider]="autoCompleteprov"  [options]="{ placeholder : 'Search products of interest' }"></ion-auto-complete>
    
     </div>
-    <ion-scroll class="list-container" scrollY="true">
+    <ion-scroll *ngIf="ready" class="list-container" scrollY="true">
     <ion-slides slidesPerView="1" pager="true" class="slider">
         <ion-slide class="slide"  *ngFor="let item of cates">  
             <img class="slide-image" [src]="item.image">

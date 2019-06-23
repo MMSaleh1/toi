@@ -31,6 +31,7 @@ import { TabsPageModule } from '../pages/tabs/tabs.module';
 import { ProfilePageModule } from './../pages/profile/profile.module';
 import { CartPageModule } from '../pages/cart/cart.module';
 import { NotificationsPageModule } from './../pages/notifications/notifications.module';
+import { CategoriesPageModule } from './../pages/categories/categories.module';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { NotificationsPageModule } from './../pages/notifications/notifications.
     ProfilePageModule,
     CartPageModule,
     NotificationsPageModule,
+    CategoriesPageModule,
 
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp)

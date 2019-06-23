@@ -5,7 +5,7 @@ page-home {
         margin-bottom: 3vh;
     }
     .slider{
-        height: 22vh;
+        height: 19vh;
         width: 99%;
         margin: auto;
         .slide{
@@ -51,6 +51,7 @@ page-home {
       .segment-title{
         padding: 16px;
         font-size: 2rem;
+        color: color($colors,primary);
       }
 
       // scroll categories

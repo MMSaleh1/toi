@@ -1,0 +1,22 @@
+page-categories {
+
+    //header
+    
+    .toolbar-ios ion-title {
+        position: relative;
+    }
+    .header {
+        .toolbar-background {
+            background-color: color($colors,dark);
+
+        }
+                
+        .logo-container{
+            width: 30%;
+            margin: 0px 0vw 0 28vw;
+        }
+    }
+    
+
+
+}

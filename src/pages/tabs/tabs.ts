@@ -15,7 +15,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TabsPage {
   tab1Root: string ="HomePage";
-  tab2Root: string ="CartPage";
+  tab2Root: string ="CategoriesPage";
   tab3Root: string ="ProfilePage";
   tab4Root: string ="NotificationsPage";
   selectedIndex :number;
