@@ -11,6 +11,7 @@ import { Injectable } from '@angular/core';
 export class RootProvider {
   
   public static APIURL4 = "http://edge2018-001-site12.gtempurl.com/api/";
+  public static APIURL = "http://edge2018-001-site15.gtempurl.com/api/"
   constructor(public http: HttpClient) {
     console.log('Hello RootProvider Provider');
   }
