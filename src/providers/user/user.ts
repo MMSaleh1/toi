@@ -16,15 +16,13 @@ export class UserProvider extends RootProvider {
   
   private logInActionString = "loginn?";
   private regesterActionString = "user_reg?";
-  private getSaltActionString = "get_salt?";
-  private customerRoleActionString = "custmoer_role?";
-  private addPhonenumber = "add_phone?";
+ 
 
   private addressApiController = "address/";
   private addAddressActionString = "add_user_address?"
 
-  private stateApiController = "State/";
-  private getStatesActionString = "get_states?";
+  private getAreaActionString = "get_all_area?";
+  private getAllGovernment = "get_all_government?";
 
   private addressUserLinkActionString = "link_user_address?";
 
@@ -47,7 +45,7 @@ export class UserProvider extends RootProvider {
       console.log(date);
       let F = false;
       let T = true;
-      let temp = `${RootProvider.APIURL}${this.userApiController}${this.regesterActionString}token_id=0$mail=${email}&name=${email}&phone=${PhoneNumber}$address=""&Password=${password}`;
+      let temp = `${RootProvider.APIURL}${this.userApiController}${this.regesterActionString}token_id=0&mail=${email}&name=${email}&phone=${PhoneNumber}&address=""&password=${password}`;
       console.log(temp);
       this.http.get(temp).subscribe((data:any)=>{
         console.log(data);
@@ -68,9 +66,10 @@ export class UserProvider extends RootProvider {
       let temp = `${RootProvider.APIURL}${this.userApiController}${this.logInActionString}mail=${email}&phone=""&password=${password}`;
       console.log(temp);
       this.http.get(temp).subscribe((data:any)=>{
+        console.log(data[0]);
         if(data != null && data != undefined && data.length>0){
-          console.log(data[0].Id+ "  : "+data[0].Username+"  :  "+data[0].Password+"  :  "+data[0].Email)
-          this.user = User.getInstance(data[0].Id,data[0].Username,data[0].Password,data[0].Email);
+          console.log(data[0].id+ "  : "+data[0].name+"  :  "+data[0].password+"  :  "+data[0].mail)
+          this.user = User.getInstance(data[0].id,data[0].name,data[0].password,data[0].mail);
           this.event.publish('logedin');
           console.log(this.user);
           resolve(true);
@@ -102,9 +101,9 @@ export class UserProvider extends RootProvider {
   //   })
   // }
 
-  public async getState() :Promise<any>{
-    let temp = `${RootProvider.APIURL}${this.stateApiController}${this.getStatesActionString}`; 
-    let states = new Array<state>();
+  public async getArea() :Promise<any>{
+    let temp = `${RootProvider.APIURL}${this.addressApiController}${this.getAreaActionString}`; 
+    let states = new Array<area>();
     
     return new Promise ((resolve)=>{
       this.http.get(temp).subscribe((data:any) => {
@@ -112,7 +111,32 @@ export class UserProvider extends RootProvider {
         if(data != undefined && data.length > 0)
         {
           for(let i =0;i<data.length;i++){
-            states.push(new state(data[i].Id,data[i].CountryId,data[i].Name));
+            states.push(new area(data[i].Id,data[i].CountryId,data[i].Name));
+          }
+          
+          resolve(states)
+        }else{ 
+          
+          resolve([]);
+        }
+      },err =>{
+       console.log(err);
+        resolve([]);
+      }
+    )
+    })
+  }
+  public async getGovernment() :Promise<any>{
+    let temp = `${RootProvider.APIURL}${this.addressApiController}${this.getAllGovernment}`; 
+    let states = new Array<government>();
+    
+    return new Promise ((resolve)=>{
+      this.http.get(temp).subscribe((data:any) => {
+        console.log(data);
+        if(data != undefined && data.length > 0)
+        {
+          for(let i =0;i<data.length;i++){
+            states.push(new government(data[i].id,data[i].government_name));
           }
           
           resolve(states)
@@ -128,7 +152,7 @@ export class UserProvider extends RootProvider {
     })
   }
 
-  public getStateById(states:Array<state>,id:string): state{
+  public getAreaById(states:Array<area>,id:string): area{
     let chosen ;
     states.forEach(element => {
       if(element.id == id){
@@ -139,7 +163,7 @@ export class UserProvider extends RootProvider {
     return chosen
   }
 
-  public getStateByName(states:Array<state>,name:string):state{
+  public getAreaByName(states:Array<area>,name:string):area{
     let chosen ;
     states.forEach(element=>{
      
@@ -186,7 +210,7 @@ export class UserProvider extends RootProvider {
   }
 
   public async getAddress(userId:string):Promise<any> {
-    let temp=`${RootProvider.APIURL}${this.addressApiController}${this.getUserAddressActionString}Customer_Id=${userId}`
+    let temp=`${RootProvider.APIURL}${this.addressApiController}${this.getUserAddressActionString}user_id=${userId}`
     console.log(temp);
     return new Promise((resolve)=>{
       
@@ -367,15 +391,24 @@ export class Address {
   }
 }
 
-export class state{
+export class area{
   public id : string;
-  public countryId: string
+  public governmentId: string
   public name : string;
-  constructor(id:string,counteryId,name:string){
+  constructor(id:string,governmentId,name:string){
     this.id=id;
-    this.countryId=counteryId;
+    this.governmentId=governmentId;
     this.name=name;
 
+  }
+}
+
+export class government {
+  public id : string;
+  public name : string 
+  constructor(id : string,name : string){
+    this.id = id;
+    this.name = name;
   }
 }
 

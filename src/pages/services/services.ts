@@ -20,7 +20,7 @@ export class ServicesPage {
   tempSetCates(){
     if(this.category!= undefined){
     for(let i = 0 ; i < this.category.children.length;i++){
-      this.category.children[i].image = "assets/imgs/subimage.png";
+      this.category.children[i].images[0] = "assets/imgs/subimage.png";
     }
   }
   }

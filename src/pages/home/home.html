@@ -13,7 +13,7 @@
    <div class="category-container">
     <ion-slides slidesPerView="1"pager="true"  class="slider">
         <ion-slide class="slide"   *ngFor="let item of cates">  
-            <img class="slide-image" [src]="item.image">
+            <img class="slide-image" [src]="item.images[0]">
             <button ion-button class="cate-button" (tap)="toServices(item)">{{item.name}} </button>
         </ion-slide>
     </ion-slides>

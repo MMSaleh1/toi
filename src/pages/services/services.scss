@@ -52,11 +52,9 @@ page-services {
         display: inline-grid;
         width: 35vw;
         height: 21vh;
-        /* border-radius: 100%; */
         margin: 2rem;
         background-color: transparent;
         box-shadow: inherit;
-        /* */
         figure {
             margin: 0;
             border-radius: 50%;
@@ -75,8 +73,7 @@ page-services {
             position: relative;
             font-size: 1.8rem;
             font-weight: 500;
-            
-            margin-left: 10px;
+            text-align: center;
         }
     }
 
