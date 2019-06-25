@@ -41,7 +41,7 @@ export class ItemsApiProvider extends RootProvider {
   public async getCategoriesNop(): Promise<any> {
     let subcat = await this.getSubCategoriesNop();
     return new Promise((resolve) => {
-      this.http.get(`${RootProvider.APIURL4}${this.categoriesApiController}${this.categoriesActionString}`).subscribe((data: any) => {
+      this.http.get(`${RootProvider.APIURL}${this.categoriesApiController}${this.categoriesActionString}`).subscribe((data: any) => {
         if (data == null || data.length == 0 ) {
           resolve([])
         }
@@ -82,7 +82,7 @@ export class ItemsApiProvider extends RootProvider {
   
   public async getVendors(): Promise<any> {
     return new Promise((resolve) => {
-      let temp = `${RootProvider.APIURL4}${this.vendorsApiController}${this.vendorActionString}`;
+      let temp = `${RootProvider.APIURL}${this.vendorsApiController}${this.vendorActionString}`;
       this.http.get(temp).subscribe((data: any) => {
         if(data == undefined || data.length == 0){
           resolve([]);
@@ -103,8 +103,8 @@ export class ItemsApiProvider extends RootProvider {
   public async getItemsNop(): Promise<any> {
     let comps = <Array<Vendor>> await this.getVendors();
     return new Promise((resolve) => {
-     // console.log(`${RootProvider.APIURL4}Product`);
-      this.http.get(`${RootProvider.APIURL4}${this.productApiController}${this.productsActionString}product`).subscribe((data: any) => {
+     // console.log(`${RootProvider.APIURL}Product`);
+      this.http.get(`${RootProvider.APIURL}${this.productApiController}${this.productsActionString}product`).subscribe((data: any) => {
         if (data == undefined || data.length == 0) {
           resolve([]);
         }
@@ -171,7 +171,7 @@ export class ItemsApiProvider extends RootProvider {
   public async getSubCategoriesNop(): Promise<any> {
     let items = await this.getItemsNop();
     return new Promise((resolve) => {
-      this.http.get(`${RootProvider.APIURL4}${this.subCategoriesApiController}${this.subCategoriesActionString}`).subscribe((data: any) => {
+      this.http.get(`${RootProvider.APIURL}${this.subCategoriesApiController}${this.subCategoriesActionString}`).subscribe((data: any) => {
         // console.log(data);
         if (data == null || data.length == 0) {
           resolve([]);

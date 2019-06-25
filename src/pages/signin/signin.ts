@@ -45,12 +45,8 @@ export class SigninPage {
       
       if (this.loginForm.valid) {
         loading.present();
-        let salt = await this.userProvider.getSualt(this.loginForm.value.email);
-        console.log(salt);
         let bool=false;
-        if(salt != -1 && salt != -2){
-          bool = await this.userProvider.loginNop(this.loginForm.value.email,this.loginForm.value.password,salt);
-        }
+          bool = await this.userProvider.loginNop(this.loginForm.value.email,this.loginForm.value.password);
         
         if(bool == true){
           loading.dismiss(); 

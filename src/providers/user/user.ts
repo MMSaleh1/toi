@@ -14,14 +14,14 @@ export class UserProvider extends RootProvider {
 
   private userApiController:string = 'users/';
   
-  private logInActionString = "user_login?";
+  private logInActionString = "loginn?";
   private regesterActionString = "user_reg?";
   private getSaltActionString = "get_salt?";
   private customerRoleActionString = "custmoer_role?";
   private addPhonenumber = "add_phone?";
 
   private addressApiController = "address/";
-  private addAddressActionString = "add_address?"
+  private addAddressActionString = "add_user_address?"
 
   private stateApiController = "State/";
   private getStatesActionString = "get_states?";
@@ -47,20 +47,11 @@ export class UserProvider extends RootProvider {
       console.log(date);
       let F = false;
       let T = true;
-      let temp = `${RootProvider.APIURL4}${this.userApiController}${this.regesterActionString}Username=${email}&Email=${email}&Password=${password}&PasswordFormatId=1&IsTaxExempt=${F}&AffiliateId=0&VendorId=0&HasShoppingCartItems=${F}&Active=${T}&Deleted=${F}&IsSystemAccount=${F}&LastActivityDateUtc=${date.toJSON()}`;
+      let temp = `${RootProvider.APIURL}${this.userApiController}${this.regesterActionString}token_id=0$mail=${email}&name=${email}&phone=${PhoneNumber}$address=""&Password=${password}`;
       console.log(temp);
       this.http.get(temp).subscribe((data:any)=>{
         console.log(data);
         if(data != null && data != undefined && data.length>0){
-          let customerRoleTemp= `${RootProvider.APIURL4}${this.userApiController}${this.customerRoleActionString}customer_id=${data[0].ID}`;
-          this.http.get(customerRoleTemp).subscribe((d2:any)=>{
-            console.log(d2);
-          })
-          let customerPhoneTemp= `${RootProvider.APIURL4}${this.userApiController}${this.addPhonenumber}EntityId=${data[0].ID}&Value=${PhoneNumber}`;
-          console.log(customerPhoneTemp);
-          this.http.get(customerPhoneTemp).subscribe((data:any)=>{
-            console.log(data);
-          })
           this.user = User.getInstance(data[0].ID,Username,password,email);
           this.event.publish('logedin');
           resolve(data[0].ID);
@@ -72,9 +63,9 @@ export class UserProvider extends RootProvider {
     })
   }
 
-  public async loginNop(email:string,password:string,salt:any): Promise<any>{
+  public async loginNop(email:string,password:string): Promise<any>{
     return new Promise((resolve)=>{
-      let temp = `${RootProvider.APIURL4}${this.userApiController}${this.logInActionString}Email=${email}&Password=${password}&salt=${salt}`;
+      let temp = `${RootProvider.APIURL}${this.userApiController}${this.logInActionString}mail=${email}&phone=""&password=${password}`;
       console.log(temp);
       this.http.get(temp).subscribe((data:any)=>{
         if(data != null && data != undefined && data.length>0){
@@ -94,25 +85,25 @@ export class UserProvider extends RootProvider {
 
  
  
-  public async getSualt(email:string){
-    let temp =`${RootProvider.APIURL4}${this.userApiController}${this.getSaltActionString}Email=${email}&Username=""`
-    console.log(temp);
-    return new Promise((resolve)=>{
-      this.http.get(temp).subscribe((data:any)=>{
-        if(data){
-          resolve(data[0].PasswordSalt);
-        }else{
-          resolve(-1);
-        }
-      },err=>{
-        console.log(err);
-        resolve(-1)
-      })
-    })
-  }
+  // public async getSualt(email:string){
+  //   let temp =`${RootProvider.APIURL}${this.userApiController}${this.getSaltActionString}Email=${email}&Username=""`
+  //   console.log(temp);
+  //   return new Promise((resolve)=>{
+  //     this.http.get(temp).subscribe((data:any)=>{
+  //       if(data){
+  //         resolve(data[0].PasswordSalt);
+  //       }else{
+  //         resolve(-1);
+  //       }
+  //     },err=>{
+  //       console.log(err);
+  //       resolve(-1)
+  //     })
+  //   })
+  // }
 
   public async getState() :Promise<any>{
-    let temp = `${RootProvider.APIURL4}${this.stateApiController}${this.getStatesActionString}`; 
+    let temp = `${RootProvider.APIURL}${this.stateApiController}${this.getStatesActionString}`; 
     let states = new Array<state>();
     
     return new Promise ((resolve)=>{
@@ -166,9 +157,9 @@ export class UserProvider extends RootProvider {
     return User.getInstance();
   }
 
-  public async addAddress(address : Address , zipCode : string,email:string ,stateId :string,userId:string):Promise<any>{
+  public async addAddress(address : Address,stateId :string,userId:string):Promise<any>{
 
-    let temp = `${RootProvider.APIURL4}${this.addressApiController}${this.addAddressActionString}Email=${email}&Company=""&StateProvinceId=${stateId}&Address1=${address.toString()}&Address2=""&ZipPostalCode=${zipCode}&PhoneNumber=""&FaxNumber=""`;
+    let temp = `${RootProvider.APIURL}${this.addressApiController}${this.addAddressActionString}address=${address}&longg=0&latt=0&user_id=${userId}&area_id=${stateId}`;
     console.log(temp);
     return new Promise((resolve)=>{
       this.http.get(temp).subscribe((data:any)=>{
@@ -178,7 +169,7 @@ export class UserProvider extends RootProvider {
           this.user =this.getUser();
           this.user.addSavedAddress(address);
           this.storage.set('user' , this.user);
-          let userLinkApi=`${RootProvider.APIURL4}${this.addressApiController}${this.addressUserLinkActionString}Customer_Id=${userId}&Address_Id=${address.id}`;
+          let userLinkApi=`${RootProvider.APIURL}${this.addressApiController}${this.addressUserLinkActionString}Customer_Id=${userId}&Address_Id=${address.id}`;
           console.log(userLinkApi);
           this.http.get(userLinkApi).subscribe((data:any)=>{
             console.log(data);
@@ -195,7 +186,7 @@ export class UserProvider extends RootProvider {
   }
 
   public async getAddress(userId:string):Promise<any> {
-    let temp=`${RootProvider.APIURL4}${this.addressApiController}${this.getUserAddressActionString}Customer_Id=${userId}`
+    let temp=`${RootProvider.APIURL}${this.addressApiController}${this.getUserAddressActionString}Customer_Id=${userId}`
     console.log(temp);
     return new Promise((resolve)=>{
       
@@ -228,7 +219,7 @@ export class UserProvider extends RootProvider {
 
 
   public async rate(productId,rate,title,body){
-    let temp=`${RootProvider.APIURL4}${this.rateApiController}${this.rateActionString}CustomerId=${this.user.id}&ProductId=${productId}&Rating=${rate}&Title=${title}&ReviewText=${body}`;
+    let temp=`${RootProvider.APIURL}${this.rateApiController}${this.rateActionString}CustomerId=${this.user.id}&ProductId=${productId}&Rating=${rate}&Title=${title}&ReviewText=${body}`;
     console.log(temp); 
     return new Promise((resolve)=>{
       this.http.get(temp).subscribe((data:any)=>{
