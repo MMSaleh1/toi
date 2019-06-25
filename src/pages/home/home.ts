@@ -31,7 +31,7 @@ export class HomePage {
   }
    async getItems(){
      
-    this.cates = await this.itemProv.getCategoriesNop();
+    this.cates = await this.itemProv.getCategories();
     this.db = Database.getInstance();
     this.db.categories = this.cates;
     this.ready = true;

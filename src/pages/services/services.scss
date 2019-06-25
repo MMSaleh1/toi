@@ -1,5 +1,8 @@
 page-services {
     ion-header {
+        .bg-color{
+            background-color: color($colors,dark);
+        }
         .scroll-zoom-wrapper {
             padding: 0 12px;
             .menu-items {
@@ -48,18 +51,22 @@ page-services {
     .card {
         display: inline-grid;
         width: 35vw;
-        height: 16vh;
-        border-radius: 100%;
+        height: 21vh;
+        /* border-radius: 100%; */
         margin: 2rem;
-        background-color: color($colors,light);
+        background-color: transparent;
+        box-shadow: inherit;
+        /* */
         figure {
             margin: 0;
-            border-radius: inherit;
-            height: inherit;
+            border-radius: 50%;
+            height: 16vh;
+            
+            background-color: #231f20;
             img {
         
-                height: inherit;
-                border-radius: inherit;       
+            height: 16vh;
+            border-radius: inherit;
             }
             }
         
@@ -68,8 +75,12 @@ page-services {
             position: relative;
             font-size: 1.8rem;
             font-weight: 500;
-            line-height: 80px;
-            margin-left: 30px;
+            
+            margin-left: 10px;
         }
+    }
+
+    .list-container{
+        padding-top: 4vh;
     }
 }

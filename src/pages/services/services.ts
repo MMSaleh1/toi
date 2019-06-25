@@ -25,8 +25,8 @@ export class ServicesPage {
   }
   }
   
-   appointment(){
-    this.navCtrl.push(AppointmentPage);
+   appointment(cate: Category){
+    this.navCtrl.push(AppointmentPage,{"cate" : cate});
     }
 
 }

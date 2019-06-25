@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { RootProvider } from '../root/root';
-
+import { Storage } from '@ionic/storage';
 /*
   Generated class for the ItemsApiProvider provider.
 
@@ -24,8 +24,18 @@ export class ItemsApiProvider extends RootProvider {
   private vendorActionString: string = "get_all_vendors?";
 
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient,public storage: Storage) {
     super(http);
+  }
+
+  public async getCategories():Promise<any>{
+    let categoies=  new Array<Category>();
+    let tempcates = await this.storage.get('cates');
+    categoies = tempcates == undefined ?  await this.getCategoriesNop() : tempcates;
+    return new Promise((resolve)=>{
+      resolve(categoies);
+    })
+    
   }
 
   public async getCategoriesNop(): Promise<any> {
@@ -57,7 +67,7 @@ export class ItemsApiProvider extends RootProvider {
             }
 
           }
-        
+          this.storage.set('cates',catArray);
           resolve(catArray);
           
 

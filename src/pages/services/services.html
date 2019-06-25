@@ -10,9 +10,9 @@
 </ion-header>
 
 
-<ion-content padding class="bg-img">
-    <div *ngIf="ready">
-    <ion-card *ngFor="let item of category.children" (click)="appointment()" class="card">
+<ion-content padding class="bg-color">
+    <div class="list-container" *ngIf="ready">
+    <ion-card *ngFor="let item of category.children" (click)="appointment(item)" class="card">
         <figure><img [src]="item.image"></figure>
         <h3>{{item.name}}</h3>
     </ion-card>
