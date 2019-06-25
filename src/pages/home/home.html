@@ -8,84 +8,28 @@
 
     </ion-navbar>
 </ion-header>
-<ion-content class="bg-img" padding scrollY="false" >
-    <div class="search-container">
-    <ion-auto-complete [dataProvider]="autoCompleteprov"  [options]="{ placeholder : 'Search products of interest' }"></ion-auto-complete>
-   
-    </div>
-    <ion-scroll *ngIf="ready" class="list-container" scrollY="true">
-    <ion-slides slidesPerView="1" pager="true" class="slider">
-        <ion-slide class="slide"  *ngFor="let item of cates">  
+<ion-content padding scrollY="false" >
+    
+   <div class="category-container">
+    <ion-slides slidesPerView="1"pager="true"  class="slider">
+        <ion-slide class="slide"   *ngFor="let item of cates">  
             <img class="slide-image" [src]="item.image">
+            <button ion-button class="cate-button" (tap)="toServices(item)">{{item.name}} </button>
         </ion-slide>
     </ion-slides>
-
-    <div>
-        <div class="segment-title">Trend special</div>
-        <ion-scroll class="category-scroll" scrollX="true" > 
-                <div class="vertical-list" *ngFor="let item of cates">
-                  <div class="category-list-container">
-                  <ion-item class="cate-list-item">
-                      
-                   <ion-label class="category-img-wrapper">
-                     
-                      <div class="pic-box">
-                      <img  [src]="item.image">
-                    </div>    
-                    <div class="title">{{item.name}}</div>
-                
-                  </ion-label> 
-                
-              
-                    </ion-item>
-                  </div>
-                  </div>
-                  </ion-scroll>
+</div>
+<div class="ads-container">
+    
+    <div class="header-container">
+        <div class="header">
+                Lorem Ipsum
+        </div>
     </div>
 
-    <div>
-            <div class="segment-title">New Products</div>
-        <div class="horizontal-list">
-             <div class="horizontal-list-item" *ngFor="let item of cates">
-                  <div class="product-list-container">
-                  <ion-item class="prod-list-item">
-                      
-                   <ion-label class="prodcut-img-wrapper">
-                     
-                      <div class="pic-box">
-                      <img  [src]="item.image">
-                    </div>    
-                
-                  </ion-label> 
-                
-              
-                    </ion-item>
-                  </div>
-                  </div>
-                </div>
-               
-                </div>
-            </ion-scroll>
-    <!-- <ion-scroll [scrollY]="true" *ngIf='ready' class="vertical-scroll">
-            <ion-card *ngFor="let item of cates" class="fadeInUp animated delay-1">
-                    <figure><img [src]="item.image"></figure>
-                    <h3>{{item.name}}</h3>
-                </ion-card>
-    </ion-scroll> -->
-    <!-- <ion-card (click)="services()" class="fadeInUp animated delay-1">
-        <figure><img src="assets/imgs/makeup.png"></figure>
-        <h3>Make Up</h3>
-    </ion-card>
-    <ion-card (click)="services()" class="fadeInUp animated delay-2">
-        <figure><img src="assets/imgs/hair-care.png"></figure>
-        <h3>Hair Care</h3>
-    </ion-card>
-    <ion-card (click)="services()" class="fadeInUp animated delay-3">
-        <figure><img src="assets/imgs/bridal.png"></figure>
-        <h3>Bridal</h3>
-    </ion-card>
-    <ion-card (click)="services()" class="fadeInUp animated delay-4">
-        <figure><img src="assets/imgs/other.png"></figure>
-        <h3>Other</h3>
-    </ion-card> -->
+    <div class="body-container">
+        <div class="body">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+        </div>
+    </div>
+</div>
 </ion-content>

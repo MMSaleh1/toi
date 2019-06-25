@@ -32,6 +32,8 @@ import { ProfilePageModule } from './../pages/profile/profile.module';
 import { CartPageModule } from '../pages/cart/cart.module';
 import { NotificationsPageModule } from './../pages/notifications/notifications.module';
 import { CategoriesPageModule } from './../pages/categories/categories.module';
+import { ProductOffersPageModule } from './../pages/product-offers/product-offers.module';
+import { Database } from '../providers/database/database';
 
 
 @NgModule({
@@ -60,6 +62,7 @@ import { CategoriesPageModule } from './../pages/categories/categories.module';
     CartPageModule,
     NotificationsPageModule,
     CategoriesPageModule,
+    ProductOffersPageModule,
 
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp)
@@ -86,7 +89,8 @@ import { CategoriesPageModule } from './../pages/categories/categories.module';
     RootProvider,
     ItemsApiProvider,
     UserProvider,
-    AutoCompleteProvider
+    AutoCompleteProvider,
+    Database
   ]
 })
 export class AppModule {}

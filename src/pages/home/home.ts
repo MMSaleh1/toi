@@ -11,6 +11,7 @@ import { ServicesPage } from '../services/services';
 
 import { ItemsApiProvider, Category } from './../../providers/items-api/items-api';
 import { AutoCompleteProvider } from './../../providers/auto-complete/auto-complete';
+import { Database } from '../../providers/database/database';
 
 
 @IonicPage()
@@ -22,6 +23,7 @@ export class HomePage {
   public ready : boolean= false;
   public cates : Array<Category>;
   public categorySlider: Array<any>;
+  public db :Database;
 
   constructor(public navCtrl: NavController,public itemProv : ItemsApiProvider,public autoCompleteprov : AutoCompleteProvider) {
    this.cates = new Array();
@@ -30,9 +32,10 @@ export class HomePage {
    async getItems(){
      
     this.cates = await this.itemProv.getCategoriesNop();
+    this.db = Database.getInstance();
+    this.db.categories = this.cates;
     this.ready = true;
     console.log(this.cates);
-    this.setCategories();
     return true;
   }
 
@@ -42,16 +45,8 @@ export class HomePage {
    
   }
 
-  setCategories(){
-    this.categorySlider = new Array();
-    let counter = 0;
-    for(let i = 0;i<this.cates.length;i=i+2){
-      this.categorySlider[counter] = new Array();
-      this.categorySlider[counter][0]=this.cates[i];
-      this.categorySlider[counter][1]=this.cates[i+1];
-      counter++;
-    }
-    console.log(this.categorySlider);
+  toServices(cate: Category){
+    this.navCtrl.push(ServicesPage,{'cate' : cate});
   }
 
 

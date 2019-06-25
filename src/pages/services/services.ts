@@ -1,5 +1,6 @@
+import { Category } from './../../providers/items-api/items-api';
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 import { AppointmentPage } from '../appointment/appointment';
 @Component({
@@ -7,9 +8,21 @@ import { AppointmentPage } from '../appointment/appointment';
   templateUrl: 'services.html'
 })
 export class ServicesPage {
+  public category : Category;
+  public ready;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController , public navparms : NavParams) {
+    this.category = this.navparms.get('cate');
+    this.tempSetCates();
+    this.ready = this.category == undefined ? false : true;
 
+  }
+  tempSetCates(){
+    if(this.category!= undefined){
+    for(let i = 0 ; i < this.category.children.length;i++){
+      this.category.children[i].image = "assets/imgs/subimage.png";
+    }
+  }
   }
   
    appointment(){
