@@ -38,10 +38,41 @@ $colors: (
   danger:     #f53d3d,
   light:      #231f20,
   dark:       #0a0909,
-  golden:       #f9a618
+  golden:     #f9a618
 );
 
 //Header 
+.toolbar-ios ion-title {
+  position: relative;
+}
+.header {
+  .toolbar-background {
+      background-color: color($colors,dark);
+
+  }
+          
+  .logo-container{
+      width: 30%;
+      margin: 0px 0vw 0 28vw;
+  }
+  &::after {
+      display: none;
+  }
+  .toolbar {
+      padding-left: 0;
+      padding-right: 0;
+      .back-button {
+          color: #fff;
+      }
+      .toolbar-title {
+          color: #fff;
+          padding: 0 16px;
+      }
+  }
+  .title {
+      margin-bottom: 20px;
+  }
+}
 ion-header {
   .scroll-zoom-wrapper {
       padding: 0 12px;
@@ -69,21 +100,6 @@ ion-header {
               }
           }
       }
-  }
-
-  .toolbar-ios ion-title {
-    position: relative;
-}
-.header {
-    .toolbar-background {
-        background-color: color($colors,dark);
-
-    }
-            
-    .logo-container{
-        width: 30%;
-        margin: 0px 0vw 0 28vw;
-    }
   }
 }
 //Tabs Icon Colors
@@ -155,4 +171,30 @@ $tabs-ios-tab-text-color-active: color($colors, golden);
 // --------------------------------------------------
 
 @import "roboto";
+
 @import "noto-sans";
+@font-face {
+  font-family: 'app-font';
+  src: url('../assets/fonts/Montserrat-Regular.ttf');
+  font-weight: 200;
+  font-style: normal;
+}
+
+
+
+@font-face {
+  font-family: 'app-font-black';
+  src: url('../assets/fonts/Montserrat-Black.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
+@font-face {
+  font-family: 'app-font-bold';
+  src: url('../assets/fonts/Montserrat-Bold.ttf');
+  font-weight: 900;
+  font-style: normal;
+}
+

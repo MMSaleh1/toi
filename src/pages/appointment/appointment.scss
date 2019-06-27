@@ -1,19 +1,5 @@
 page-appointment {
-    .toolbar-ios ion-title {
-        position: relative;
-    }
-    .header {
-        .toolbar-background {
-            background-color: color($colors,dark);
-
-        }
-        
-                
-        .logo-container{
-            width: 30%;
-            margin: 0px 0vw 0 28vw;
-        }
-    }
+   
 
 
     .bg-color{
@@ -21,7 +7,7 @@ page-appointment {
     }
 
     .content-wrapper{
-        margin: 19vh 0vw 0vh 10vw;
+        margin: 14vh 0vw 0vh 10vw;
         border-bottom-left-radius: 20px;
         width:100%;
         .category-info-container {

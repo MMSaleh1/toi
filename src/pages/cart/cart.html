@@ -1,18 +1,43 @@
-<!--
-  Generated template for the CartPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>Cart</ion-title>
-  </ion-navbar>
-
-</ion-header>
+  <ion-header>
+      <ion-navbar>
+              <button ion-button menuToggle><ion-icon name="ios-menu-outline"></ion-icon></button>
+  
+              <div class="logo-container">
+                  <img  src="/assets/imgs/logo.png">
+              </div>
+  
+      </ion-navbar>
+  </ion-header>
 
 
-<ion-content padding>
-
+<ion-content class="bg-color" padding>
+  <div class="content-wrapper">
+  <div class="category-info-container">
+      <div class="category-info-text">CART</div>
+  </div>
+ <div class="items-container">
+      <ion-list class="item-list" scrollY="true">
+          <ion-item *ngFor="let item of cart.cartItems ; let i = index" class="item">
+              <div class="item-name">{{item.item.name}}</div>
+              <div class="item-price">{{item.item.price}} LE</div>
+              <div class="quant-warpper">
+              <div class="qunat-container">
+                <button ion-button icon-only class="add-button" (tap)="increment(item)"><ion-icon name="ios-add"></ion-icon></button>
+                <div class="quant-display">{{item.quant}}</div>
+                <button ion-button icon-only class="remove-button" (tap)="decrease(i)">  <ion-icon name="ios-remove"></ion-icon></button>
+              </div>
+              <button ion-button icon-only class="delete-button" (tap)="delete(i)"> <ion-icon name="ios-trash" ></ion-icon></button>
+            </div>
+             
+          </ion-item>
+          <div class="item-list-footer">
+            <div class="footer-name">TOTAL PRICE</div>
+            <div class="total-price">{{cart.totalPrice}} LE</div>
+          </div>
+      </ion-list>
+  </div> 
+  <button ion-button class="confirm-button" (tap)="Checkout()">check out</button>
+  </div>
 </ion-content>
+

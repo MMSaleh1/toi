@@ -1,3 +1,135 @@
 page-cart {
 
+
+    .bg-color{
+        background-color: color($colors,secondary);
+    }
+
+    .content-wrapper{
+        margin: 10vh 0vw 0vh 10vw;
+        border-bottom-left-radius: 20px;
+        width:100%;
+        .category-info-container {
+            width: 100vw;
+            background-color: black;
+            padding: 3vh 0 4vh 17vw;
+            border-top-left-radius: 30px;
+        
+            .category-info-text {
+                font-size: 2.6rem;
+                font-weight: 800;
+                font-family: sans-serif;
+                display: inline-block;
+                color: #f1efee;
+                padding: 0px 0rem 0vh 0;
+                margin-bottom: 0rem;
+            }
+        }
+
+        .items-container{
+            .item-list{
+                height: 40vh;
+            }
+            .item{
+                padding-left: 9vw;
+                padding-bottom: 0vh;
+                padding-top: 2vh;
+               
+            }
+                .item-name{
+                       
+                    font-size: 2.6rem;
+                    font-weight: 600;
+                    font-family: sans-serif;
+                    padding: 0 0 2vh 0;
+                    width: 77%;
+                    display: inline-block;
+                }
+                .item-price {
+                    display: inline-block;
+                    width: 20%;
+                    color: color($colors,primary);
+                }
+                .qunat-container {
+                        width: 41%;
+                        height: 5vh;
+                        border-radius: 30px;
+                        border: solid;
+                        border-color: color($colors,secondary);
+                        display: inline-block;
+                .add-button.button {
+                        width: 10vw;
+                        display: inline-block;
+                        background-color: transparent;
+                        border-bottom-left-radius: 1rem;
+                        border-top-left-radius: 1rem;
+                        color: color($colors,secondary);
+                        height: 3.5vh;
+                        padding-bottom: 0.5rem;
+                        box-shadow: 0 0 0 0;
+                    }
+
+                    .quant-display {
+                        display: inline-block;
+                        width: 5vw;
+                        color: color($colors,secondary);
+                        vertical-align: sub;
+                        text-align: center;
+                    }
+
+                .remove-button {
+                        width: 10vw;
+                        display: inline-block;
+                        background-color: transparent;
+                        border-bottom-right-radius: 1rem;
+                        border-top-right-radius: 1rem;
+                        color: color($colors,secondary);
+                        height: 3.5vh;
+                        padding-bottom: 0.5rem;
+                        box-shadow: 0 0 0 0;
+                    }
+                    
+                }
+                .delete-button{
+                    display: inline-block;
+                    color: color($colors,dark);
+                    background-color: transparent;
+                    font-size: 1.4rem;
+                    align-self: initial;
+                    margin-left: 34vw;
+                    box-shadow: 0 0 0 0 ;
+                }
+                .item-list-footer {
+                    background-color: color($colors,secondary);
+                    color: color($colors,dark);
+                    height: 10vh;
+                    border-bottom-left-radius: 3rem;
+                    padding: 2.5rem;
+                    box-shadow: 6px -2px 9px 0px;
+                    .footer-name {
+                        display: inline-block;
+                        margin-right: 20vw;
+                        font-size: 1.8rem;
+                        font-family: sans-serif;
+                        font-weight: 800;
+                    }
+
+                    .total-price {
+                        font-size: 1.8rem;
+                        display: inline-block;
+                        color :color($colors,primary);
+                    }
+                }
+                
+            }
+        }
+        .confirm-button{
+            border-radius: 4rem;
+            font-size: 1.5rem;
+            width: 30vw;
+            height: 3.9vh;
+            margin-top: -2vh;
+            margin-left: 7vw
+        }
+
 }

@@ -1,3 +1,4 @@
+import { CartProvider } from './../cart/cart';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
@@ -31,6 +32,10 @@ export class UserProvider extends RootProvider {
   private rateApiController = 'product/';
   private rateActionString = "add_review?";
 
+  private orderApiController = "orders/";
+  private orderItemActionString ="add_order_item?";
+  private orderRequestActionString = "requst_order?";
+
   public user: User; 
 
 
@@ -43,8 +48,6 @@ export class UserProvider extends RootProvider {
     return new Promise((resolve)=>{
       let date = new Date();
       console.log(date);
-      let F = false;
-      let T = true;
       let temp = `${RootProvider.APIURL}${this.userApiController}${this.regesterActionString}token_id=0&mail=${email}&name=${email}&phone=${PhoneNumber}&address=""&password=${password}`;
       console.log(temp);
       this.http.get(temp).subscribe((data:any)=>{
@@ -80,27 +83,6 @@ export class UserProvider extends RootProvider {
     })
   }
 
-  
-
- 
- 
-  // public async getSualt(email:string){
-  //   let temp =`${RootProvider.APIURL}${this.userApiController}${this.getSaltActionString}Email=${email}&Username=""`
-  //   console.log(temp);
-  //   return new Promise((resolve)=>{
-  //     this.http.get(temp).subscribe((data:any)=>{
-  //       if(data){
-  //         resolve(data[0].PasswordSalt);
-  //       }else{
-  //         resolve(-1);
-  //       }
-  //     },err=>{
-  //       console.log(err);
-  //       resolve(-1)
-  //     })
-  //   })
-  // }
-
   public async getArea() :Promise<any>{
     let temp = `${RootProvider.APIURL}${this.addressApiController}${this.getAreaActionString}`; 
     let states = new Array<area>();
@@ -111,7 +93,7 @@ export class UserProvider extends RootProvider {
         if(data != undefined && data.length > 0)
         {
           for(let i =0;i<data.length;i++){
-            states.push(new area(data[i].Id,data[i].CountryId,data[i].Name));
+            states.push(new area(data[i].id,data[i].government_id,data[i].area_name));
           }
           
           resolve(states)
@@ -181,7 +163,7 @@ export class UserProvider extends RootProvider {
     return User.getInstance();
   }
 
-  public async addAddress(address : Address,stateId :string,userId:string):Promise<any>{
+  public async addAddress(address : string,stateId :string,userId:string):Promise<any>{
 
     let temp = `${RootProvider.APIURL}${this.addressApiController}${this.addAddressActionString}address=${address}&longg=0&latt=0&user_id=${userId}&area_id=${stateId}`;
     console.log(temp);
@@ -189,17 +171,8 @@ export class UserProvider extends RootProvider {
       this.http.get(temp).subscribe((data:any)=>{
         console.log(data.length);
         if(data!=undefined && data.length>0){
-          address.id=data[0].ID;
-          this.user =this.getUser();
-          this.user.addSavedAddress(address);
-          this.storage.set('user' , this.user);
-          let userLinkApi=`${RootProvider.APIURL}${this.addressApiController}${this.addressUserLinkActionString}Customer_Id=${userId}&Address_Id=${address.id}`;
-          console.log(userLinkApi);
-          this.http.get(userLinkApi).subscribe((data:any)=>{
-            console.log(data);
-            resolve(address.id);
-          })
           
+          resolve(data[0].id);
         }
         resolve(null)
       })
@@ -209,37 +182,37 @@ export class UserProvider extends RootProvider {
     
   }
 
-  public async getAddress(userId:string):Promise<any> {
-    let temp=`${RootProvider.APIURL}${this.addressApiController}${this.getUserAddressActionString}user_id=${userId}`
-    console.log(temp);
-    return new Promise((resolve)=>{
+  // public async getAddress(userId:string):Promise<any> {
+  //   let temp=`${RootProvider.APIURL}${this.addressApiController}${this.getUserAddressActionString}user_id=${userId}`
+  //   console.log(temp);
+  //   return new Promise((resolve)=>{
       
-      this.http.get(temp).subscribe((data:any)=>{
-        console.log(data);
-        let userAddress = new Array<Address>();
-        if(data != undefined && data.length > 0){
+  //     this.http.get(temp).subscribe((data:any)=>{
+  //       console.log(data);
+  //       let userAddress = new Array<Address>();
+  //       if(data != undefined && data.length > 0){
           
-          for(let i = 0 ;i < data.length ; i++){
-            userAddress.push(new Address());
-            userAddress[i].fromString(data[i].Address1);
-            userAddress[i].id=data[i].Address_Id;
-            userAddress[i].zipCode=data[i].ZipPostalCode;
-          }
-          this.user = this.getUser();
-          console.log(this.user);
-          this.user.addresses = userAddress;
-          resolve(userAddress);
+  //         for(let i = 0 ;i < data.length ; i++){
+  //           userAddress.push(new Address());
+  //           userAddress[i].fromString(data[i].Address1);
+  //           userAddress[i].id=data[i].Address_Id;
+  //           userAddress[i].zipCode=data[i].ZipPostalCode;
+  //         }
+  //         this.user = this.getUser();
+  //         console.log(this.user);
+  //         this.user.addresses = userAddress;
+  //         resolve(userAddress);
           
-        }else{
-          resolve(userAddress);
-        }
+  //       }else{
+  //         resolve(userAddress);
+  //       }
 
-      }),err=>{
-        resolve(err);
-      }
+  //     }),err=>{
+  //       resolve(err);
+  //     }
       
-    })
-  }
+  //   })
+  // }
 
 
   public async rate(productId,rate,title,body){
@@ -255,16 +228,34 @@ export class UserProvider extends RootProvider {
     })
   }
 
+  // public removeAddress(address : Address){
+  //   this.user.removeSavedAddress(address);
+  //   this.storage.set('user',this.user);
+  // }
 
+  public async Order(user_id,address_id,stuff_id,emp_gender="Not",order_total,cart:CartProvider){
+    let temp = `${RootProvider.APIURL}${this.orderApiController}${this.orderItemActionString}user_id=${user_id}&address_id=${address_id}&stuff_id=${stuff_id}&emp_gender=${emp_gender}&order_total=${order_total}`
+    return new Promise((resolve)=>{
+      this.http.get(temp).subscribe((data:any)=>{
+        console.log(data);
+        for(let i =0 ;i<cart.cartItems.length;i++){
+          console.log(this.orderItem(data[0],cart.cartItems[i].item.id,cart.cartItems[i].quant));
+        }
+      })
+    })
+  }
+
+  private async orderItem(order_id,product_id,quntity){
+    let temp = `${RootProvider.APIURL}${this.orderApiController}${this.orderItemActionString}order_id=${order_id}&product_id=${product_id}&quntity=${quntity}`;
+    return new Promise((resolve)=>{
+      this.http.get(temp).subscribe((data:any)=>{
+        resolve(data);
+      },err=>{
+        console.log(err);
+        resolve([]);
+      }) 
+    })
   
-
-
-
-
-   
-  public removeAddress(address : Address){
-    this.user.removeSavedAddress(address);
-    this.storage.set('user',this.user);
   }
 
 
@@ -405,10 +396,12 @@ export class area{
 
 export class government {
   public id : string;
-  public name : string 
+  public name : string
+  areas : Array<area>;
   constructor(id : string,name : string){
     this.id = id;
     this.name = name;
+    this.areas = new Array();
   }
 }
 

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { RootProvider } from '../root/root';
 import { Storage } from '@ionic/storage';
+import { stringify } from '@angular/compiler/src/util';
 /*
   Generated class for the ItemsApiProvider provider.
 
@@ -155,7 +156,7 @@ export class Category {
   constructor(name: string = "", id: string = "", children: any, NewsCategoryImages: string[], Parent: string = "", deleted: boolean, hasSubCate: boolean = false , available : string) {
     this.name = name;
     this.id = id;
-    this.images = NewsCategoryImages;
+    this.images = ImageProcess.getImagesUrl(NewsCategoryImages);
     this.parentShow = false;
     this.parent = Parent;
     this.open = false;
@@ -168,41 +169,6 @@ export class Category {
 
 
 }
-
-export class Vendor {
-
-  id: string;
-  email: string;
-  deleted: boolean;
-  image: string;
-  altAttribute: string;
-  titleAttribute: string;
-  isNew: boolean;
-  name: string;
-  descr: string;
-  constructor(id:string
-    ,name: string
-    , descrpition: string
-    , deleted: boolean
-    , pictureBinary: string
-    , AltAttribute: string
-    , titleAttribute: string
-    , isNew: boolean
-    , email: string
-  ) {
-    this.id = id;
-    this.name = name;
-    this.email = email;
-    this.descr = descrpition;
-    this.deleted = deleted;
-    this.image = ImageProcess.stringToImage(pictureBinary, "image/jpeg");
-    this.altAttribute = AltAttribute;
-    this.titleAttribute = titleAttribute;
-    this.isNew = isNew;
-  }
-}
-
-
 export class Product {
 
   
@@ -229,7 +195,7 @@ export class Product {
     this.id = id; 
     this.name = product_name;
     this.description = description; 
-    this.images =images;
+    this.images =ImageProcess.getImagesUrl(images);
     this.product_subcat = category_id;
     this.available= avaliable;
     this.price = cost;
@@ -268,8 +234,17 @@ export class ImageProcess{
 
   }
 
-  static stringToImage(imageData:string,mimeType:string,base:string="base64"):string{
-    return "data:"+mimeType+";"+base+","+imageData;
+  static getImagesUrl(images : Array<string>){
+    for(let i = 0 ; i < images.length ; i++){
+      images[i] = this.getImageUrl(images[i]);
+    }
+    return images;
+  }
+
+  static getImageUrl(image:string){
+    let baseString = RootProvider.ImagesUrl;
+    image =image.slice(1,image.length);
+    return baseString+image;
   }
 }
 

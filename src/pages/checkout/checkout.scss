@@ -1,0 +1,57 @@
+page-checkout {
+    .segment-md .segment-button{
+        color : color($colors,dark);
+    }
+    .segment-md .segment-button.segment-activated {
+        color : color($colors,primary);
+    }
+
+    .bg-color{
+        background-color: color($colors,secondary);
+    }
+    .segmentContainer{
+        height: 8vh;
+        .segmentButton{
+            font-size: 2rem;
+        }
+    }
+    .newAddress-container {
+        height: 65vh;
+
+        .full-address-container {
+            margin: auto;
+            margin-top: 7vh;
+            width: 74vw;
+            height: 6vh;
+        
+            .full-address {
+                width: 100%;
+                height: 5vh;
+                border-radius: 3rem;
+                padding: 0 0 0 4rem;
+                background-color: white;
+            }
+        }
+        .government-container{
+            width: 80vw;
+            height: 7vh;
+            background-color: transparent;
+            box-shadow: 0 0 0 0;
+        }
+    
+        .button-container{
+            margin: auto;
+            margin-top: 31vh;
+            width: 66vw;
+            .confirm-button{
+                border-radius: 5rem;
+                margin: auto;
+                width: 66vw;
+                height: 4vh;
+                font-size: 1.3rem;
+            }
+        }
+    }
+
+   
+}
