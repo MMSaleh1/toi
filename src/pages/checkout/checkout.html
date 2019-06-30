@@ -22,7 +22,7 @@
           </ion-segment-button>
         </ion-segment>
   </div>
-  <div *ngIf="tab == 'new' && ready ==true">
+  <div *ngIf="tab == 'new'">
     <div class="newAddress-container">
       <div class="full-address-container">
       <ion-input type="text" class="full-address" placeholder="TYPE HERE" [(ngModel)]="address"> <ion-icon name="ios-pin"></ion-icon></ion-input>
@@ -43,6 +43,19 @@
     <button class="confirm-button" ion-button (tap)="addAddress()">CONFIRM LOCATION</button>
   </div>
     </div>  
+  </div>
+
+  <div  *ngIf="tab == 'payment'">
+    <diV class="payment-container">
+      <div class="payment-text">SELECT A PAYMENT METHOD</div>
+    <div class="button-container">
+      <div [class]="paymentMethodClass" (tap)="choosePaymentMithod()">Cash</div>
+    </div>
+    </diV>
+
+    <div *ngIf="orderReady" class="order-button-container">
+      <button ionbutton class="order-button" (tap)="order()">Order</button>
+    </div>
   </div>
 </div>
 </ion-content>

@@ -53,5 +53,57 @@ page-checkout {
         }
     }
 
+
+    .payment-container{
+        .payment-text {
+            margin: auto;
+            margin-top: 8vh;
+            font-size: 1.7rem;
+            width: 62vw;
+            font-weight: 700;
+        }
+        .button-container {
+            width: 100vw;
+            margin-top: 16vh;
+            .payment-method {
+                font-size: 2rem;
+                background-color: white;
+                height: 7.5vh;
+                padding: 2.2vh 0vw 0 10vw;
+                border-top-left-radius: 4rem;
+                border-bottom-left-radius: 4rem;
+                margin-left: 8vw;
+                font-weight: 700;
+            }
+            .payment-method-active{
+                border: solid thin color($colors,golden);
+                font-size: 2rem;
+                background-color: white;
+                height: 7.5vh;
+                padding: 2.2vh 0vw 0 10vw;
+                border-top-left-radius: 4rem;
+                border-bottom-left-radius: 4rem;
+                margin-left: 8vw;
+                font-weight: 700;
+            }
+        }
+
+        
+    }
+    .order-button-container{
+        margin: 30vh 0 0 19vw;
+        
+        .order-button{
+            border-radius: 4rem;
+            font-size: 1.5rem;
+            width: 54vw;
+            height: 3.9vh;
+            color:  #ffffff;
+            background-color: color($colors,primary);
+
+        }
+    }
+   
+
    
 }

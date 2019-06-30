@@ -23,7 +23,7 @@ export class TabsPage {
   selectedIndex :number;
   cart : CartProvider
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.selectedIndex = navParams.get('tabIndex') || 0;
+    this.selectedIndex = navParams.get('tab') || 0;
     this.cart = CartProvider.getInstance();
     console.log(this.cart);
   }

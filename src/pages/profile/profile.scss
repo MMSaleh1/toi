@@ -1,62 +1,23 @@
 page-profile {
-    .header {
-        .toolbar-title {
-            padding-right: 14px !important;
-            span {
-                font-weight: 300;
-                font-size: 1.5rem;
-            }
-        }
-        background: rgba(199, 198, 176, 0.23);
-        .toolbar-background {
-            background: none;
+    .image-container {
+        margin: 13vh 0 0 31vw;
+        width: 13rem;
+        height: 12rem;
+        .profile-image {
+            border-radius: 30rem;
+            width: 13rem;
+            height: 13rem;
         }
     }
-    ion-card {
-        &.card {
-            border-radius: 10px;
-            .card-content {
-                padding: 1.6rem 2rem;
-                .list {
-                    border-bottom: 0;
-                    margin-bottom: 2rem;
-                }
-                .item {
-                    padding-left: 0;
-                    &:last-child {
-                        border-bottom: 0 ! important;
-                        box-shadow: none ! important;
-                    }
-                    &.input-has-focus {
-                        .label {
-                            color: #ec008c;
-                        }
-                        .item-inner {
-                            border-bottom: 1px solid #ec008c;
-                            box-shadow: none ! important;
-                        }
-                    }
-                    ion-avatar {
-                        margin-right: 5px;
-                    }
-                    ion-icon {
-                        font-size: 1.3em;
-                    }
-                    .label {
-                        font-weight: 300;
-                        font-size: 1.7rem;
-                    }
-                    .text-input {
-                        margin-bottom: 10px;
-                        margin-top: 0;
-                        font-size: 1.5rem;
-                    }
-                    .item-inner {
-                        border-bottom: 1px solid #ccc;
-                        margin-bottom: 1rem;
-                    }
-                }
-            }
+
+    .info-container {
+        height: 26vw;
+        padding: 6vh 2vw 0 0vw;
+        text-align: center;
+        .name-container {
+            font-size: 3rem;
+            font-weight: 600;
+            color: white;
         }
     }
 }

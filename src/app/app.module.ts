@@ -34,6 +34,8 @@ import { NotificationsPageModule } from './../pages/notifications/notifications.
 import { CategoriesPageModule } from './../pages/categories/categories.module';
 import { ProductOffersPageModule } from './../pages/product-offers/product-offers.module';
 import { CheckoutPageModule } from './../pages/checkout/checkout.module';
+import { ThanksPageModule } from './../pages/thanks/thanks.module';
+
 
 import { Database } from '../providers/database/database';
 import { CartProvider } from '../providers/cart/cart';
@@ -68,6 +70,7 @@ import { CartProvider } from '../providers/cart/cart';
     ProductOffersPageModule,
     CartPageModule,
     CheckoutPageModule,
+    ThanksPageModule,
 
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp)

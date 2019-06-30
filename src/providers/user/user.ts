@@ -48,7 +48,7 @@ export class UserProvider extends RootProvider {
     return new Promise((resolve)=>{
       let date = new Date();
       console.log(date);
-      let temp = `${RootProvider.APIURL}${this.userApiController}${this.regesterActionString}token_id=0&mail=${email}&name=${email}&phone=${PhoneNumber}&address=""&password=${password}`;
+      let temp = `${RootProvider.APIURL}${this.userApiController}${this.regesterActionString}token_id=0&mail=${email}&name=${Username}&phone=${PhoneNumber}&address=""&password=${password}`;
       console.log(temp);
       this.http.get(temp).subscribe((data:any)=>{
         console.log(data);
@@ -169,50 +169,18 @@ export class UserProvider extends RootProvider {
     console.log(temp);
     return new Promise((resolve)=>{
       this.http.get(temp).subscribe((data:any)=>{
-        console.log(data.length);
+        console.log(data);
         if(data!=undefined && data.length>0){
           
-          resolve(data[0].id);
+          resolve(data[0].ID);
+        }else{
+          resolve([])
         }
-        resolve(null)
       })
-      resolve(null);
     })
       
     
   }
-
-  // public async getAddress(userId:string):Promise<any> {
-  //   let temp=`${RootProvider.APIURL}${this.addressApiController}${this.getUserAddressActionString}user_id=${userId}`
-  //   console.log(temp);
-  //   return new Promise((resolve)=>{
-      
-  //     this.http.get(temp).subscribe((data:any)=>{
-  //       console.log(data);
-  //       let userAddress = new Array<Address>();
-  //       if(data != undefined && data.length > 0){
-          
-  //         for(let i = 0 ;i < data.length ; i++){
-  //           userAddress.push(new Address());
-  //           userAddress[i].fromString(data[i].Address1);
-  //           userAddress[i].id=data[i].Address_Id;
-  //           userAddress[i].zipCode=data[i].ZipPostalCode;
-  //         }
-  //         this.user = this.getUser();
-  //         console.log(this.user);
-  //         this.user.addresses = userAddress;
-  //         resolve(userAddress);
-          
-  //       }else{
-  //         resolve(userAddress);
-  //       }
-
-  //     }),err=>{
-  //       resolve(err);
-  //     }
-      
-  //   })
-  // }
 
 
   public async rate(productId,rate,title,body){
@@ -234,13 +202,14 @@ export class UserProvider extends RootProvider {
   // }
 
   public async Order(user_id,address_id,stuff_id,emp_gender="Not",order_total,cart:CartProvider){
-    let temp = `${RootProvider.APIURL}${this.orderApiController}${this.orderItemActionString}user_id=${user_id}&address_id=${address_id}&stuff_id=${stuff_id}&emp_gender=${emp_gender}&order_total=${order_total}`
+    let temp = `${RootProvider.APIURL}${this.orderApiController}${this.orderRequestActionString}user_id=${user_id}&address_id=${address_id}&stuff_id=${stuff_id}&emp_gender=${emp_gender}&order_total=${order_total}`
     return new Promise((resolve)=>{
       this.http.get(temp).subscribe((data:any)=>{
         console.log(data);
         for(let i =0 ;i<cart.cartItems.length;i++){
-          console.log(this.orderItem(data[0],cart.cartItems[i].item.id,cart.cartItems[i].quant));
+         this.orderItem(data[0].ID,cart.cartItems[i].item.id,cart.cartItems[i].quant);
         }
+        resolve(true);
       })
     })
   }

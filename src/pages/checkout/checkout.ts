@@ -1,3 +1,4 @@
+import { ThanksPage } from './../thanks/thanks';
 import { UserProvider, area, government } from './../../providers/user/user';
 import { CartProvider } from './../../providers/cart/cart';
 import { Component } from '@angular/core';
@@ -24,6 +25,8 @@ export class CheckoutPage {
   public selectedArea : area;
   public address: string;
   public addressid: string;
+  public paymentMethodClass : string ="payment-method";
+  public orderReady:boolean =false;
   constructor(public navCtrl: NavController, public navParams: NavParams , public userProv: UserProvider) {
     this.cart =CartProvider.getInstance();
     this.governments = new Array();
@@ -65,11 +68,19 @@ export class CheckoutPage {
       alert("select Government And Area");
     }else{
       this.addressid=await(this.userProv.addAddress(this.address,this.selectedArea.id,this.userProv.getUser().id));
+      console.log(this.addressid);
+      this.tab = "payment";
     }
    
   }
   async order(){
     console.log(await this.userProv.Order(this.userProv.getUser().id,this.addressid,0,"Not",this.cart.totalPrice,this.cart));
+    this.navCtrl.push(ThanksPage);
+  }
+
+  choosePaymentMithod(){
+    this.paymentMethodClass="payment-method-active";
+    this.orderReady=true;
   }
 
   ionViewDidLoad() {
