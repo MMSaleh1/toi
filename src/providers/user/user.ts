@@ -17,7 +17,7 @@ export class UserProvider extends RootProvider {
   
   private logInActionString = "loginn?";
   private regesterActionString = "user_reg?";
- 
+  private getHistoryActionString = "get_user_order?";
 
   private addressApiController = "address/";
   private addAddressActionString = "add_user_address?"
@@ -25,9 +25,6 @@ export class UserProvider extends RootProvider {
   private getAreaActionString = "get_all_area?";
   private getAllGovernment = "get_all_government?";
 
-  private addressUserLinkActionString = "link_user_address?";
-
-  private getUserAddressActionString = "get_user_address?";
 
   private rateApiController = 'product/';
   private rateActionString = "add_review?";
@@ -35,6 +32,16 @@ export class UserProvider extends RootProvider {
   private orderApiController = "orders/";
   private orderItemActionString ="add_order_item?";
   private orderRequestActionString = "requst_order?";
+
+
+  private massageApiController ="massage/";
+  private sendMassageActionString = "send_message?";
+
+  private statusApiContoller = "stuff/"
+  private getOrderStatusActionString= "get_all_order_states?";
+  private getOrderItemActionString = "get_order_items?";
+
+  
 
   public user: User; 
 
@@ -53,7 +60,7 @@ export class UserProvider extends RootProvider {
       this.http.get(temp).subscribe((data:any)=>{
         console.log(data);
         if(data != null && data != undefined && data.length>0){
-          this.user = User.getInstance(data[0].ID,Username,password,email);
+          this.user = User.getInstance(data[0].ID,Username,password,email,"Male",PhoneNumber);
           this.event.publish('logedin');
           resolve(data[0].ID);
 
@@ -70,9 +77,9 @@ export class UserProvider extends RootProvider {
       console.log(temp);
       this.http.get(temp).subscribe((data:any)=>{
         console.log(data[0]);
-        if(data != null && data != undefined && data.length>0){
+        if(data != null && data != undefined && data.length>0 && data[0].error_name != "wrong_password" && data[0].error_name != "already exist"){
           console.log(data[0].id+ "  : "+data[0].name+"  :  "+data[0].password+"  :  "+data[0].mail)
-          this.user = User.getInstance(data[0].id,data[0].name,data[0].password,data[0].mail);
+          this.user = User.getInstance(data[0].id,data[0].name,data[0].password,data[0].mail,"Male",data[0].phone);
           this.event.publish('logedin');
           console.log(this.user);
           resolve(true);
@@ -201,8 +208,9 @@ export class UserProvider extends RootProvider {
   //   this.storage.set('user',this.user);
   // }
 
-  public async Order(user_id,address_id,stuff_id,emp_gender="Not",order_total,cart:CartProvider){
-    let temp = `${RootProvider.APIURL}${this.orderApiController}${this.orderRequestActionString}user_id=${user_id}&address_id=${address_id}&stuff_id=${stuff_id}&emp_gender=${emp_gender}&order_total=${order_total}`
+  public async Order(user_id,address_id,stuff_id,order_total,cart:CartProvider){
+    let temp = `${RootProvider.APIURL}${this.orderApiController}${this.orderRequestActionString}user_id=${user_id}&address_id=${address_id}&stuff_id=${stuff_id}&emp_gender=${cart.gender}&order_total=${order_total}`
+    console.log(temp);
     return new Promise((resolve)=>{
       this.http.get(temp).subscribe((data:any)=>{
         console.log(data);
@@ -226,6 +234,79 @@ export class UserProvider extends RootProvider {
     })
   
   }
+
+
+  public async sendMassage(user_id,message_content,sender_name,sender_mail,sender_phone):Promise<any>{
+    let temp = `${RootProvider.APIURL}${this.massageApiController}${this.sendMassageActionString}user_id=${user_id}&message_content=${message_content}&sender_name=${sender_name}&sender_mail=${sender_mail}&sender_phone=${sender_phone}`
+    console.log(temp)
+    return new Promise((resolve)=>{
+      this.http.get(temp).subscribe(data=>{
+        if(data != undefined){
+          resolve(true);
+        }else{
+          resolve(false);
+        }
+
+      })
+    })
+  }
+
+
+  public async getHistory(id) : Promise<any>{
+    let temp =`${RootProvider.APIURL}${this.userApiController}${this.getHistoryActionString}user_id=${id}`;
+    return new Promise((resolve)=>{
+      this.http.get(temp).subscribe((data:any)=>{
+        if(data != undefined && data.length != 0){
+          let orders = new Array<order>();
+          for(let i = 0 ; i < data.length ; i++){
+              orders.push(new order(data[i].order_id,data[i].order_date,data[i].accept_date,data[i].order_total,data[i].status_id,data[i].address));
+          }
+          resolve(orders);
+        }else{
+          resolve([]);
+        }
+      })
+    })
+  }
+
+  public async getorderItems(orderId: string):Promise<any>{
+    let temp = `${RootProvider.APIURL}${this.statusApiContoller}${this.getOrderItemActionString}order_id=${orderId}`;
+    console.log(temp);
+    return new Promise((resolve)=>{
+      this.http.get(temp).subscribe((data:any)=>{
+        if(data == undefined || data.length == 0){
+          resolve([])
+        }else{
+          console.log(data);
+          let items = new Array<orderItem>();
+          for(let i = 0 ; i < data.length;i++){
+            items.push(new orderItem(data[i].product_name,data[i].cost));
+          }
+          resolve(items);
+
+        }
+      })
+    })
+  }
+
+  public async getAllStatus() :Promise<any>{
+    let temp =`${RootProvider.APIURL}${this.statusApiContoller}${this.getOrderStatusActionString}`;
+    return new Promise((resolve)=>{
+      this.http.get(temp).subscribe((data:any)=>{
+        if(data == undefined || data.length == 0 ){
+          resolve([])
+        }else{
+          let statuses = new Array<orderStatus>();
+          for(let i =0 ;i <data.length ; i++){
+            statuses.push(new orderStatus(data[i].id,data[i].states_name));
+          }
+          resolve(statuses);
+        }
+      })
+    })
+
+  }
+
 
 
 
@@ -269,7 +350,7 @@ export class User {
     this.phone = phone;
   }
 
-  static getInstance(id: string = "-1", name: string = "",  password: string = "", email: string = "",gender: string = "ذكر", phone: string = "",fName:string="",lName:string="",address: Address[] = new Array()) {
+  static getInstance(id: string = "-1", name: string = "",  password: string = "", email: string = "",gender: string = "Male", phone: string = "",fName:string="",lName:string="",address: Address[] = new Array()) {
     if (User.isCreating === false && id !="-1") {
       //User.isCreating = false;
       User.instance = new User(id, name, gender, password, email, phone,lName,fName, address);
@@ -372,6 +453,58 @@ export class government {
     this.name = name;
     this.areas = new Array();
   }
+}
+
+
+export class order{
+  id: string;
+  orderDate: Date;
+  acceptDate : Date;
+  totalPrice: number;
+  orderStatusId:string;
+  statusName: string;
+  address:string;
+  orderItems : Array<orderItem>;
+  
+  constructor(id: string,
+    orderDate: string,
+    acceptDate: string,
+    totalPrice: number,
+    order_states_id ="1",
+    address:string,
+
+    
+    ){
+      this.id=id;
+      this.orderDate= new Date(orderDate);
+      this.acceptDate = new Date(acceptDate);
+      this.totalPrice=totalPrice;
+      this.orderStatusId = order_states_id;
+      this.address = address;
+      this.orderItems=new Array();
+    }
+}
+
+
+export class orderStatus{
+  id : string ; 
+  name : string;
+  constructor(id , name){
+    this.id = id;
+    this.name = name;
+  }
+}
+export class orderItem{
+  productName: string;
+  cost: number;
+  
+
+  constructor(ProductName,cost){ 
+    this.productName = ProductName;
+    this.cost = cost;
+  }
+
+
 }
 
 

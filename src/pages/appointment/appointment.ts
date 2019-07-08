@@ -11,6 +11,8 @@ export class AppointmentPage {
   category : Category;
   products : Array<Product>;
   cart : CartProvider;
+  gender :string;
+
 
   constructor(public navCtrl: NavController , public navparms :NavParams) {
     this.category = this.navparms.get("cate");

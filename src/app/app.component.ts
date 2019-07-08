@@ -1,5 +1,7 @@
+import { TabsPage } from './../pages/tabs/tabs';
+import { ContactUsPage } from './../pages/contact-us/contact-us';
 import { Component } from '@angular/core';
-import { Platform, Events } from 'ionic-angular';
+import { Platform, Events, NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -27,6 +29,15 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+  }
+
+  toPage(number:string){
+    if(number == '1'){
+      this.rootPage = ContactUsPage;
+    }else if(number == '2'){
+      this.rootPage = TabsPage;
+    }
+    
   }
 }
 

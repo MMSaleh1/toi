@@ -12,6 +12,16 @@
 
 
 <ion-content class="bg-color" padding>
+    <div class="gender-container">
+         
+        <ion-item>
+        <ion-select  [(ngModel)]="cart.gender">
+        <ion-option selected value="Any">Any</ion-option>
+        <ion-option value="Male">Male</ion-option>
+        <ion-option value="Female">Female</ion-option>
+    </ion-select>
+</ion-item>
+</div>
   <div class="content-wrapper">
   <div class="category-info-container">
       <div class="category-info-text">CART</div>

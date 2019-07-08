@@ -10,13 +10,13 @@
 </ion-header>
 <ion-content padding scrollY="false" >
   <div class="search-container">
-  <ion-auto-complete [dataProvider]="autoCompleteprov"  [options]="{ placeholder : 'Search products of interest' }"></ion-auto-complete>
+  <!-- <ion-auto-complete [dataProvider]="autoCompleteprov"  [options]="{ placeholder : 'Search products of interest' }"></ion-auto-complete> -->
  
   </div>
   <ion-scroll class="list-container" scrollY="true">
   <ion-slides slidesPerView="1" pager="true" class="slider">
       <ion-slide class="slide"  *ngFor="let item of cates">  
-          <img class="slide-image" [src]="item.image">
+          <!-- <img class="slide-image" [src]="item.image"> -->
       </ion-slide>
   </ion-slides>
 
@@ -30,7 +30,7 @@
                  <ion-label class="category-img-wrapper">
                    
                     <div class="pic-box">
-                    <img  [src]="item.image">
+                    <!-- <img  [src]="item.image"> -->
                   </div>    
                   <div class="title">{{item.name}}</div>
               
@@ -53,7 +53,7 @@
                  <ion-label class="prodcut-img-wrapper">
                    
                     <div class="pic-box">
-                    <img  [src]="item.image">
+                    <!-- <img  [src]="item.image"> -->
                   </div>    
               
                 </ion-label> 

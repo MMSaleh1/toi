@@ -35,6 +35,9 @@ import { CategoriesPageModule } from './../pages/categories/categories.module';
 import { ProductOffersPageModule } from './../pages/product-offers/product-offers.module';
 import { CheckoutPageModule } from './../pages/checkout/checkout.module';
 import { ThanksPageModule } from './../pages/thanks/thanks.module';
+import { ContactUsPageModule } from './../pages/contact-us/contact-us.module';
+import { HistoryPageModule } from '../pages/history/history.module';
+
 
 
 import { Database } from '../providers/database/database';
@@ -71,6 +74,8 @@ import { CartProvider } from '../providers/cart/cart';
     CartPageModule,
     CheckoutPageModule,
     ThanksPageModule,
+    ContactUsPageModule,
+    HistoryPageModule,
 
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp)
@@ -89,6 +94,7 @@ import { CartProvider } from '../providers/cart/cart';
     SigninPage,
     SignupPage,
     TestimonialsPage,
+    
   ],
   providers: [
     StatusBar,

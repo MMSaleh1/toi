@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Category } from '../../providers/items-api/items-api';
 
 /**
  * Generated class for the ProductOffersPage page.
@@ -14,6 +15,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'product-offers.html',
 })
 export class ProductOffersPage {
+  cates : Category[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

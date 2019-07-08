@@ -1,0 +1,10 @@
+page-history {
+
+    .segment-md .segment-button{
+        font-size: 2rem;
+    }
+
+    .segment-md .segment-button.segment-activated{
+        color : color($colors,dark);
+    }
+}

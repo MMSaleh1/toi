@@ -13,6 +13,7 @@ export class CartProvider {
   cartItems : Array<CartItem>;
   cartQuant : number;
   totalPrice: number;
+  gender : string;
   private static instance: CartProvider = null;
   static isCreating: boolean = false;
   constructor() {
@@ -22,6 +23,7 @@ export class CartProvider {
       this.cartItems =new Array();
       this.cartQuant = 0;
       this.totalPrice = 0;
+      this.gender ="Any";
     }
   }
   static getInstance() {
@@ -109,8 +111,10 @@ export class CartProvider {
 export class  CartItem{
   item : Product
   quant : number;
+ 
   constructor(item : Product , quant : number = 1){
     this.item = item;
     this.quant = quant;
+   
   }
 }

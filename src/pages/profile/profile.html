@@ -17,4 +17,10 @@
     <div class="info-container">
         <div class="name-container">{{user.name}}</div>
     </div>
+
+    <div class="options-container">
+        <ion-item class="option-item" (tap)="toPage('2')">Update my profile</ion-item>
+        <ion-item class="option-item" (tap)="toPage('1')">My appointments</ion-item>
+        <ion-item class="option-item" (tap)="toPage('3')">My payment info</ion-item>
+    </div>
 </ion-content>

@@ -20,4 +20,16 @@ page-profile {
             color: white;
         }
     }
+  .options-container {
+        margin: 16vh 10vw 0 10vw;
+        padding: 3vh 2vw 2vw 2vw;
+        height: 23.2vh;
+        background-color: white;
+        border-top-left-radius: 3rem;
+        border-top-right-radius: 3rem;
+        .option-item{
+            text-align: center;
+            height: 34%;
+        }
+    }
 }

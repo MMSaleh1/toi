@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
 
 import { SigninPage } from '../signin/signin';
+import { HistoryPage } from '../history/history';
 
 
 @IonicPage()
@@ -16,9 +17,14 @@ export class ProfilePage {
   constructor(public navCtrl: NavController ,public userProv : UserProvider) {
     this.user = userProv.getUser();
   }
-  
-     signin(){
-    this.navCtrl.setRoot(SigninPage);
+
+  toPage(number:string){
+    if(number == '1'){
+      this.navCtrl.push(HistoryPage);
     }
+
+  }
+
+
 
 }
