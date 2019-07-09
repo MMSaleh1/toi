@@ -1,6 +1,6 @@
 import { TabsPage } from './../tabs/tabs';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController} from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User, UserProvider } from '../../providers/user/user';
 
@@ -20,7 +20,10 @@ export class ContactUsPage {
   public contact : FormGroup;
   user : User;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams , public formBuilder : FormBuilder , public userProv :UserProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams , public formBuilder : FormBuilder , public userProv :UserProvider , public menuctrl: MenuController) {
+    if(this.menuctrl.isOpen()){
+      this.menuctrl.toggle();
+    }
     this.user = userProv.getUser();
     this.buildForm();
   }

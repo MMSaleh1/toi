@@ -1,7 +1,7 @@
 import { TabsPage } from './../pages/tabs/tabs';
 import { ContactUsPage } from './../pages/contact-us/contact-us';
 import { Component } from '@angular/core';
-import { Platform, Events, NavController } from 'ionic-angular';
+import { Platform, Events, NavController, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 

@@ -24,7 +24,7 @@
         <ion-list class="list-container">
           <ion-item class="order-item" *ngFor="let item of onGoingOrders">
             <div class="item-name">{{item.productName}}</div>
-            <div class="item-cost">{{item.cost}}</div>
+            <div class="item-cost">{{item.cost}} LE</div>
           </ion-item>
         </ion-list>
       </div>
@@ -33,7 +33,7 @@
           <ion-list class="list-container">
             <ion-item class="order-item" *ngFor="let item of doneOrders">
               <div class="item-name">{{item.productName}}</div>
-              <div class="item-cost">{{item.cost}}</div>
+              <div class="item-cost">{{item.cost}} LE</div>
             </ion-item>
           </ion-list>
         </div>

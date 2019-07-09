@@ -13,7 +13,6 @@ import { AboutPage } from '../pages/about/about';
 import { AppointmentPage } from '../pages/appointment/appointment';
 import { BlogPage } from '../pages/blog/blog';
 import { BlogdetailPage } from '../pages/blogdetail/blogdetail';
-import { ContactPage } from '../pages/contact/contact';
 import { MyappointmentPage } from '../pages/myappointment/myappointment';
 import { PasswordPage } from '../pages/password/password';
 import { ServicesPage } from '../pages/services/services';
@@ -51,7 +50,6 @@ import { CartProvider } from '../providers/cart/cart';
     AppointmentPage,
     BlogPage,
     BlogdetailPage,
-    ContactPage,
     MyappointmentPage,
     PasswordPage,
     ServicesPage,
@@ -87,7 +85,6 @@ import { CartProvider } from '../providers/cart/cart';
     AppointmentPage,
     BlogPage,
     BlogdetailPage,
-    ContactPage,
     MyappointmentPage,
     PasswordPage,
     ServicesPage,

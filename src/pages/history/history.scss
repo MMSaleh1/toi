@@ -7,4 +7,21 @@ page-history {
     .segment-md .segment-button.segment-activated{
         color : color($colors,dark);
     }
+
+    .order-item {
+        height: 16vh;
+       
+    }
+    .item-name {
+        display: inline-block;
+        width: 54vw;
+        margin: 0 10vw 0 0;
+        font-weight: 700;
+        font-size: 2.4rem;
+    }
+    .item-cost {
+        display: inline-block;
+        width: 12vw;
+        color: color($colors,primary);
+    }
 }
