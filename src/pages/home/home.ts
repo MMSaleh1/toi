@@ -1,3 +1,4 @@
+import { CartPage } from './../cart/cart';
 import { Component } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
 
@@ -5,7 +6,6 @@ import { MyappointmentPage } from '../myappointment/myappointment';
 import { AboutPage } from '../about/about';
 import { TestimonialsPage } from '../testimonials/testimonials';
 import { BlogPage } from '../blog/blog';
-import { ContactPage } from '../contact/contact';
 import { ProfilePage } from '../profile/profile';
 import { ServicesPage } from '../services/services';
 
@@ -63,13 +63,13 @@ export class HomePage {
     blog(){
     this.navCtrl.push(BlogPage);
     }  
-    contact(){
-    this.navCtrl.push(ContactPage);
-    } 
     profile(){
     this.navCtrl.push(ProfilePage);
     }  
     services(){
     this.navCtrl.push(ServicesPage);
+    }
+    cart(){
+      this.navCtrl.push(CartPage);
     }
   }

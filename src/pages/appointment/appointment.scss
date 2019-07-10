@@ -14,7 +14,7 @@ page-appointment {
             width: 100vw;
             background-color: black;
             padding: 0vw 0 1vh 2vw;
-
+           
 
             .category-info-img {
                 right: 12vw;
@@ -28,7 +28,8 @@ page-appointment {
             .category-info-text {
                 font-size: 3rem;
                 font-weight: 800;
-                font-family: sans-serif;
+                font-family: 'app-font';
+
                 display: inline-block;
                 color: color($colors,secondary);
                 padding: 0px 0rem 0vh 0;
@@ -52,7 +53,7 @@ page-appointment {
                        
                     font-size: 3rem;
                     font-weight: 600;
-                    font-family: sans-serif;
+                    font-family:'app-font';
                     padding: 0 0 2vh 0;
                 }
             

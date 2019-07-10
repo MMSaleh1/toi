@@ -54,6 +54,7 @@ $colors: (
   .logo-container{
       width: 30%;
       margin: 0px 0vw 0 28vw;
+      display: inline-block;
   }
   &::after {
       display: none;
@@ -72,6 +73,20 @@ $colors: (
   .title {
       margin-bottom: 20px;
   }
+  .button-container {
+    display: inline-block;
+    position: absolute;
+    top: 3vh;
+    right: 3vw;
+    .cart-button{
+      background-color: transparent;
+      height: 5vh;
+      .cart-badge{
+        
+      }
+  }
+}
+  
 }
 ion-header {
   .scroll-zoom-wrapper {
