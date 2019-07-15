@@ -19,4 +19,10 @@ ion-icon {
      &[class*="custom-profile-icon"] {
         mask-image: url(/assets/icon/profile.png);
      }
+     &[class*="custom-left-arrow-icon"] {
+        mask-image: url(/assets/icon/switch-left.png);
+     }
+     &[class*="custom-right-arrow-icon"] {
+        mask-image: url(/assets/icon/switch-right.png);
+     }
  }

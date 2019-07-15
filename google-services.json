@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1084167454656",
+    "firebase_url": "https://testnotification-2aeb8.firebaseio.com",
+    "project_id": "testnotification-2aeb8",
+    "storage_bucket": "testnotification-2aeb8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1084167454656:android:0ca7f582621e4d0a",
+        "android_client_info": {
+          "package_name": "com.edgeTechno.salons"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1084167454656-prmriu66i9rf833kat7aqfb6rk0rgirc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcXtmREL52-gFg7AoVr1O_tyHs-OFPPRA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1084167454656-prmriu66i9rf833kat7aqfb6rk0rgirc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

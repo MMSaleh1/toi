@@ -26,6 +26,24 @@ page-home {
             }
         }
 
+        .icon-left {
+            position: absolute;
+            top: 27vh;
+            font-size: 5rem;
+            left: 5vw;
+            z-index: 999;
+            color: color($colors,primary);
+        }
+
+        .icon-right {
+            top: 27vh;
+            position: absolute;
+            font-size: 5rem;
+            right: 5vw;
+            z-index: 999;
+            color: color($colors,primary);
+        }
+
 
         .ads-container{
             height: 20vh;

@@ -1,6 +1,6 @@
 import { CartPage } from './../cart/cart';
 import { Component } from '@angular/core';
-import { NavController, IonicPage } from 'ionic-angular';
+import { NavController, IonicPage, ToastController, Platform } from 'ionic-angular';
 
 import { MyappointmentPage } from '../myappointment/myappointment';
 import { AboutPage } from '../about/about';
@@ -13,6 +13,10 @@ import { ItemsApiProvider, Category } from './../../providers/items-api/items-ap
 import { AutoCompleteProvider } from './../../providers/auto-complete/auto-complete';
 import { Database } from '../../providers/database/database';
 
+import { NotificationsProvider } from './../../providers/notifications/notifications';
+
+import { tap } from 'rxjs/operators';
+
 
 @IonicPage()
 @Component({
@@ -24,10 +28,10 @@ export class HomePage {
   public cates : Array<Category>;
   public categorySlider: Array<any>;
   public db :Database;
-
-  constructor(public navCtrl: NavController,public itemProv : ItemsApiProvider,public autoCompleteprov : AutoCompleteProvider) {
+  constructor(public navCtrl: NavController,public itemProv : ItemsApiProvider,public autoCompleteprov : AutoCompleteProvider , public notifProv : NotificationsProvider ,public toastCtrl :ToastController , public platForm : Platform) {
    this.cates = new Array();
    this.getItems();
+  
   }
    async getItems(){
      
@@ -39,9 +43,20 @@ export class HomePage {
     return true;
   }
 
+
   ionViewDidLoad(){
-   
- 
+    console.log(this.platForm);
+    if(this.platForm.is('android') || this.platForm.is('ios')){
+      this.notifProv.getToken();
+    
+      this.notifProv.listenToNotifications().pipe(tap(msg=>{
+        const toast = this.toastCtrl.create({
+          message : msg.body , 
+          duration : 3000
+        });
+        toast.present();
+      })).subscribe()
+    }
    
   }
 

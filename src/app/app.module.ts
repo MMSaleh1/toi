@@ -43,6 +43,22 @@ import { Database } from '../providers/database/database';
 import { CartProvider } from '../providers/cart/cart';
 
 
+import {AngularFireModule} from 'angularfire2';
+import {AngularFirestoreModule} from 'angularfire2/firestore';
+
+import { NotificationsProvider } from '../providers/notifications/notifications';
+import  {Firebase } from '@ionic-native/firebase';
+
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyBcXtmREL52-gFg7AoVr1O_tyHs-OFPPRA",
+  authDomain: "testnotification-2aeb8.firebaseapp.com",
+  databaseURL: "https://testnotification-2aeb8.firebaseio.com/",
+  storageBucket: "gs://testnotification-2aeb8.appspot.com",
+  messagingSenderId: '1084167454656',
+  projectId: 'testnotification-2aeb8'
+};
+
 @NgModule({
   declarations: [
     MyApp,
@@ -76,7 +92,11 @@ import { CartProvider } from '../providers/cart/cart';
     HistoryPageModule,
 
     IonicStorageModule.forRoot(),
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule
+
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -102,7 +122,10 @@ import { CartProvider } from '../providers/cart/cart';
     UserProvider,
     AutoCompleteProvider,
     Database,
-    CartProvider
+    CartProvider,
+    NotificationsProvider,
+    Firebase
+    
   ]
 })
 export class AppModule {}
