@@ -1,0 +1,22 @@
+ion-icon {
+    &[class*="custom-"] {
+       mask-size: contain;
+       mask-position: 50% 50%;
+       mask-repeat: no-repeat;
+       background: currentColor;
+       width: 1em;
+       height: 1em;
+    }
+    &[class*="custom-home-icon"] {
+       mask-image: url(/assets/icon/home.png);
+    }
+    &[class*="custom-cart-icon"] {
+       mask-image: url(/assets/icon/cart.png);
+    }
+    &[class*="custom-bell-icon"] {
+        mask-image: url(/assets/icon/bell.png);
+     }
+     &[class*="custom-profile-icon"] {
+        mask-image: url(/assets/icon/profile.png);
+     }
+ }
