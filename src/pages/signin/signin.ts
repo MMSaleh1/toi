@@ -9,6 +9,7 @@ import { HomePage } from '../home/home';
 
 
 import {User , UserProvider} from '../../providers/user/user';
+import { ItemsApiProvider } from '../../providers/items-api/items-api';
 @Component({
   selector: 'page-signin',
   templateUrl: 'signin.html'
@@ -16,7 +17,12 @@ import {User , UserProvider} from '../../providers/user/user';
 export class SigninPage {
   public loginForm : FormGroup;
   public user : User;
-  constructor(public navCtrl: NavController, public formBuilder : FormBuilder , public loadCtrl : LoadingController , public userProvider : UserProvider , public storage : Storage) {
+  constructor(public navCtrl: NavController, public formBuilder : FormBuilder
+    , public loadCtrl : LoadingController 
+    , public userProvider : UserProvider 
+    , public storage : Storage
+    , public itemProv : ItemsApiProvider
+    ) {
     this.buildForm();
 
   } 
@@ -44,14 +50,17 @@ export class SigninPage {
       
       
       if (this.loginForm.valid) {
+        let cates = await this.itemProv.getCategories();
+        console.log(cates);
         loading.present();
         let bool=false;
           bool = await this.userProvider.loginNop(this.loginForm.value.email,this.loginForm.value.password);
-        
+            
         if(bool == true){
           loading.dismiss(); 
            this.user = User.getInstance();
            this.storage.set('user',this.user);
+           
            this.navCtrl.setRoot(TabsPage);
 
         }else{

@@ -1,9 +1,9 @@
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Firebase } from '@ionic-native/firebase';
-import { Platform } from 'ionic-angular';
-import { AngularFirestore} from 'angularfire2/firestore';
+// import { Firebase } from '@ionic-native/firebase';
+// import { Platform } from 'ionic-angular';
+// import { AngularFirestore} from 'angularfire2/firestore';
 import { UserProvider, User } from './../user/user';
 /*
   Generated class for the NotificationsProvider provider.
@@ -15,41 +15,41 @@ import { UserProvider, User } from './../user/user';
 export class NotificationsProvider {
   public user :  User;
 
-  constructor(public http: HttpClient , public fireBase : Firebase, public platForm : Platform,public fs : AngularFirestore , public userProv : UserProvider) {
+  constructor(public http: HttpClient , public userProv : UserProvider) {
     console.log('Hello NotificationsProvider Provider');
     this.user = userProv.getUser();
   }
 
-  async getToken(){
-    let token;
-    if(this.platForm.is('android')){
-      token = await this.fireBase.getToken();
-    }
-    if(this.platForm.is('ios')){
-      token = await this.fireBase.getToken();
-      await this.fireBase.grantPermission();
-    }
+  // async getToken(){
+  //   let token;
+  //   if(this.platForm.is('android')){
+  //     token = await this.fireBase.getToken();
+  //   }
+  //   if(this.platForm.is('ios')){
+  //     token = await this.fireBase.getToken();
+  //     await this.fireBase.grantPermission();
+  //   }
 
-    return this.saveToFireSore(token);
+  //   return this.saveToFireSore(token);
 
-  }
+  // }
 
-  private saveToFireSore(token){
-    if(!token){
-      return
-    }
-    const devRef = this.fs.collection('devices');
-    const docData = {
-      token : token , 
-      userId : this.user.id
-    }
-    return devRef.doc(token).set(docData);
+  // private saveToFireSore(token){
+  //   if(!token){
+  //     return
+  //   }
+  //   const devRef = this.fs.collection('devices');
+  //   const docData = {
+  //     token : token , 
+  //     userId : this.user.id
+  //   }
+  //   return devRef.doc(token).set(docData);
 
 
-  }
+  // }
 
-  public listenToNotifications(){
-    return this.fireBase.onNotificationOpen();
-  }
+  // public listenToNotifications(){
+  //   return this.fireBase.onNotificationOpen();
+  // }
 
 }

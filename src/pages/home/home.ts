@@ -13,9 +13,8 @@ import { ItemsApiProvider, Category } from './../../providers/items-api/items-ap
 import { AutoCompleteProvider } from './../../providers/auto-complete/auto-complete';
 import { Database } from '../../providers/database/database';
 
-import { NotificationsProvider } from './../../providers/notifications/notifications';
 
-import { tap } from 'rxjs/operators';
+
 
 
 @IonicPage()
@@ -28,7 +27,7 @@ export class HomePage {
   public cates : Array<Category>;
   public categorySlider: Array<any>;
   public db :Database;
-  constructor(public navCtrl: NavController,public itemProv : ItemsApiProvider,public autoCompleteprov : AutoCompleteProvider , public notifProv : NotificationsProvider ,public toastCtrl :ToastController , public platForm : Platform) {
+  constructor(public navCtrl: NavController,public itemProv : ItemsApiProvider,public autoCompleteprov : AutoCompleteProvider ,public toastCtrl :ToastController , public platForm : Platform) {
    this.cates = new Array();
    this.getItems();
   
@@ -46,17 +45,17 @@ export class HomePage {
 
   ionViewDidLoad(){
     console.log(this.platForm);
-    if(this.platForm.is('android') || this.platForm.is('ios')){
-      this.notifProv.getToken();
+    // if(this.platForm.is('cordova')){
+    //   this.notifProv.getToken();
     
-      this.notifProv.listenToNotifications().pipe(tap(msg=>{
-        const toast = this.toastCtrl.create({
-          message : msg.body , 
-          duration : 3000
-        });
-        toast.present();
-      })).subscribe()
-    }
+    //   this.notifProv.listenToNotifications().pipe(tap(msg=>{
+    //     const toast = this.toastCtrl.create({
+    //       message : msg.body , 
+    //       duration : 3000
+    //     });
+    //     toast.present();
+    //   })).subscribe()
+    // }
    
   }
 
