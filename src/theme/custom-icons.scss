@@ -8,21 +8,21 @@ ion-icon {
        height: 1em;
     }
     &[class*="custom-home-icon"] {
-       mask-image: url(/assets/icon/home.png);
+       mask-image: url(../assets/icon/home.png);
     }
     &[class*="custom-cart-icon"] {
-       mask-image: url(/assets/icon/cart.png);
+       mask-image: url(../assets/icon/cart.png);
     }
     &[class*="custom-bell-icon"] {
-        mask-image: url(/assets/icon/bell.png);
+        mask-image: url(../assets/icon/bell.png);
      }
      &[class*="custom-profile-icon"] {
-        mask-image: url(/assets/icon/profile.png);
+        mask-image: url(../assets/icon/profile.png);
      }
      &[class*="custom-left-arrow-icon"] {
-        mask-image: url(/assets/icon/switch-left.png);
+        mask-image: url(../assets/icon/switch-left.png);
      }
      &[class*="custom-right-arrow-icon"] {
-        mask-image: url(/assets/icon/switch-right.png);
+        mask-image: url(../assets/icon/switch-right.png);
      }
  }
