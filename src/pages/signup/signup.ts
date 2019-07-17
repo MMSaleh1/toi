@@ -1,6 +1,6 @@
 import { TabsPage } from './../tabs/tabs';
 import { Component } from '@angular/core';
-import { NavController ,LoadingController } from 'ionic-angular';
+import { NavController, LoadingController, Events } from 'ionic-angular';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 import { HomePage } from '../home/home';
@@ -14,7 +14,7 @@ import {User , UserProvider} from '../../providers/user/user';
 export class SignupPage {
   public regesterForm: FormGroup;
 
-  constructor(public navCtrl: NavController,public formBuilder : FormBuilder , public loadCtrl : LoadingController , public userProvider : UserProvider) {
+  constructor(public navCtrl: NavController,public formBuilder : FormBuilder , public loadCtrl : LoadingController , public userProvider : UserProvider ,public events : Events) {
     this.buildForm();
 
   }
@@ -61,7 +61,7 @@ export class SignupPage {
            console.log(add);
            loading.dismiss();
             if(add!= "-1"){
-            
+              this.events.publish('logedin',true);
             console.log(this.userProvider.user);
            this.navCtrl.setRoot(TabsPage);
             

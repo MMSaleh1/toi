@@ -32,6 +32,7 @@ export class UserProvider extends RootProvider {
   private orderApiController = "orders/";
   private orderItemActionString ="add_order_item?";
   private orderRequestActionString = "requst_order?";
+  private orderCurrentActionString ="get_all_orders/"
 
 
   private massageApiController ="massage/";
@@ -85,6 +86,23 @@ export class UserProvider extends RootProvider {
           resolve(true);
         }else{
           resolve(false)
+        }
+      })
+    })
+  }
+
+
+  public async getSpesificOrder(orderId): Promise<any>{
+    let temp = `${RootProvider.APIURL}${this.orderApiController}${this.orderCurrentActionString}${orderId}`;
+    console.log(temp);
+    return new Promise((resolve)=>{
+      this.http.get(temp).subscribe((data:any)=>{
+        if(data != undefined && data.length > 0){
+          let item = new order(data[0].id,data[0].order_date,data[0].accept_date,data[0].total,data[0].status_id,"");
+          resolve(item);
+        }
+        else{
+          resolve();
         }
       })
     })
@@ -305,6 +323,43 @@ export class UserProvider extends RootProvider {
       })
     })
 
+  }
+
+  public async SaveUpcommingAppointment(ORder : order){
+    
+    this.storage.get('toi-user-current-order').then(data=>{
+      
+      let savedData = new Array();
+      if(data!= undefined && data.lenght>0){
+        savedData = data
+        savedData.push(ORder);
+      }else{
+        savedData.push(ORder);
+
+      }
+      console.log(savedData);
+      this.storage.set('toi-user-current-order',savedData);
+    },err=>{
+      let data = new Array();
+      data.push(ORder);
+      console.log(data);
+      this.storage.set('toi-user-current-order',data);
+    })
+
+  }
+
+  public async getUserAppointments() : Promise<any>{
+    return new Promise((resolve)=>{
+      this.storage.get('toi-user-current-order').then(data=>{
+        if(data != undefined && data.length > 0){
+          console.log(data);
+          resolve(data)
+        }else{
+          resolve([]);
+        }
+      })
+    })
+    
   }
 
 

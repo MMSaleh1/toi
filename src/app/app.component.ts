@@ -1,7 +1,7 @@
 import { TabsPage } from './../pages/tabs/tabs';
 import { ContactUsPage } from './../pages/contact-us/contact-us';
 import { Component } from '@angular/core';
-import { Platform, Events, NavController, MenuController } from 'ionic-angular';
+import { Platform, Events, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -9,6 +9,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { SigninPage } from '../pages/signin/signin';
  
 import { UserProvider, User } from './../providers/user/user';
+
+import { BackgroundMode } from '@ionic-native/background-mode';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -18,17 +22,65 @@ export class MyApp {
   rootPage:any = SigninPage;
   isLogedin : boolean = false;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen ,public userProv: UserProvider , public event :Events) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen ,public userProv: UserProvider , public event :Events , public menuCntrl : MenuController,public backgroundMode: BackgroundMode,public localNotifications: LocalNotifications) {
     platform.ready().then(() => {
+      this.menuCntrl.enable(false);
+      
       this.event.subscribe('logedin',()=>{
+        this.backgroundMode.enable();
         this.user = this.userProv.getUser();
         this.isLogedin = true;
+        this.menuCntrl.enable(true);
+       
+        this.userProv.getHistory(this.user.id).then(data=>{
+          
+          if(data !=undefined && data.length > 0 ){
+            for(let i =0;i<data.length ; i++){
+             
+              if(data[i].orderStatusId != '6' && data[i].orderStatusId != '4'){
+                
+                this.userProv.SaveUpcommingAppointment(data[i]);
+              }
+            }
+          }
+        });
+
+       this.backgroundcheck().then();
+
+
+       
+        
       })
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
     });
+  }
+  async backgroundcheck(){
+    if(this.backgroundMode.isActive() == true){
+      for(;;){
+         setTimeout( () => {
+           this.checkOrderStatus();
+     }, 180000);
+      }
+    }
+  }
+
+  async checkOrderStatus(){
+    let orders = await this.userProv.getUserAppointments();
+    for(let i =0;i<orders ;i ++){
+      let order = await this.userProv.getSpesificOrder(orders[i].id);
+      if(orders[i].orderStatusId != order.orderStatusId){
+        this.localNotifications.schedule({
+          id: 1,
+          text: `Please Check Order number ${order.orderStatusId}`,
+          sound:  'file://beep.caf',
+        });
+      }
+
+    }
+
   }
 
   toPage(number:string){

@@ -1,6 +1,6 @@
 import { TabsPage } from './../tabs/tabs';
 import { Component } from '@angular/core';
-import { NavController ,LoadingController, IonicPage } from 'ionic-angular';
+import { NavController, LoadingController, IonicPage, Events } from 'ionic-angular';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { PasswordPage } from '../password/password';
@@ -22,6 +22,7 @@ export class SigninPage {
     , public userProvider : UserProvider 
     , public storage : Storage
     , public itemProv : ItemsApiProvider
+    , public events : Events
     ) {
     this.buildForm();
 
@@ -57,10 +58,11 @@ export class SigninPage {
           bool = await this.userProvider.loginNop(this.loginForm.value.email,this.loginForm.value.password);
             
         if(bool == true){
-          loading.dismiss(); 
+         
            this.user = User.getInstance();
            this.storage.set('user',this.user);
-           
+           this.events.publish('logedin')
+           loading.dismiss(); 
            this.navCtrl.setRoot(TabsPage);
 
         }else{

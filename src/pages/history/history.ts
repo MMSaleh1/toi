@@ -46,11 +46,15 @@ export class HistoryPage {
     for(let i =0 ;i<this.orders.length ; i++){
       this.orders[i].orderItems = await this.userProv.getorderItems(this.orders[i].id);
     }
+ this.userProv.getUserAppointments().then(Data=>{
+   console.log(Data);
+ })
     this.setOrders();
 
   }
 
   setOrders(){
+  
     this.doneOrders= new Array<orderItem>();
     this.onGoingOrders= new Array<orderItem>();
     for(let i = 0 ; i<this.orders.length;i++){
@@ -61,6 +65,8 @@ export class HistoryPage {
           if(this.orders[i].orderStatusId == '6'){
             this.doneOrders.push(...this.orders[i].orderItems);
           }else{
+            console.log(this.orders[i]);
+            this.userProv.SaveUpcommingAppointment(this.orders[i]);
             this.onGoingOrders.push(...this.orders[i].orderItems);
           }
         }

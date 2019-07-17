@@ -15,15 +15,15 @@
 <ion-content padding scrollY="false" >
     
    <div class="category-container">
-    <ion-slides slidesPerView="1"pager="true"  class="slider">
+    <ion-slides slidesPerView="1"pager="true"  class="slider" #slides>
         <ion-slide class="slide"   *ngFor="let item of cates">  
             <img class="slide-image" [src]="item.images[0]">
             <button ion-button class="cate-button" (tap)="toServices(item)">{{item.name}} </button>
         </ion-slide>
     </ion-slides>
 </div>
-<div class="icon-left"><ion-icon name="custom-left-arrow-icon"></ion-icon></div>
-<div class="icon-right"><ion-icon name="custom-right-arrow-icon"></ion-icon></div>
+<div class="icon-left" (tap)="slidePrev()"><ion-icon name="ios-arrow-back"></ion-icon></div>
+<div class="icon-right" (tap)="slideNext()"><ion-icon name="ios-arrow-forward"></ion-icon></div>
 <div class="ads-container">
     
     <div class="header-container">

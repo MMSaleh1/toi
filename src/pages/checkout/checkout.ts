@@ -75,6 +75,7 @@ export class CheckoutPage {
   }
   async order(){
     console.log(await this.userProv.Order(this.userProv.getUser().id,this.addressid,0,this.cart.totalPrice,this.cart));
+    
     this.navCtrl.push(ThanksPage);
   }
 

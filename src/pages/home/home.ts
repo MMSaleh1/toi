@@ -1,6 +1,6 @@
 import { CartPage } from './../cart/cart';
-import { Component } from '@angular/core';
-import { NavController, IonicPage, ToastController, Platform } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, IonicPage, ToastController, Platform, Slides } from 'ionic-angular';
 
 import { MyappointmentPage } from '../myappointment/myappointment';
 import { AboutPage } from '../about/about';
@@ -16,18 +16,24 @@ import { Database } from '../../providers/database/database';
 
 
 
-
 @IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
+
 export class HomePage {
+  @ViewChild('slides')slides : Slides;
   public ready : boolean= false;
   public cates : Array<Category>;
   public categorySlider: Array<any>;
   public db :Database;
-  constructor(public navCtrl: NavController,public itemProv : ItemsApiProvider,public autoCompleteprov : AutoCompleteProvider ,public toastCtrl :ToastController , public platForm : Platform) {
+  constructor(public navCtrl: NavController
+    ,public itemProv : ItemsApiProvider
+    ,public autoCompleteprov : AutoCompleteProvider
+    ,public toastCtrl :ToastController
+    , public platForm : Platform
+    ) {
    this.cates = new Array();
    this.getItems();
   
@@ -86,4 +92,12 @@ export class HomePage {
     cart(){
       this.navCtrl.push(CartPage);
     }
+    slideNext(){
+      this.slides.slideNext();
+    }
+    slidePrev(){
+      this.slides.slidePrev();
+    }
+
+    
   }
