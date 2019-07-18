@@ -30,7 +30,7 @@
   
       <ion-list class="item-list" scrollY="true">
         
-          <ion-scroll scrollY='true' class="list-container" [style.height]="cart.cartItems.length > 1? 30 : 15 " *ngIf="cart.cartItems.length > 0">
+          <ion-scroll scrollY='true' class="list-container" *ngIf="cart.cartItems.length > 1">
           <ion-item *ngFor="let item of cart.cartItems ; let i = index" class="item">
               <div class="item-name">{{item.item.name}}</div>
               <div class="item-price">{{item.item.price}} LE</div>
@@ -45,6 +45,23 @@
              
           </ion-item>
           </ion-scroll>
+
+          
+          <ion-scroll scrollY='true' class="list-container-short" *ngIf="cart.cartItems.length == 1">
+              <ion-item *ngFor="let item of cart.cartItems ; let i = index" class="item">
+                  <div class="item-name">{{item.item.name}}</div>
+                  <div class="item-price">{{item.item.price}} LE</div>
+                  <div class="quant-warpper">
+                  <div class="qunat-container">
+                    <button ion-button icon-only class="add-button" (tap)="increment(item)"><ion-icon name="ios-add"></ion-icon></button>
+                    <div class="quant-display">{{item.quant}}</div>
+                    <button ion-button icon-only class="remove-button" (tap)="decrease(i)">  <ion-icon name="ios-remove"></ion-icon></button>
+                  </div>
+                  <button ion-button icon-only class="delete-button" (tap)="delete(i)"> <ion-icon name="ios-trash" ></ion-icon></button>
+                </div>
+                 
+              </ion-item>
+              </ion-scroll>
           <div class="item-list-footer">
             <div class="footer-name">TOTAL PRICE</div>
             <div class="total-price">{{cart.totalPrice}} LE</div>

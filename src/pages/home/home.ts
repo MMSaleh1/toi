@@ -12,6 +12,7 @@ import { ServicesPage } from '../services/services';
 import { ItemsApiProvider, Category } from './../../providers/items-api/items-api';
 import { AutoCompleteProvider } from './../../providers/auto-complete/auto-complete';
 import { Database } from '../../providers/database/database';
+import { CartProvider } from '../../providers/cart/cart';
 
 
 
@@ -28,6 +29,8 @@ export class HomePage {
   public cates : Array<Category>;
   public categorySlider: Array<any>;
   public db :Database;
+  public cartProv : CartProvider;
+
   constructor(public navCtrl: NavController
     ,public itemProv : ItemsApiProvider
     ,public autoCompleteprov : AutoCompleteProvider
@@ -36,6 +39,7 @@ export class HomePage {
     ) {
    this.cates = new Array();
    this.getItems();
+   this.cartProv = CartProvider.getInstance();
   
   }
    async getItems(){

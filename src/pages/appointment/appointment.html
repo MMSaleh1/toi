@@ -22,7 +22,7 @@
         <ion-list class="item-list">
             <ion-item *ngFor="let item of products " class="item">
                 <div class="item-name">{{item.name}}</div>
-                <button ionbutton class="book-button" (tap)="addtoCart(item)">Book Now</button>
+                <button *ngIf="checkIfExsist(item.id)" ionbutton class="book-button" (tap)="addtoCart(item)">Book Now</button>
             </ion-item>
         </ion-list>
     </div>
