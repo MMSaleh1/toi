@@ -1,7 +1,8 @@
 import { CartProvider } from './../../providers/cart/cart';
 import { Category, Product } from './../../providers/items-api/items-api';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Alert } from 'ionic-angular';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'page-appointment',
@@ -14,7 +15,7 @@ export class AppointmentPage {
   gender :string;
 
 
-  constructor(public navCtrl: NavController , public navparms :NavParams) {
+  constructor(public navCtrl: NavController , public navparms :NavParams ) {
     this.category = this.navparms.get("cate");
     this.products = new Array();
     this.products = this.category.children;
@@ -27,6 +28,20 @@ export class AppointmentPage {
   addtoCart(item : Product){
     this.cart.addItem(item);
     console.log(this.cart);
+    // setTimeout(()=>{
+     
+    // },1000)
+    alert('Item Has been added to your cart');
+    this.navCtrl.popToRoot();
+  }
+
+  checkIfExsist(id){
+    for(let i =0 ; i < this.cart.cartItems.length ; i++){
+      if(id == this.cart.cartItems[i].item.id){
+        return false
+      }
+    }
+    return true;
   }
   
 
