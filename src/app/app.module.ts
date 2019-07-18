@@ -41,8 +41,8 @@ import { HistoryPageModule } from '../pages/history/history.module';
 
 import { Database } from '../providers/database/database';
 import { CartProvider } from '../providers/cart/cart';
-import { BackgroundMode } from '@ionic-native/background-mode';
-import { LocalNotifications } from '@ionic-native/local-notifications';
+// import { BackgroundMode } from '@ionic-native/background-mode';
+// import { LocalNotifications } from '@ionic-native/local-notifications';
 
 
 // import {AngularFireModule} from 'angu';
@@ -120,9 +120,9 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
     UserProvider,
     AutoCompleteProvider,
     Database,
-    CartProvider,
-    BackgroundMode,
-    LocalNotifications
+    CartProvider
+    // BackgroundMode,
+    // LocalNotifications
 
     
   ]
