@@ -21,21 +21,27 @@
       </ion-segment>
 
       <div *ngIf="tab =='1'">
-        <ion-list class="list-container">
+        <ion-scroll scrollY='true' class="list-container">
+          <ion-list>
           <ion-item class="order-item" *ngFor="let item of onGoingOrders">
             <div class="item-name">{{item.productName}}</div>
             <div class="item-cost">{{item.cost}} LE</div>
           </ion-item>
         </ion-list>
+      </ion-scroll>
+
       </div>
 
       <div *ngIf="tab =='2'">
-          <ion-list class="list-container">
-            <ion-item class="order-item" *ngFor="let item of doneOrders">
-              <div class="item-name">{{item.productName}}</div>
-              <div class="item-cost">{{item.cost}} LE</div>
-            </ion-item>
-          </ion-list>
+        <ion-scroll scrollY='true' class="list-container">
+            <ion-list >
+                <ion-item class="order-item" *ngFor="let item of doneOrders">
+                  <div class="item-name">{{item.productName}}</div>
+                  <div class="item-cost">{{item.cost}} LE</div>
+                </ion-item>
+              </ion-list>
+        </ion-scroll>
+         
         </div>
 
 </ion-content>

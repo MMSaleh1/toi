@@ -6,7 +6,7 @@ page-cart {
     }
 
     .content-wrapper{
-        margin: 10vh 0vw 0vh 10vw;
+        margin: 2vh 0vw 0vh 10vw;
         border-bottom-left-radius: 20px;
         width:100%;
         .category-info-container {
@@ -26,10 +26,14 @@ page-cart {
             }
         }
 
-        .items-container{
-            .item-list{
-                height: 40vh;
+        .list-container{
+            height: 30vh;
+            .scroll-content{
+                padding: 0;
             }
+        }
+        .items-container{
+           
             .item{
                 padding-left: 9vw;
                 padding-bottom: 0vh;
@@ -128,8 +132,7 @@ page-cart {
             font-size: 1.5rem;
             width: 30vw;
             height: 3.9vh;
-            margin-top: -2vh;
-            margin-left: 7vw
+          
         }
 
 }

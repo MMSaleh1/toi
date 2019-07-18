@@ -39,23 +39,31 @@
             
           </ion-select>
     </ion-item>
-<div class="button-container">
-    <button class="confirm-button" ion-button (tap)="addAddress()">CONFIRM LOCATION</button>
-  </div>
+
     </div>  
   </div>
-
   <div  *ngIf="tab == 'payment'">
-    <diV class="payment-container">
-      <div class="payment-text">SELECT A PAYMENT METHOD</div>
-    <div class="button-container">
-      <div [class]="paymentMethodClass" (tap)="choosePaymentMithod()">Cash</div>
+      <diV class="payment-container">
+        <div class="payment-text">SELECT A PAYMENT METHOD</div>
+      <div class="button-container">
+        <div [class]="paymentMethodClass" (tap)="choosePaymentMithod()">Cash</div>
+      </div>
+      </diV>
+    
+     
     </div>
-    </diV>
 
-    <div *ngIf="orderReady" class="order-button-container">
-      <button ionbutton class="order-button" (tap)="order()">Order</button>
-    </div>
-  </div>
+ 
 </div>
 </ion-content>
+<ion-footer>
+  <ion-navbar>
+      
+        <div *ngIf="tab == 'new' " class="button-container">
+            <button class="confirm-button" ion-button (tap)="addAddress()">CONFIRM LOCATION</button>
+          </div>
+          <div *ngIf="orderReady && tab == 'payment'" class="button-container">
+              <button ionbutton class="confirm-button" (tap)="order()">Order</button>
+            </div>
+  </ion-navbar>
+</ion-footer>

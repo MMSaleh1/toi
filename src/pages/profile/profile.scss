@@ -1,6 +1,6 @@
 page-profile {
     .image-container {
-        margin: 13vh 0 0 31vw;
+        margin: 9vh 0 0 31vw;
         width: 13rem;
         height: 12rem;
         .profile-image {
@@ -20,13 +20,19 @@ page-profile {
             color: white;
         }
     }
+
+    .footer-options{
+        width: 70vw;
+    margin: auto;
+    border-top-right-radius: 2rem;
+    border-top-left-radius: 2rem;
+    }
   .options-container {
-        margin: 16vh 10vw 0 10vw;
-        padding: 3vh 2vw 2vw 2vw;
-        height: 23.2vh;
-        background-color: white;
-        border-top-left-radius: 3rem;
-        border-top-right-radius: 3rem;
+    margin: 0 10vw 0 10vw;
+    
+    background-color: white;
+    border-top-left-radius: 3rem;
+    border-top-right-radius: 3rem;
         .option-item{
             text-align: center;
             height: 34%;

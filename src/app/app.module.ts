@@ -42,7 +42,7 @@ import { HistoryPageModule } from '../pages/history/history.module';
 import { Database } from '../providers/database/database';
 import { CartProvider } from '../providers/cart/cart';
 import { BackgroundMode } from '@ionic-native/background-mode';
-import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 
 // import {AngularFireModule} from 'angu';

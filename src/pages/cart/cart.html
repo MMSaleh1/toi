@@ -27,7 +27,10 @@
       <div class="category-info-text">CART</div>
   </div>
  <div class="items-container">
+  
       <ion-list class="item-list" scrollY="true">
+        
+          <ion-scroll scrollY='true' class="list-container" [style.height]="cart.cartItems.length > 1? 30 : 15 " *ngIf="cart.cartItems.length > 0">
           <ion-item *ngFor="let item of cart.cartItems ; let i = index" class="item">
               <div class="item-name">{{item.item.name}}</div>
               <div class="item-price">{{item.item.price}} LE</div>
@@ -41,11 +44,14 @@
             </div>
              
           </ion-item>
+          </ion-scroll>
           <div class="item-list-footer">
             <div class="footer-name">TOTAL PRICE</div>
             <div class="total-price">{{cart.totalPrice}} LE</div>
           </div>
       </ion-list>
+      
+
   </div> 
   <button ion-button class="confirm-button" (tap)="Checkout()">check out</button>
   </div>

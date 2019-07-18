@@ -18,9 +18,15 @@
         <div class="name-container">{{user.name}}</div>
     </div>
 
+  
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="footer-options">
     <div class="options-container">
         <ion-item class="option-item" (tap)="toPage('2')">Update my profile</ion-item>
         <ion-item class="option-item" (tap)="toPage('1')">My appointments</ion-item>
         <ion-item class="option-item" (tap)="toPage('3')">My payment info</ion-item>
     </div>
-</ion-content>
+  </ion-toolbar>
+</ion-footer>

@@ -11,7 +11,7 @@ import { SigninPage } from '../pages/signin/signin';
 import { UserProvider, User } from './../providers/user/user';
 
 import { BackgroundMode } from '@ionic-native/background-mode';
-import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 
 @Component({
@@ -27,7 +27,7 @@ export class MyApp {
       this.menuCntrl.enable(false);
       
       this.event.subscribe('logedin',()=>{
-        this.backgroundMode.enable();
+        // this.backgroundMode.enable();
         this.user = this.userProv.getUser();
         this.isLogedin = true;
         this.menuCntrl.enable(true);
@@ -44,8 +44,18 @@ export class MyApp {
             }
           }
         });
-
-       this.backgroundcheck().then();
+// if(this.backgroundMode.isEnabled() == true){
+//   this.backgroundMode.on('activate').subscribe(()=>{
+//     this.backgroundcheck().then();
+//    })
+// }
+        
+      //  this.localNotifications.schedule({
+      //   id: 1,
+      //   text: `Test`,
+      //   sound:  'file://beep.caf',
+      // });
+     
 
 
        
@@ -59,12 +69,25 @@ export class MyApp {
   }
   async backgroundcheck(){
     if(this.backgroundMode.isActive() == true){
-      for(;;){
-         setTimeout( () => {
-           this.checkOrderStatus();
-     }, 180000);
-      }
-    }
+      //    this.localNotifications.schedule({
+      //   id: 1,
+      //   text: `Test`,
+      //   sound:  'file://beep.caf',
+      // });
+
+        setTimeout( () => {
+          this.checkOrderStatus();
+          
+    }, 18000);
+     }
+     this.backgroundcheck();
+  }
+  async test(){
+    for(;;){
+      setTimeout( () => {
+        this.checkOrderStatus();
+  }, 18000);
+   }
   }
 
   async checkOrderStatus(){
