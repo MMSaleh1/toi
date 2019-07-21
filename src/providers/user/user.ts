@@ -62,6 +62,7 @@ export class UserProvider extends RootProvider {
         console.log(data);
         if(data != null && data != undefined && data.length>0){
           this.user = User.getInstance(data[0].ID,Username,password,email,"Male",PhoneNumber);
+          this.storage.set('toi-user',this.user);
           this.event.publish('logedin');
           resolve(data[0].ID);
 
@@ -81,6 +82,7 @@ export class UserProvider extends RootProvider {
         if(data != null && data != undefined && data.length>0 && data[0].error_name != "wrong_password" && data[0].error_name != "already exist"){
           console.log(data[0].id+ "  : "+data[0].name+"  :  "+data[0].password+"  :  "+data[0].mail)
           this.user = User.getInstance(data[0].id,data[0].name,data[0].password,data[0].mail,"Male",data[0].phone);
+          this.storage.set('toi-user',this.user);
           this.event.publish('logedin');
           console.log(this.user);
           resolve(true);
@@ -184,8 +186,25 @@ export class UserProvider extends RootProvider {
 
   
 
-  public getUser(){
-    return User.getInstance();
+  public async getUser() : Promise<any>{
+    return new Promise((resolve)=>{
+      this.storage.get('toi-user').then(data=>{
+        console.log(data);
+        if(data != undefined){
+          this.user = data;  
+           resolve(User.getInstance(this.user.id,this.user.name,this.user.password,this.user.email,this.user.gender,this.user.phone,this.user.fName,this.user.lName,this.user.addresses));
+  
+        }else{
+          resolve(User.getInstance());
+        }
+        
+      },err=>{
+        console.log(err);
+        resolve(User.getInstance());
+      })
+
+    })
+   
   }
 
   public async addAddress(address : string,stateId :string,userId:string):Promise<any>{
@@ -409,7 +428,7 @@ export class User {
     if (User.isCreating === false && id !="-1") {
       //User.isCreating = false;
       User.instance = new User(id, name, gender, password, email, phone,lName,fName, address);
-      console.log(console.log(User.instance));
+      console.log(User.instance);
     }
     if (id != "-1") {
       User.instance.setData(id, name,password, email,gender, phone,address);

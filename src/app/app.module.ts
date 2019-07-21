@@ -43,6 +43,8 @@ import { Database } from '../providers/database/database';
 import { CartProvider } from '../providers/cart/cart';
 import { BackgroundMode } from '@ionic-native/background-mode';
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import { UpdateProfilePageModule } from '../pages/update-profile/update-profile.module';
+import { LandingPageModule } from '../pages/landing/landing.module';
 
 
 // import {AngularFireModule} from 'angu';
@@ -90,6 +92,8 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
     ThanksPageModule,
     ContactUsPageModule,
     HistoryPageModule,
+    UpdateProfilePageModule,
+    LandingPageModule,
 
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp)

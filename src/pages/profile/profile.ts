@@ -4,6 +4,7 @@ import { NavController, IonicPage } from 'ionic-angular';
 
 import { SigninPage } from '../signin/signin';
 import { HistoryPage } from '../history/history';
+import { UpdateProfilePage } from '../update-profile/update-profile';
 
 
 @IonicPage()
@@ -21,6 +22,8 @@ export class ProfilePage {
   toPage(number:string){
     if(number == '1'){
       this.navCtrl.push(HistoryPage);
+    }else if(number == '2'){
+      this.navCtrl.push(UpdateProfilePage);
     }
 
   }
