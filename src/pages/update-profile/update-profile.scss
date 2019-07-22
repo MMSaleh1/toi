@@ -1,3 +1,31 @@
 page-update-profile {
+    .item{
+        background-color: transparent;
+        border-top: transparent !important;
+        margin: 0 0 4vh 0;
+        .item-inner{
+            border-bottom: transparent !important;
+        }
+    }
+
+    ion-input{
+        background-color: color($colors,light);
+        border-radius: 20px;
+        color: #fff;
+        padding: 0 0 0 3vw;
+    }
+
+    .difault-form .item .text-input{
+        padding-left: 3rem;
+    }
+    .difault-form .list .item-block .item-inner{
+        background-color: transparent;
+    }
+    .update-button{
+        width: 40%;
+        margin: auto;
+        border-radius: 30px;
+        background-color: color($colors,primary);
+    }
 
 }

@@ -14,9 +14,17 @@ import { UpdateProfilePage } from '../update-profile/update-profile';
 })
 export class ProfilePage {
   public user : User;
+  ready = false;
 
   constructor(public navCtrl: NavController ,public userProv : UserProvider) {
-    this.user = userProv.getUser();
+    this.getUser().then(()=>{
+      this.ready = true;
+    })
+  }
+
+  async getUser(){
+    this.user = await this.userProv.getUser();
+    this.userProv.updateProfile(this.user.id,this.user.name,this.user.phone,this.user.email,this.user.password,this.user.image);
   }
 
   toPage(number:string){

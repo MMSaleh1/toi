@@ -10,6 +10,29 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="bg-img">
+  
+    <!-- <form *ngIf="ready" [formGroup]="updateForm" (ngSubmit)="update()"> -->
+  <ion-list  *ngIf="ready">
+    <ion-item class="item">      
+     <ion-input  type="text"  value="{{user.name}}"></ion-input>
+    </ion-item>
+
+    <ion-item class="item">
+     <ion-input type="password"  value="{{user.password}}"></ion-input>
+    </ion-item>
+
+    <ion-item class="item">
+     <ion-input type="email" value="{{user.email}}"></ion-input>
+    </ion-item>
+
+    <ion-item class="item">
+     <ion-input  type="number"  value="{{user.phone}}"></ion-input>
+    </ion-item>
+
+    <button ion-button full class="btn bg-theme update-button">Update</button>
+  </ion-list>
+  <!-- </form> -->
+
 
 </ion-content>

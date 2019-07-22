@@ -18,6 +18,7 @@ export class UserProvider extends RootProvider {
   private logInActionString = "loginn?";
   private regesterActionString = "user_reg?";
   private getHistoryActionString = "get_user_order?";
+  private updateUserActionString = "edit_profile/";
 
   private addressApiController = "address/";
   private addAddressActionString = "add_user_address?"
@@ -33,6 +34,7 @@ export class UserProvider extends RootProvider {
   private orderItemActionString ="add_order_item?";
   private orderRequestActionString = "requst_order?";
   private orderCurrentActionString ="get_all_orders/"
+
 
 
   private massageApiController ="massage/";
@@ -90,6 +92,16 @@ export class UserProvider extends RootProvider {
           resolve(false)
         }
       })
+    })
+  }
+
+  public async updateProfile(id,name,phone,mail,password,user_img) : Promise<any>{
+    let temp = `${RootProvider.APIURL}${this.userApiController}${this.updateUserActionString}${id}?name=${name}&phone=${phone}&mail=${mail}&password=${password}&user_img=${user_img}`;
+    console.log(temp);
+    return new Promise((resolve)=>{
+      // this.http.get(temp).subscribe((data:any)=>{
+        
+      // })
     })
   }
 
@@ -412,7 +424,7 @@ export class User {
     }
   }
 
-  public setData(id: string = "-1", name: string = "", password: string = "", email: string = "", gender: string = "Male", phone: string = "", address: Address[] = new Array()) {
+  public setData(id: string = "-1", name: string = "", password: string = "", email: string = "", gender: string = "", phone: string = "", address: Address[] = new Array()) {
     
     this.id = id;
     this.name = name;
@@ -424,7 +436,7 @@ export class User {
     this.phone = phone;
   }
 
-  static getInstance(id: string = "-1", name: string = "",  password: string = "", email: string = "",gender: string = "Male", phone: string = "",fName:string="",lName:string="",address: Address[] = new Array()) {
+  static getInstance(id: string = "-1", name: string = "",  password: string = "", email: string = "",gender: string = "", phone: string = "",fName:string="",lName:string="",address: Address[] = new Array()) {
     if (User.isCreating === false && id !="-1") {
       //User.isCreating = false;
       User.instance = new User(id, name, gender, password, email, phone,lName,fName, address);

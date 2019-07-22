@@ -10,6 +10,7 @@
         </ion-navbar>
     </ion-header>
 <ion-content class="bg-img">
+    <div *ngIf="ready">
     <div class="image-container">
         <img class="profile-image" src="assets/imgs/signup_male.png">
     </div>
@@ -18,7 +19,7 @@
         <div class="name-container">{{user.name}}</div>
     </div>
 
-  
+</div>
 </ion-content>
 
 <ion-footer>

@@ -17,8 +17,9 @@ export class NotificationsProvider {
 
   constructor(public http: HttpClient , public userProv : UserProvider) {
     console.log('Hello NotificationsProvider Provider');
-    this.user = userProv.getUser();
+  //  this.user = userProv.getUser();
   }
+
 
   // async getToken(){
   //   let token;
