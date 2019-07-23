@@ -1,3 +1,61 @@
 page-landing {
+.landing-scroll{
+    white-space: nowrap;
+    width: 100vw;
+    display: inline-block;
+    height: 100vh;
+}
+.landing-item{
+    white-space: nowrap;
+    display: inline-block;
+}
 
+.segment1-upper-container{
+height: 30vh;
+.side-container{
+    display: inline-flex;
+    width: 49vw;
+    height: 30vh;
+    .text{
+        background-color: color($colors,primary);
+        color: color($colors,secondary);
+        height: 30vh;
+        font-family: "app-font";
+        display: inline-block;
+        width: 50vw;
+        font-size: 3rem;
+        white-space: normal;
+        padding: 9rem   4rem 5rem 5rem;
+    }
+    .images-wrapper {
+        height: 30vh;
+        .segment1-img-container{
+        width: inherit;
+        height: 50%;
+        .segment1-image {
+            height: 15vh;
+        }
+        }
+    }
+   
+}
+}
+.segment1-middle-container{
+height: 30vh;
+img{
+    height: inherit;
+    width: 100%;
+}
+}
+.segment1-lower-container{
+height: 40vh;
+background-color: color($colors,dark);
+.text{
+    font-family: "app-font";
+    white-space: normal;
+    padding: 10rem 5rem 5rem 5rem;
+    color: color($colors,secondary);
+
+}
+}
 }

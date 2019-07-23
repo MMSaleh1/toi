@@ -39,9 +39,9 @@ export class LandingPage {
         }
       });
       this.events.publish('logedin')
-     this.navCtrl.setRoot(TabsPage)
+     //this.navCtrl.setRoot(TabsPage)
     }else{
-      this.navCtrl.setRoot(SigninPage);
+     // this.navCtrl.setRoot(SigninPage);
     }
   }
 

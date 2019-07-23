@@ -24,8 +24,11 @@ export class ContactUsPage {
     if(this.menuctrl.isOpen()){
       this.menuctrl.toggle();
     }
-    this.user = userProv.getUser();
-    this.buildForm();
+    userProv.getUser().then(data=>{
+      this.user = data;
+      this.buildForm();
+    });
+   
   }
 
   buildForm() {
