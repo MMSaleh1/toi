@@ -1,47 +1,74 @@
 
-<ion-content class="bg-color">
-  <ion-scroll class="landing-scroll" scrollY=false scrollX="true">
+<ion-content scrollY="false" class="bg-color">
+  <!-- <ion-scroll class="landing-scroll" scrollY=false scrollX="true"> -->
 
 
-
-     <div class="landing-item"> 
+<div class="container" (swipe)="swipeChange($event)">
+  <div *ngIf="selectedSegment == 1"  class="landing-item"> 
     <div class="segment1-upper-container">
       <div class="side-container">
         <div class="text">Toi To Go </div>
       </div>
       <div class="side-container">
         <div class="images-wrapper">
-        <div class="segment1-img-container"><img class="segment1-image" src="assets/imgs/temp.png"></div>
-        <div class="segment1-img-container"><img class="segment1-image" src="assets/imgs/temp.png"></div>
+        <div class="segment1-img-container"><img class="segment1-image" src="assets/imgs/p1-1.png"></div>
+        <div class="segment1-img-container"><img class="segment1-image" src="assets/imgs/p1-2.png"></div>
       </div>
       </div>
     </div>
-    <div class="segment1-middle-container"><img src="assets/imgs/bd-1.png"> </div>
+    <div class="segment1-middle-container"><img src="assets/imgs/p1-3.png"> </div>
     <div class="segment1-lower-container"> <div class="text"> Toi Beauty Salon, Release your inner beauty! It’s all about YOU!</div> </div>
+
     </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="landing-item">
-        <div class="landing-item-text ">Toi Beauty Salon, Release your inner beauty! It’s all about YOU! </div>
-      </div>
-      <div class="landing-item">
-          <div class="landing-item-text ">Toi Beauty Salon, Release your inner beauty! It’s all about YOU! </div>
+    <div *ngIf="selectedSegment == 2" class="landing-item">
+        <div class="segment2-upper-container ">
+          <img class="image" src="assets/imgs/p2-1.png">
         </div>
-  </ion-scroll>
+
+        <div class="segment2-lower-container">
+          <div class="side-container">
+            <div class="wrapper">
+                <div class="text-container"> TOI TO GO</div>
+                <div class="image-container"><img class="image" src="assets/imgs/p2-2.png"></div>
+            </div>
+          
+          </div>
+          <div class="side-container">
+            <div class="text-container2">Your app for on demand beauty services! We deliver your stylist to your doorstep. </div>
+          </div>
+        </div>
+      </div>
+
+
+      
+    <div *ngIf="selectedSegment == 3" class="landing-item">
+       
+
+        <div class="segment3-upper-container">
+          <div class="side-container">
+            <div class="wrapper">
+                <div class="text-container"> TOI TO GO</div>
+                <div class="image-container"><img class="image" src="assets/imgs/p3-1.png"></div>
+            </div>
+          
+          </div>
+          <div class="side-container">
+            <div class="text-container2"> Simply have your hair washed and track your stylist in real time on his/her way. </div>
+            <div class="image-container"><img src="assets/imgs/sig.png"></div>
+          </div>
+        </div>
+        <div class="segment3-lower-container ">
+            <img class="image" src="assets/imgs/p3-2.png">
+          </div>
+      </div>
+
+    
+
+</div>
+<button ion-button (tap)="skip()" class="skip-button">skip</button>
+    
+  <!-- </ion-scroll> -->
 
 </ion-content>

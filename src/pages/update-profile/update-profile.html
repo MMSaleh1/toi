@@ -12,27 +12,27 @@
 
 <ion-content padding class="bg-img">
   
-    <!-- <form *ngIf="ready" [formGroup]="updateForm" (ngSubmit)="update()"> -->
+    <form *ngIf="ready" [formGroup]="updateForm" (ngSubmit)="update()">
   <ion-list  *ngIf="ready">
     <ion-item class="item">      
-     <ion-input  type="text"  value="{{user.name}}"></ion-input>
+     <ion-input  type="text" formControlName="userName"  value="{{user.name}}"></ion-input>
     </ion-item>
 
     <ion-item class="item">
-     <ion-input type="password"  value="{{user.password}}"></ion-input>
+     <ion-input type="password" formControlName="password"  value="{{user.password}}"></ion-input>
     </ion-item>
 
     <ion-item class="item">
-     <ion-input type="email" value="{{user.email}}"></ion-input>
+     <ion-input type="email" formControlName="email" value="{{user.email}}"></ion-input>
     </ion-item>
 
     <ion-item class="item">
-     <ion-input  type="number"  value="{{user.phone}}"></ion-input>
+     <ion-input  type="number" formControlName="phone"  value="{{user.phone}}"></ion-input>
     </ion-item>
 
-    <button ion-button full class="btn bg-theme update-button">Update</button>
+    <button ion-button full class="btn bg-theme update-button" (tap)="update()">Update</button>
   </ion-list>
-  <!-- </form> -->
+  </form>
 
 
 </ion-content>

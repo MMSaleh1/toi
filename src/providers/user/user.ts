@@ -99,9 +99,20 @@ export class UserProvider extends RootProvider {
     let temp = `${RootProvider.APIURL}${this.userApiController}${this.updateUserActionString}${id}?name=${name}&phone=${phone}&mail=${mail}&password=${password}&user_img=${user_img}`;
     console.log(temp);
     return new Promise((resolve)=>{
-      // this.http.get(temp).subscribe((data:any)=>{
-        
-      // })
+       this.http.get(temp).subscribe((data:any)=>{
+        if(data != undefined && data.lenght > 0){
+          console.log(data[0]);
+          this.user.name=name;
+          this.user.phone = phone;
+          this.user.email = mail; 
+          this.user.password = password;
+          this.user.image = user_img;
+          this.storage.set('toi-user',this.user);
+          resolve(data[0].id)
+        }else{
+          resolve(null);
+        }
+      })
     })
   }
 

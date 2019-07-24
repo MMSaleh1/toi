@@ -1,4 +1,4 @@
-import { UserProvider } from './../../providers/user/user';
+import { UserProvider, User } from './../../providers/user/user';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
@@ -18,15 +18,21 @@ import { SigninPage } from '../signin/signin';
 })
 export class LandingPage {
 
+  selectedSegment : number;
+  public user :User;
+  public skipReady
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public userProv :UserProvider , public events : Events) {
-   this.getUser().then();
+   this.skipReady= false;
+    this.getUser().then();
+   this.selectedSegment = 1;
   }
   async getUser(){
-    let user= await this.userProv.getUser();
-    console.log(user);
+     this.user= await this.userProv.getUser();
+    console.log(this.user);
     
-    if(user != undefined && user.id != "-1"){
-      this.userProv.getHistory(user.id).then(data=>{
+    if(this.user != undefined && this.user.id != "-1"){
+      this.userProv.getHistory(this.user.id).then(data=>{
         
         if(data !=undefined && data.length > 0 ){
           for(let i =0;i<data.length ; i++){
@@ -38,11 +44,40 @@ export class LandingPage {
           }
         }
       });
-      this.events.publish('logedin')
-     //this.navCtrl.setRoot(TabsPage)
+      this.skipReady =true;
+   //this.navCtrl.setRoot(TabsPage)
     }else{
+      setTimeout(() => {
+        
+      }, 3000);
+      this.skipReady =true;
      // this.navCtrl.setRoot(SigninPage);
     }
+  }
+
+  swipeChange($event){
+    console.log($event);
+    if($event.direction == 4){
+      this.selectedSegment ==1 ? 1 :  this.selectedSegment = this.selectedSegment-1 ;
+    }else if($event.direction == 2){
+      this.selectedSegment ==3 ?  3 :this.selectedSegment = this.selectedSegment+1;
+    }
+
+    console.log(this.selectedSegment);
+
+
+
+  }
+
+  skip(){
+    if(this.skipReady == true){
+      if(this.user != undefined && this.user.id != "-1"){
+        this.navCtrl.setRoot(TabsPage)
+      }else{
+        this.navCtrl.setRoot(SigninPage);
+      }
+    }
+
   }
 
   ionViewDidLoad() {

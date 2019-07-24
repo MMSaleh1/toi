@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage,LoadingController, NavController, NavParams } from 'ionic-angular';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { User, UserProvider } from '../../providers/user/user';
 /**
@@ -20,7 +20,7 @@ export class UpdateProfilePage {
   public ready = false;
   
   
-  constructor(public navCtrl: NavController, public navParams: NavParams,public formBuilder : FormBuilder,public userProv :UserProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public formBuilder : FormBuilder,public userProv :UserProvider,public loaderCtrl : LoadingController) {
     this.buildForm();
   }
 
@@ -39,7 +39,19 @@ export class UpdateProfilePage {
     console.log('ionViewDidLoad UpdateProfilePage');
   }
 
-  public update(){
+  public async update(){
+    let loading = this.loaderCtrl.create({
+      content: 'Updating ,Please Wait'
+    });
+    console.log(this.updateForm.value.userName);
+    if(this.updateForm.valid){
+      loading.present();
+      this.userProv.updateProfile(this.user.id,this.updateForm.value.userName,this.updateForm.value.phone,this.updateForm.value.email,this.updateForm.value.password,"").then(data=>{
+        loading.dismiss();
+        this.navCtrl.pop();
+      })
+    }
+   
 
   }
 
