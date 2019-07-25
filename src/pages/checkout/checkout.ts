@@ -1,5 +1,5 @@
 import { ThanksPage } from './../thanks/thanks';
-import { UserProvider, area, government } from './../../providers/user/user';
+import { UserProvider, area, government, User } from './../../providers/user/user';
 import { CartProvider } from './../../providers/cart/cart';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -27,6 +27,7 @@ export class CheckoutPage {
   public addressid: string;
   public paymentMethodClass : string ="payment-method";
   public orderReady:boolean =false;
+  public user : User;
   constructor(public navCtrl: NavController, public navParams: NavParams , public userProv: UserProvider) {
     this.cart =CartProvider.getInstance();
     this.governments = new Array();
@@ -38,6 +39,7 @@ export class CheckoutPage {
   }
   async getdata(){
     this.governments = await this.userProv.getGovernment();
+    this.user = await this.userProv.getUser();
     let areas = await this.userProv.getArea();
     for(let i = 0 ;i<this.governments.length;i++){
       for(let j = 0 ; j<areas.length;j++){
@@ -67,14 +69,14 @@ export class CheckoutPage {
     }else if(this.selectedGovernment == undefined){
       alert("select Government And Area");
     }else{
-      this.addressid=await(this.userProv.addAddress(this.address,this.selectedArea.id,this.userProv.getUser().id));
+      this.addressid=await(this.userProv.addAddress(this.address,this.selectedArea.id,this.user.id));
       console.log(this.addressid);
       this.tab = "payment";
     }
    
   }
   async order(){
-    console.log(await this.userProv.Order(this.userProv.getUser().id,this.addressid,0,this.cart.totalPrice,this.cart));
+    console.log(await this.userProv.Order(this.user.id,this.addressid,0,this.cart.totalPrice,this.cart));
     this.cart.clear();
     this.navCtrl.push(ThanksPage);
   }

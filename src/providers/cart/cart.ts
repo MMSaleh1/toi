@@ -49,6 +49,7 @@ export class CartProvider {
   clear() {
     this.cartItems = new Array<CartItem>();
     this.cartQuant = 0;
+    this.totalPrice= 0;
   }
 
   public removeItem(index : any,isDelete:boolean=true){

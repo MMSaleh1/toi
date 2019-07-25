@@ -12,6 +12,7 @@ import { UserProvider, User } from './../providers/user/user';
 
 // import { BackgroundMode } from '@ionic-native/background-mode';
 // import { LocalNotifications } from '@ionic-native/local-notifications';
+import { LandingPage } from '../pages/landing/landing';
 
 
 @Component({
@@ -19,48 +20,18 @@ import { UserProvider, User } from './../providers/user/user';
 })
 export class MyApp {
   public user : User;
-  rootPage:any = SigninPage;
+  rootPage:any = LandingPage;
   isLogedin : boolean = false;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen ,public userProv: UserProvider , public event :Events , public menuCntrl : MenuController) {
     platform.ready().then(() => {
       this.menuCntrl.enable(false);
-      
       this.event.subscribe('logedin',()=>{
-        // this.backgroundMode.enable();
-        this.user = this.userProv.getUser();
-        this.isLogedin = true;
+        // this.backgroundMode.enable()
+          this.isLogedin = true;
         this.menuCntrl.enable(true);
-       
-        this.userProv.getHistory(this.user.id).then(data=>{
-          
-          if(data !=undefined && data.length > 0 ){
-            for(let i =0;i<data.length ; i++){
-             
-              if(data[i].orderStatusId != '6' && data[i].orderStatusId != '4'){
-                
-                this.userProv.SaveUpcommingAppointment(data[i]);
-              }
-            }
-          }
         });
-// if(this.backgroundMode.isEnabled() == true){
-//   this.backgroundMode.on('activate').subscribe(()=>{
-//     this.backgroundcheck().then();
-//    })
-// }
-        
-      //  this.localNotifications.schedule({
-      //   id: 1,
-      //   text: `Test`,
-      //   sound:  'file://beep.caf',
-      // });
      
-
-
-       
-        
-      })
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
@@ -105,6 +76,32 @@ export class MyApp {
   //   }
 
   // }
+
+  async checkUser(){
+
+   
+      
+     
+      
+// if(this.backgroundMode.isEnabled() == true){
+//   this.backgroundMode.on('activate').subscribe(()=>{
+//     this.backgroundcheck().then();
+//    })
+// }
+      
+    //  this.localNotifications.schedule({
+    //   id: 1,
+    //   text: `Test`,
+    //   sound:  'file://beep.caf',
+    // });
+   
+
+
+     
+      
+   
+
+  }
 
   toPage(number:string){
     if(number == '1'){

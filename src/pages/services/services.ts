@@ -13,7 +13,7 @@ export class ServicesPage {
 
   constructor(public navCtrl: NavController , public navparms : NavParams) {
     this.category = this.navparms.get('cate');
-    this.tempSetCates();
+    //this.tempSetCates();
     this.ready = this.category == undefined ? false : true;
 
   }
