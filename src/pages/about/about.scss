@@ -1,50 +1,101 @@
 page-about {
-    .header {
-        .toolbar-title {
-            padding-right: 14px !important;
+   
+    .about-container {
+        .about-item-contaier {
+            margin: 0 0 7vh 0;
         }
-        background: rgba(199, 198, 176, 0.23);
-        .toolbar-background {
-            background: none;
+        color: white;
+        font-family: 'app-font';
+        padding: 7rem 4rem 4rem 4rem;
+        .about-header {
+            padding: 2vh 0 3vh 0;
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+        .about-img-container {
+            width: 37vw;
+            height: 14vh;
+            float: right;
+            margin: -3rem 0 0rem 0rem;
+        
         }
     }
-    ion-card {
-        &.card {
-            border-radius: 10px;
-            .card-content {
-                padding: 1.5rem 2rem;
-                h2 {
-                    font-size: 2rem;
-                    font-weight: 500;
-                    margin-bottom: 1rem;
-                }
-                p {
-                    line-height: 1.55;
-                    font-size: 1.35rem;
-                }
-                .scroll-gallery {
-                    ion-scroll {
-                        position: absolute;
-                        width: 100%;
-                        left: 0;
-                        .scroll-content {
-                            margin-top: auto;
-                            height: 90px;
-                            img {
-                                display: inline-block;
-                                width: 140px;
-                                margin: 0 .4rem;
-                                &:first-child {
-                                    margin-left: 2.5rem;
-                                }
-                                &:last-child {
-                                    margin-right: 2.5rem;
-                                }
-                            }
-                        }
+
+.testimonial-container{
+    background-color: color($colors,secondary);
+    .testimonial-header {
+        height: 10vh;
+        background-color: color($colors,primary);
+        color: color($colors,secondary);
+        font-size: 4rem;
+        font-family: "app-dont";
+        text-align: center;
+        padding: 2vh 0 0px 0;
+    }
+
+    .arrow-down {
+        width: 0;
+        height: 0vw;
+        border-left: 3rem solid transparent;
+        border-right: 3rem solid transparent;
+        border-top: 3rem solid color($colors,primary);
+        margin: -1px 0 0 41vw;
+      }
+      .testimonial-items-container{
+        margin-top: 4vh;
+        margin-bottom: 0;
+    
+         
+          .testimonial-item{
+            width: 90vw;
+            background-color: white;
+            padding: 3vh 0 4vh 5vw;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+            margin: 0 0 7vh 10vw;
+            height: 20vh;
+            display: inline-flex;
+            box-shadow: 3px 3px 4px 1px grey;
+        
+
+            .block1{
+                display: inline-block;
+                .item-image{
+                    right: 11vw;
+                    background: color($colors,primary);
+                    border-radius: 50%;
+                    width: 5rem;
+                    height: 5rem;
+                    bottom: 21vh;
+                    position: relative;
+                    
+                  }
+
+                  .star-container{
+                    width: 3vw;
+                    height: 11vh;
+                    margin: 3vh 0 0 0;
+                    .star-icon{
+                        color: color($colors,secondary)
                     }
                 }
             }
-        }
-    }
+            
+            .text-container{
+                display: inline-block;
+                width: 65vw;
+                margin: -1vh 0 0 -2vh;
+                .text-header{
+                    width: 65vw;
+                    font-size: 3rem;
+                    font-weight: 800;
+                    padding: 0vh 0 0 0vh;
+                    margin: 0 0 2vh 0;
+                }
+            }
+         
+          }
+      }
+}
+   
 }

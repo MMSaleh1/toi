@@ -13,6 +13,7 @@ import { UserProvider, User } from './../providers/user/user';
 import { BackgroundMode } from '@ionic-native/background-mode';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { LandingPage } from '../pages/landing/landing';
+import { AboutPage } from '../pages/about/about';
 
 
 @Component({
@@ -108,7 +109,17 @@ export class MyApp {
       this.rootPage = ContactUsPage;
     }else if(number == '2'){
       this.rootPage = TabsPage;
+    }else if( number == '3'){
+      this.rootPage = AboutPage;
     }
+    
+  }
+
+  logOut(){
+    this.userProv.logOut();
+    this.user=null;
+    this.menuCntrl.enable(false);
+    this.rootPage=SigninPage;
     
   }
 }
