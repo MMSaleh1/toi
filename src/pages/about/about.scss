@@ -9,14 +9,17 @@ page-about {
         padding: 7rem 4rem 4rem 4rem;
         .about-header {
             padding: 2vh 0 3vh 0;
-            font-size: 2.5rem;
+            font-size:5vw;
             font-weight: 600;
+        }
+        .about-content{
+            font-size: 4vw;
         }
         .about-img-container {
             width: 37vw;
             height: 14vh;
             float: right;
-            margin: -3rem 0 0rem 0rem;
+            margin: -7vh 0 0rem 0rem;
         
         }
     }

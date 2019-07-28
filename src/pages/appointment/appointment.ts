@@ -31,8 +31,8 @@ export class AppointmentPage {
     // setTimeout(()=>{
      
     // },1000)
-    alert('Item Has been added to your cart');
-    this.navCtrl.popToRoot();
+    // alert('Item Has been added to your cart');
+    // this.na svCtrl.popToRoot();
   }
 
   checkIfExsist(id){

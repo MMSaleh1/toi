@@ -62,14 +62,14 @@ export class UserProvider extends RootProvider {
       console.log(temp);
       this.http.get(temp).subscribe((data:any)=>{
         console.log(data);
-        if(data != null && data != undefined && data.length>0){
+        if( data != undefined && data.length>0 && data[0].error_name !="already exist"){
           this.user = User.getInstance(data[0].ID,Username,password,email,"Male",PhoneNumber);
           this.storage.set('toi-user',this.user);
           this.event.publish('logedin');
-          resolve(data[0].ID);
+          resolve(true);
 
         }else{
-          resolve("-1")
+          resolve(false)
         }
       })
     })

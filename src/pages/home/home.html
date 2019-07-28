@@ -6,8 +6,8 @@
                 <img  src="assets/imgs/logo.png">
             </div>
             <div class="button-container">
-                <button (tap)="cart()" class="cart-button" ion-button icon-only ><ion-icon name="custom-cart-icon"></ion-icon> </button>
-                <ion-badge *ngIf="cartProv.cartQuant > 0"  id="cart-badge">{{cartProv.cartQuant}}</ion-badge>
+                <button (tap)="cart()" class="cart-button" ion-button icon-only ><ion-icon class="header-icon" name="custom-cart-icon"></ion-icon> </button>
+                <ion-badge *ngIf="cartProv.cartQuant > 0"  class="cart-badge">{{cartProv.cartQuant}}</ion-badge>
             </div>
            
     </ion-navbar>

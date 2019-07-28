@@ -1,8 +1,13 @@
 page-profile {
+    .profile-container{
+        width: 40vh;
+        margin: auto;
+        margin-top: 8vh;
+    }
     .image-container {
-        margin: 9vh 0 0 31vw;
-        width: 13rem;
-        height: 12rem;
+        margin: auto;
+        width: fit-content;
+        
         .profile-image {
             border-radius: 30rem;
             width: 13rem;
@@ -12,20 +17,22 @@ page-profile {
 
     .info-container {
         height: 26vw;
-        padding: 6vh 2vw 0 0vw;
+        padding: 6vh 0 0 0vw;
         text-align: center;
         .name-container {
-            font-size: 3rem;
+            font-size: 5vw;
             font-weight: 600;
             color: white;
+            text-align: center;
         }
     }
 
     .footer-options{
-        width: 70vw;
+    width: 70vw;
     margin: auto;
     border-top-right-radius: 2rem;
     border-top-left-radius: 2rem;
+    height: 25vh;
     }
   .options-container {
     margin: 0 10vw 0 10vw;
@@ -33,9 +40,16 @@ page-profile {
     background-color: white;
     border-top-left-radius: 3rem;
     border-top-right-radius: 3rem;
+    
         .option-item{
             text-align: center;
             height: 33%;
+            
+            font-size: 3vw;
+            
         }
+    }
+    .toolbar-content{
+        height: inherit;
     }
 }

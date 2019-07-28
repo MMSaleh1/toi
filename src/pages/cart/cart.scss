@@ -1,5 +1,11 @@
 page-cart {
 
+    .gender-container{
+        height: 6vh;
+        .gender-item{
+            height: 6vh;
+        }
+    }
 
     .bg-color{
         background-color: color($colors,secondary);
@@ -49,7 +55,7 @@ page-cart {
             }
                 .item-name{
                        
-                    font-size: 2.6rem;
+                    font-size: 4vw;
                     font-weight: 600;
                     font-family:'app-font';
                     padding: 0 0 2vh 0;
@@ -60,6 +66,7 @@ page-cart {
                     display: inline-block;
                     width: 20%;
                     color: color($colors,primary);
+                    font-size: 3vw;
                 }
                 .qunat-container {
                         width: 41%;
@@ -98,6 +105,7 @@ page-cart {
                         height: 3.5vh;
                         padding-bottom: 0.5rem;
                         box-shadow: 0 0 0 0;
+                        height: 6vh;
                     }
                     
                 }
@@ -105,7 +113,7 @@ page-cart {
                     display: inline-block;
                     color: color($colors,dark);
                     background-color: transparent;
-                    font-size: 1.4rem;
+                    font-size: 2vw; 
                     align-self: initial;
                     margin-left: 34vw;
                     box-shadow: 0 0 0 0 ;
@@ -136,9 +144,9 @@ page-cart {
         }
         .confirm-button{
             border-radius: 4rem;
-            font-size: 1.5rem;
+            font-size: 5vw;
             width: 30vw;
-            height: 3.9vh;
+            height: 6vh;
           
         }
 
