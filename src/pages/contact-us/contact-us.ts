@@ -19,14 +19,17 @@ import { User, UserProvider } from '../../providers/user/user';
 export class ContactUsPage {
   public contact : FormGroup;
   user : User;
+  public ready:boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams , public formBuilder : FormBuilder , public userProv :UserProvider , public menuctrl: MenuController) {
+    this.ready=false;
     if(this.menuctrl.isOpen()){
       this.menuctrl.toggle();
     }
     userProv.getUser().then(data=>{
       this.user = data;
       this.buildForm();
+      this.ready=true;
     });
    
   }

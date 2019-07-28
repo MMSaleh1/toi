@@ -41,8 +41,6 @@ import { HistoryPageModule } from '../pages/history/history.module';
 
 import { Database } from '../providers/database/database';
 import { CartProvider } from '../providers/cart/cart';
-// import { BackgroundMode } from '@ionic-native/background-mode';
-// import { LocalNotifications } from '@ionic-native/local-notifications';
 import { UpdateProfilePageModule } from '../pages/update-profile/update-profile.module';
 import { LandingPageModule } from '../pages/landing/landing.module';
 
@@ -125,9 +123,6 @@ import { LandingPageModule } from '../pages/landing/landing.module';
     AutoCompleteProvider,
     Database,
     CartProvider
-    // BackgroundMode,
-    // LocalNotifications
-
     
   ]
 })

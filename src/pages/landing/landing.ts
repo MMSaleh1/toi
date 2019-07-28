@@ -30,8 +30,9 @@ export class LandingPage {
   async getUser(){
      this.user= await this.userProv.getUser();
     console.log(this.user);
-    
+    this.events.publish('logedin');
     if(this.user != undefined && this.user.id != "-1"){
+      
       this.userProv.getHistory(this.user.id).then(data=>{
         
         if(data !=undefined && data.length > 0 ){

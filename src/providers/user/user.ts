@@ -95,6 +95,11 @@ export class UserProvider extends RootProvider {
     })
   }
 
+  public async logOut(){
+    this.user= null;
+    this.storage.remove('toi-user');
+  }
+
   public async updateProfile(id,name,phone,mail,password,user_img) : Promise<any>{
     let temp = `${RootProvider.APIURL}${this.userApiController}${this.updateUserActionString}${id}?name=${name}&phone=${phone}&mail=${mail}&password=${password}&user_img=${user_img}`;
     console.log(temp);

@@ -10,9 +10,8 @@ import { SigninPage } from '../pages/signin/signin';
  
 import { UserProvider, User } from './../providers/user/user';
 
-// import { BackgroundMode } from '@ionic-native/background-mode';
-// import { LocalNotifications } from '@ionic-native/local-notifications';
 import { LandingPage } from '../pages/landing/landing';
+import { AboutPage } from '../pages/about/about';
 
 
 @Component({
@@ -38,44 +37,9 @@ export class MyApp {
       splashScreen.hide();
     });
   }
-  // async backgroundcheck(){
-  //   if(this.backgroundMode.isActive() == true){
-  //     //    this.localNotifications.schedule({
-  //     //   id: 1,
-  //     //   text: `Test`,
-  //     //   sound:  'file://beep.caf',
-  //     // });
 
-  //       setTimeout( () => {
-  //         this.checkOrderStatus();
-          
-  //   }, 18000);
-  //    }
-  //    this.backgroundcheck();
-  // }
-  // async test(){
-  //   for(;;){
-  //     setTimeout( () => {
-  //       this.checkOrderStatus();
-  // }, 18000);
-  //  }
-  // }
 
-  // async checkOrderStatus(){
-  //   let orders = await this.userProv.getUserAppointments();
-  //   for(let i =0;i<orders ;i ++){
-  //     let order = await this.userProv.getSpesificOrder(orders[i].id);
-  //     if(orders[i].orderStatusId != order.orderStatusId){
-  //       this.localNotifications.schedule({
-  //         id: 1,
-  //         text: `Please Check Order number ${order.orderStatusId}`,
-  //         sound:  'file://beep.caf',
-  //       });
-  //     }
-
-  //   }
-
-  // }
+ 
 
   async checkUser(){
 
@@ -108,7 +72,17 @@ export class MyApp {
       this.rootPage = ContactUsPage;
     }else if(number == '2'){
       this.rootPage = TabsPage;
+    }else if( number == '3'){
+      this.rootPage = AboutPage;
     }
+    
+  }
+
+  logOut(){
+    this.userProv.logOut();
+    this.user=null;
+    this.menuCntrl.enable(false);
+    this.rootPage=SigninPage;
     
   }
 }

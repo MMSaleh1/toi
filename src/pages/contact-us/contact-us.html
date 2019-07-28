@@ -13,7 +13,7 @@
 
 <ion-content padding class="bg-color">
   <div class="header-text">Contact Us</div>
-    <form [formGroup]="contact" (ngSubmit)="sendData()"  >
+    <form *ngIf="ready" [formGroup]="contact" (ngSubmit)="sendData()"  >
         <div class="difault-form">  
             <ion-list>
                 <ion-item  class="form-item">
