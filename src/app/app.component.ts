@@ -10,8 +10,6 @@ import { SigninPage } from '../pages/signin/signin';
  
 import { UserProvider, User } from './../providers/user/user';
 
-import { BackgroundMode } from '@ionic-native/background-mode';
-import { LocalNotifications } from '@ionic-native/local-notifications';
 import { LandingPage } from '../pages/landing/landing';
 import { AboutPage } from '../pages/about/about';
 
@@ -24,7 +22,7 @@ export class MyApp {
   rootPage:any = LandingPage;
   isLogedin : boolean = false;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen ,public userProv: UserProvider , public event :Events , public menuCntrl : MenuController,public backgroundMode: BackgroundMode,public localNotifications: LocalNotifications) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen ,public userProv: UserProvider , public event :Events , public menuCntrl : MenuController) {
     platform.ready().then(() => {
       this.menuCntrl.enable(false);
       this.event.subscribe('logedin',()=>{
@@ -39,44 +37,9 @@ export class MyApp {
       splashScreen.hide();
     });
   }
-  async backgroundcheck(){
-    if(this.backgroundMode.isActive() == true){
-      //    this.localNotifications.schedule({
-      //   id: 1,
-      //   text: `Test`,
-      //   sound:  'file://beep.caf',
-      // });
 
-        setTimeout( () => {
-          this.checkOrderStatus();
-          
-    }, 18000);
-     }
-     this.backgroundcheck();
-  }
-  async test(){
-    for(;;){
-      setTimeout( () => {
-        this.checkOrderStatus();
-  }, 18000);
-   }
-  }
 
-  async checkOrderStatus(){
-    let orders = await this.userProv.getUserAppointments();
-    for(let i =0;i<orders ;i ++){
-      let order = await this.userProv.getSpesificOrder(orders[i].id);
-      if(orders[i].orderStatusId != order.orderStatusId){
-        this.localNotifications.schedule({
-          id: 1,
-          text: `Please Check Order number ${order.orderStatusId}`,
-          sound:  'file://beep.caf',
-        });
-      }
-
-    }
-
-  }
+ 
 
   async checkUser(){
 
