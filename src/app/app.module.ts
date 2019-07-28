@@ -43,6 +43,8 @@ import { Database } from '../providers/database/database';
 import { CartProvider } from '../providers/cart/cart';
 import { UpdateProfilePageModule } from '../pages/update-profile/update-profile.module';
 import { LandingPageModule } from '../pages/landing/landing.module';
+import { TermsPageModule } from '../pages/terms/terms.module';
+
 
 
 // import {AngularFireModule} from 'angu';
@@ -92,6 +94,7 @@ import { LandingPageModule } from '../pages/landing/landing.module';
     HistoryPageModule,
     UpdateProfilePageModule,
     LandingPageModule,
+    TermsPageModule,
 
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp)

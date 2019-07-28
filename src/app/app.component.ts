@@ -12,6 +12,7 @@ import { UserProvider, User } from './../providers/user/user';
 
 import { LandingPage } from '../pages/landing/landing';
 import { AboutPage } from '../pages/about/about';
+import { TermsPage } from '../pages/terms/terms';
 
 
 @Component({
@@ -74,6 +75,8 @@ export class MyApp {
       this.rootPage = TabsPage;
     }else if( number == '3'){
       this.rootPage = AboutPage;
+    } else if(number == '4'){
+      this.rootPage = TermsPage;
     }
     
   }
