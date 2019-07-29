@@ -50,20 +50,21 @@ page-services {
      
     .card {
         display: inline-grid;
-        width: 34vw;
-        height: 21vh;
-        margin: 2rem;
+        width: 35vw;
+        height: 27vh;
+       
         background-color: transparent;
         box-shadow: inherit;
         figure {
             margin: 0;
             border-radius: 50%;
-            height: 16vh;
+            height: 35vw;
+            width: 35vw;
             
             background-color: #231f20;
             img {
         
-            height: 16vh;
+            height: 35vw;
             border-radius: inherit;
             }
             }
@@ -79,5 +80,8 @@ page-services {
 
     .list-container{
         padding-top: 4vh;
+        .list{
+            height: 80vh;
+        }
     }
 }

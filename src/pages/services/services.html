@@ -12,9 +12,11 @@
 
 <ion-content padding class="bg-color">
     <div class="list-container" *ngIf="ready">
+        <ion-scroll scrollY="true" class="list">
     <ion-card *ngFor="let item of category.children" (click)="appointment(item)" class="card">
         <figure><img [src]="item.images[0]"></figure>
         <div class="name">{{item.name}}</div>
     </ion-card>
+</ion-scroll>
 </div>
 </ion-content>

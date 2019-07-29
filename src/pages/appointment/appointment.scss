@@ -43,18 +43,29 @@ page-appointment {
         .items-container{
             .item-list{
                 height: 45vh;
+                .scroll-content{
+                    padding: 0 !important;
+                }
             }
             .item{
                 padding-left: 9vw;
                 padding-bottom: 3vh;
-                border-bottom-left-radius: 30px;
+                
             }
                 .item-name{
                        
                     font-size: 5vw;
                     font-weight: 600;
-                    font-family:'app-font';
+                    font-family: 'app-font';
                     padding: 0 0 2vh 0;
+                    width: 55vw;
+                    white-space: normal;
+                    display: inline-block;
+                }
+                .item-price {
+                    display: inline-block;
+                    font-size: 5vw;
+                    font-family: 'app-font';
                 }
             
                 
@@ -65,6 +76,7 @@ page-appointment {
                     background-color: color($colors,primary);
                     height: 5vh;
                     border-radius: 20px;
+                    display: block;
                 }
             }
         }

@@ -1,5 +1,8 @@
 page-about {
    
+    .list-container{
+        height: 90vh;
+    }
     .about-container {
         .about-item-contaier {
             margin: 0 0 7vh 0;
@@ -19,7 +22,7 @@ page-about {
             width: 37vw;
             height: 14vh;
             float: right;
-            margin: -7vh 0 0rem 0rem;
+            margin: -5vh 0 0rem 0rem;
         
         }
     }
@@ -30,7 +33,7 @@ page-about {
         height: 10vh;
         background-color: color($colors,primary);
         color: color($colors,secondary);
-        font-size: 4rem;
+        font-size: 8vw;
         font-family: "app-dont";
         text-align: center;
         padding: 2vh 0 0px 0;
@@ -39,10 +42,11 @@ page-about {
     .arrow-down {
         width: 0;
         height: 0vw;
-        border-left: 3rem solid transparent;
-        border-right: 3rem solid transparent;
-        border-top: 3rem solid color($colors,primary);
-        margin: -1px 0 0 41vw;
+        border-left: 5vw solid transparent;
+        border-right: 5vw solid transparent;
+        margin: auto;
+        margin-top: -1px;
+        border-top: 5vw solid color($colors,primary);
       }
       .testimonial-items-container{
         margin-top: 4vh;
@@ -56,7 +60,7 @@ page-about {
             border-top-left-radius: 15px;
             border-bottom-left-radius: 15px;
             margin: 0 0 7vh 10vw;
-            height: 25vh;
+            height: auto;
             display: inline-flex;
             box-shadow: 3px 3px 4px 1px grey;
         
@@ -67,8 +71,8 @@ page-about {
                     right: 11vw;
                     background: color($colors,primary);
                     border-radius: 50%;
-                    width: 5rem;
-                    height: 5rem;
+                    width: 12vw;
+                    height: 12vw;
                     bottom: 21vh;
                     position: relative;
                     
@@ -79,7 +83,8 @@ page-about {
                     height: 11vh;
                     margin: 3vh 0 0 0;
                     .star-icon{
-                        color: color($colors,secondary)
+                        color: color($colors,secondary);
+                        font-size : 3vw;
                     }
                 }
             }
@@ -90,10 +95,13 @@ page-about {
                 margin: -1vh 0 0 -2vh;
                 .text-header{
                     width: 65vw;
-                    font-size: 2rem;
+                    font-size:6vw;
                     font-weight: 800;
                     padding: 0vh 0 0 0vh;
                     margin: 0 0 2vh 0;
+                }
+                .text {
+                    font-size: 4vw;
                 }
             }
          

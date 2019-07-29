@@ -1,6 +1,7 @@
 page-tabs {
     .tab-button-icon{
         color: color($colors,secondary);
+        font-size: 10vw !important; 
     }
     .tabs-ios .tab-button.icon-only {
         min-height: 41px;
