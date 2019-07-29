@@ -1,20 +1,22 @@
 import { TabsPage } from './../tabs/tabs';
 import { Component } from '@angular/core';
-import { NavController, LoadingController, Events } from 'ionic-angular';
+import { NavController, LoadingController, Events} from 'ionic-angular';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 import { HomePage } from '../home/home';
 import { SigninPage } from '../signin/signin';
 
 import {User , UserProvider} from '../../providers/user/user';
+import { Storage } from '@ionic/storage';
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html'
 })
 export class SignupPage {
   public regesterForm: FormGroup;
+  public user : User;
 
-  constructor(public navCtrl: NavController,public formBuilder : FormBuilder , public loadCtrl : LoadingController , public userProvider : UserProvider ,public events : Events) {
+  constructor(public navCtrl: NavController,public formBuilder : FormBuilder , public loadCtrl : LoadingController , public userProvider : UserProvider ,public events : Events ,public storage : Storage) {
     this.buildForm();
 
   }
@@ -60,8 +62,13 @@ export class SignupPage {
            let add = await this.userProvider.RegesterNop(this.regesterForm.value.userName,this.regesterForm.value.password,this.regesterForm.value.email,this.regesterForm.value.phone);
            console.log(add);
            loading.dismiss();
-            if(add!= "-1"){
-              this.events.publish('logedin',true);
+            if(add == true){
+            this.user = User.getInstance();
+           this.storage.set('user',this.user);
+           this.events.publish('logedin')
+           
+
+              
             console.log(this.userProvider.user);
            this.navCtrl.setRoot(TabsPage);
             

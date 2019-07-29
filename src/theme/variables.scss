@@ -58,6 +58,13 @@ ion-app.md {
       background-color: color($colors,dark);
 
   }
+  
+  .bar-button{
+    ion-icon{
+      font-size: 7vw;
+    }
+    
+  }
           
   .logo-container{
       width: 30%;
@@ -82,16 +89,29 @@ ion-app.md {
       margin-bottom: 20px;
   }
   .button-container {
-    display: inline-block;
+    display: inline;
     position: absolute;
-    top: 3vh;
-    right: 3vw;
+    bottom: 4vh;
+    right: 0vw;
+    width: 12vw;
+
     .cart-button{
       background-color: transparent;
       height: 5vh;
-      .cart-badge{
-        
+      .header-icon{
+        font-size: 8vw;
       }
+     
+  }
+  .cart-badge{
+    border-radius: 10px;
+    color: #fff;
+    background-color: #ccc2b2;
+    position: absolute;
+    bottom: 3vh;
+    left: 5vw;
+    font-size: 3vw;
+    
   }
 }
   
@@ -142,12 +162,12 @@ $tabs-ios-tab-icon-color-active: color($colors, golden);
 $tabs-ios-tab-text-color-active: color($colors, golden);
 
 .tabs-md .tabbar{
-  background-color: transparent !important; 
+ background-color: black !important; 
 
 }
 
 .tabs-ios .tabbar{
-  background-color: transparent !important;
+  background-color: black  !important;
 }
 
 

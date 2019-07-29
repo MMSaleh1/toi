@@ -24,9 +24,9 @@ height: 30vh;
         height: 30vh;
         font-family: "app-font";
         width: 50vw;
-        font-size: 2rem;
+        font-size: 7.5vw;
         white-space: normal;
-        padding: 12vh 4rem 5rem 5rem;
+        padding: 11vh 1vw 5vh 4vw;
     }
     .images-wrapper {
         height: 30vh;
@@ -55,8 +55,11 @@ background-color: color($colors,dark);
 .text{
     font-family: "app-font";
     white-space: normal;
-    padding: 10rem 5rem 5rem 5rem;
     color: color($colors,secondary);
+    
+    padding: 6vh 10vw 10vw 10vw;
+    
+    font-size: 5vw;
 
 }
 }
@@ -82,7 +85,7 @@ background-color: color($colors,dark);
             height: 19vh;
             background-color: color($colors,primary);
             font-family: "app-font";
-            font-size: 3rem;
+            font-size: 7.5vw;
             padding: 3rem 3rem 3rem 5rem;
             white-space: normal;
             font-weight: 800;
@@ -92,7 +95,8 @@ background-color: color($colors,dark);
             height: 50vh;
             background-color: color($colors,dark);
             width: 50vw;
-            font-size: 2rem;
+            font-size: 5vw;
+            text-align: center;
             padding: 4rem;
             white-space: normal;
             color: color($colors,secondary);
@@ -120,8 +124,8 @@ background-color: color($colors,dark);
             height: 25vh;
             background-color: color($colors,primary);
             font-family: "app-font";
-            font-size: 3rem;
-            padding: 3rem 3rem 3rem 5rem;
+            font-size: 7vw;
+            padding: 6vh 1vw 1vh 6vw;      
             white-space: normal;
             font-weight: 800;
             color: color($colors,secondary);
@@ -130,8 +134,8 @@ background-color: color($colors,dark);
             height: 26vh;
             background-color: color($colors,dark);
             width: 50vw;
-            font-size: 1.4rem;
-            padding: 4rem 4rem 0rem 4rem;
+            font-size: 5vw;
+            padding: 7vh 3rem 0rem 4rem;
             white-space: normal;
             color: color($colors,secondary);
         }
@@ -165,5 +169,6 @@ background-color: color($colors,dark);
     position: absolute;
     bottom: 3vh;
     right: 2vh;
+    font-size: 4.5vw;
 }
 }
