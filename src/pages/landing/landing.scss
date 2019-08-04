@@ -157,10 +157,13 @@ background-color: color($colors,dark);
             }
         }
         .image-container2 {
-            height: 100vh;
+            position: relative;
+            bottom: 20vh;
             .image{
-                height:25vh ;
-                width: 50vw;
+                position: relative;
+                bottom: 26vh;
+                height: 33vh;
+                margin: auto;
             }
         }
        
