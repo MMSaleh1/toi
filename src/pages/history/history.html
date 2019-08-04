@@ -1,47 +1,48 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon color="primary" name="ios-menu-outline"></ion-icon>
+    </button>
 
-  <ion-header>
-    <ion-navbar>
-            <button ion-button menuToggle><ion-icon name="ios-menu-outline"></ion-icon></button>
+    <ion-title>
+      <img src="assets/imgs/logo.png">
+    </ion-title>
 
-            <div class="logo-container">
-                <img  src="assets/imgs/logo.png">
-            </div>
-
-    </ion-navbar>
+  </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-    <ion-segment [(ngModel)]="tab"  mode="md">
-        <ion-segment-button value="1">
-          UPCOMING
-        </ion-segment-button>
-        <ion-segment-button value="2">
-        PAST
-        </ion-segment-button>
-      </ion-segment>
+  <ion-segment [(ngModel)]="tab" mode="md">
+    <ion-segment-button value="1">
+      UPCOMING
+    </ion-segment-button>
+    <ion-segment-button value="2">
+      PAST
+    </ion-segment-button>
+  </ion-segment>
 
-      <div *ngIf="tab =='1'">
-        <ion-scroll scrollY='true' class="list-container">
-          <ion-list>
-          <ion-item class="order-item" *ngFor="let item of onGoingOrders">
-            <div class="item-name">{{item.productName}}</div>
-            <div class="item-cost">{{item.cost}} LE</div>
-          </ion-item>
-        </ion-list>
-      </ion-scroll>
+  <div *ngIf="tab =='1'">
+    <ion-scroll scrollY='true' class="list-container">
+      <ion-list>
+        <ion-item class="order-item" *ngFor="let item of onGoingOrders">
+          <div class="item-name">{{item.productName}}</div>
+          <div class="item-cost">{{item.cost}} LE</div>
+        </ion-item>
+      </ion-list>
+    </ion-scroll>
 
-      </div>
+  </div>
 
-      <div *ngIf="tab =='2'">
-        <ion-scroll scrollY='true' class="list-container">
-            <ion-list >
-                <ion-item class="order-item" *ngFor="let item of doneOrders">
-                  <div class="item-name">{{item.productName}}</div>
-                  <div class="item-cost">{{item.cost}} LE</div>
-                </ion-item>
-              </ion-list>
-        </ion-scroll>
-         
-        </div>
+  <div *ngIf="tab =='2'">
+    <ion-scroll scrollY='true' class="list-container">
+      <ion-list>
+        <ion-item class="order-item" *ngFor="let item of doneOrders">
+          <div class="item-name">{{item.productName}}</div>
+          <div class="item-cost">{{item.cost}} LE</div>
+        </ion-item>
+      </ion-list>
+    </ion-scroll>
+
+  </div>
 
 </ion-content>

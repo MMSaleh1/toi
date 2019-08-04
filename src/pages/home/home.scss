@@ -1,111 +1,131 @@
 page-home {
-        .scroll-content{
-            padding-right: 0 !important;
-            padding-left: 0 !important;
-            padding-top: 0 !important;
-        }
-        .category-container{
-            height: 59vh;
-            .slider{
-                height: 56vh;
-                .slide{
+    .header-icon {
+        font-size: 30px !important;
+        margin-right: 8px;
+    }
+
+    .scroll-content {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+        padding-top: 0 !important;
+    }
+
+    .category-container {
+        height: 59vh;
+
+        .slider {
+            height: 56vh;
+
+            .slide {
+                height: 59vh;
+                width: 100vw;
+
+                .slide-image {
                     height: 59vh;
-                    width: 100vw;
-                    .slide-image{
-                        height: 59vh;
-                        width: 100vh;
-                    }
-                }
-            }
-            .cate-button{
-               bottom: 11vh;
-               border-radius: 28px;
-               width: 37vw;
-               left: 2vw;
-               font-size: 3vw;
-               height: 5vh;
-   
-            }
-        }
-
-        .icon-left {
-            position: absolute;
-            top: 27vh;
-            font-size: 5rem;
-            left: 5vw;
-            z-index: 999;
-            color: color($colors,primary);
-        }
-
-        .icon-right {
-            top: 27vh;
-            position: absolute;
-            font-size: 5rem;
-            right: 5vw;
-            z-index: 999;
-            color: color($colors,primary);
-        }
-
-
-        .ads-container{
-            height: 9vh;
-            padding: 1vh 5vw 0px 12vw;
-        
-            .header-container{
-                .header{
-                    font-size: 2rem;
-                    font-weight: 600;
-                }
-            }
-            .body-container{
-                padding: 1vh 0 0 0;
-                .body{
-                    
-                    font-size: 1.5rem;
+                    width: 100vh;
                 }
             }
         }
 
+        .cate-button {
+            bottom: 11vh;
+            border-radius: 28px;
+            width: 37vw;
+            left: 2vw;
+            font-size: 3vw;
+            height: 5vh;
+
+        }
+    }
+
+    .icon-left {
+        position: absolute;
+        top: 27vh;
+        font-size: 5rem;
+        left: 5vw;
+        z-index: 999;
+        color: color($colors, primary);
+    }
+
+    .icon-right {
+        top: 27vh;
+        position: absolute;
+        font-size: 5rem;
+        right: 5vw;
+        z-index: 999;
+        color: color($colors, primary);
+    }
+
+
+    .ads-container {
+        height: 9vh;
+        padding: 1vh 5vw 0px 12vw;
+
+        .header-container {
+            .header {
+                font-size: 2rem;
+                font-weight: 600;
+            }
+        }
+
+        .body-container {
+            padding: 1vh 0 0 0;
+
+            .body {
+
+                font-size: 1.5rem;
+            }
+        }
+    }
 
 
 
 
 
-  
+
+
     .toolbar-ios ion-title {
         position: relative;
     }
+
     .header {
         .toolbar-background {
-            background-color: color($colors,dark);
+            background-color: color($colors, dark);
 
         }
-                
-        .logo-container{
+
+        .logo-container {
             width: 30%;
             margin: 0px 0vw 0 28vw;
         }
+
         &::after {
             display: none;
         }
+
         .toolbar {
             padding-left: 0;
             padding-right: 0;
+
             .back-button {
                 color: #fff;
             }
+
             .toolbar-title {
                 color: #fff;
                 padding: 0 16px;
             }
         }
+
         .title {
             margin-bottom: 20px;
         }
     }
+
     ion-header {
         .scroll-zoom-wrapper {
             padding: 0 12px;
+
             .menu-items {
                 width: 130px;
                 display: inline-block;
@@ -115,12 +135,15 @@ page-home {
                 margin: 0 4px;
                 box-shadow: none;
                 border-radius: 5px;
+
                 &:last-child {
                     margin-right: 16px;
                 }
+
                 .card-content {
                     padding-top: 48px;
                     font-size: 1.35rem;
+
                     img {
                         position: absolute;
                         top: 0;
@@ -132,12 +155,14 @@ page-home {
             }
         }
     }
+
     h2 {
         font-weight: 400;
         font-size: 1.8rem;
         margin-top: 10px !important;
         margin-bottom: 20px;
     }
+
     .card {
         margin: 0;
         width: 100%;
@@ -147,8 +172,10 @@ page-home {
         position: relative;
         height: 100px;
         margin-bottom: 16px;
+
         figure {
             margin: 0;
+
             img {
                 width: 100%;
                 height: 100%;
@@ -157,6 +184,7 @@ page-home {
                 left: 0;
             }
         }
+
         h3 {
             color: #444444;
             position: relative;
@@ -165,6 +193,7 @@ page-home {
             margin-top: 22px;
             margin-left: 22px;
             padding-bottom: 8px;
+
             &::after {
                 content: '';
                 position: absolute;
@@ -177,7 +206,8 @@ page-home {
             }
         }
     }
-    .vertical-scroll{
+
+    .vertical-scroll {
         height: 62vh;
     }
 }
