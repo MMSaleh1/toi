@@ -21,11 +21,24 @@ export class LandingPage {
   selectedSegment : number;
   public user :User;
   public skipReady
-
+  config = {};
   constructor(public navCtrl: NavController, public navParams: NavParams, public userProv :UserProvider , public events : Events) {
    this.skipReady= false;
     this.getUser().then();
    this.selectedSegment = 1;
+   this.config = {
+    speed: 1000,
+    paginationClickable: true,
+    // spaceBetween: 30,
+    centeredSlides: true,
+    autoplay: 2000,
+    autoplayDisableOnInteraction: false,
+    initialSlide: 0,
+    slidesPerView: 1,
+    effect: 'fade',
+  };
+
+
   }
   async getUser(){
      this.user= await this.userProv.getUser();
