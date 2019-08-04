@@ -1,3 +1,4 @@
+// import { Firebase } from '@ionic-native/firebase';
 import { TabsPage } from './../pages/tabs/tabs';
 import { ContactUsPage } from './../pages/contact-us/contact-us';
 import { Component } from '@angular/core';
@@ -5,33 +6,72 @@ import { Platform, Events, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+
+import { ToastController } from 'ionic-angular';
+import { Subject } from 'rxjs/Subject';
+import { tap } from 'rxjs/operators';
+
+
 //import { HomePage } from '../pages/home/home';
 import { SigninPage } from '../pages/signin/signin';
- 
+
+
 import { UserProvider, User } from './../providers/user/user';
 
 import { LandingPage } from '../pages/landing/landing';
 import { AboutPage } from '../pages/about/about';
 import { TermsPage } from '../pages/terms/terms';
+import { NotificationsProvider } from '../providers/notifications/notifications';
+
+
 
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  public user : User;
-  rootPage:any = LandingPage;
-  isLogedin : boolean = false;
+  public user: User;
+  rootPage: any = LandingPage;
+  isLogedin: boolean = false;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen ,public userProv: UserProvider , public event :Events , public menuCntrl : MenuController) {
+  constructor(
+    public platform: Platform
+    , statusBar: StatusBar
+    , splashScreen: SplashScreen
+    , public userProv: UserProvider
+    , public event: Events
+    , private notifyCtrl: NotificationsProvider
+    , public menuCntrl: MenuController
+    // ,public firebase : Firebase
+    , public fcm: NotificationsProvider
+    , public toastCtrl: ToastController,
+  ) {
     platform.ready().then(() => {
+      console.log('Checking platform');
+      console.log(this.platform.is('cordova'));
       this.menuCntrl.enable(false);
-      this.event.subscribe('logedin',()=>{
-        // this.backgroundMode.enable()
-          this.isLogedin = true;
+      this.event.subscribe('logedin', () => {
+
+        this.isLogedin = true;
         this.menuCntrl.enable(true);
-        });
+
+        
+
+        // this.backgroundMode.enable()
+
+      });
      
+      if(this.platform.is('cordova')){
+        this.notifyCtrl.init();
+       
+      }
+
+
+      // var notificationOpenedCallback = function(jsonData) {
+      //   console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+      // };
+
+
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
@@ -40,53 +80,55 @@ export class MyApp {
   }
 
 
- 
 
-  async checkUser(){
 
-   
-      
-     
-      
-// if(this.backgroundMode.isEnabled() == true){
-//   this.backgroundMode.on('activate').subscribe(()=>{
-//     this.backgroundcheck().then();
-//    })
-// }
-      
+
+
+  async checkUser() {
+
+
+
+
+
+    // if(this.backgroundMode.isEnabled() == true){
+    //   this.backgroundMode.on('activate').subscribe(()=>{
+    //     this.backgroundcheck().then();
+    //    })
+    // }
+
     //  this.localNotifications.schedule({
     //   id: 1,
     //   text: `Test`,
     //   sound:  'file://beep.caf',
     // });
-   
 
 
-     
-      
-   
+
+
+
+
 
   }
 
-  toPage(number:string){
-    if(number == '1'){
+
+  toPage(number: string) {
+    if (number == '1') {
       this.rootPage = ContactUsPage;
-    }else if(number == '2'){
+    } else if (number == '2') {
       this.rootPage = TabsPage;
-    }else if( number == '3'){
+    } else if (number == '3') {
       this.rootPage = AboutPage;
-    } else if(number == '4'){
+    } else if (number == '4') {
       this.rootPage = TermsPage;
     }
-    
+
   }
 
-  logOut(){
+  logOut() {
     this.userProv.logOut();
-    this.user=null;
+    this.user = null;
     this.menuCntrl.enable(false);
-    this.rootPage=SigninPage;
-    
+    this.rootPage = SigninPage;
+
   }
 }
-

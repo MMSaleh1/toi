@@ -19,6 +19,7 @@ import { ServicesPage } from '../pages/services/services';
 import { SigninPage } from '../pages/signin/signin';
 import { SignupPage } from '../pages/signup/signup';
 import { TestimonialsPage } from '../pages/testimonials/testimonials';
+import { OneSignal } from '@ionic-native/onesignal';
 
 import { RootProvider } from '../providers/root/root';
 import { ItemsApiProvider } from '../providers/items-api/items-api';
@@ -44,22 +45,9 @@ import { CartProvider } from '../providers/cart/cart';
 import { UpdateProfilePageModule } from '../pages/update-profile/update-profile.module';
 import { LandingPageModule } from '../pages/landing/landing.module';
 import { TermsPageModule } from '../pages/terms/terms.module';
+import { NotificationsProvider } from '../providers/notifications/notifications';
 
 
-
-// import {AngularFireModule} from 'angu';
-// import {AngularFirestoreModule} from 'angularfire2/firestore';
-
-
-
-// export const firebaseConfig = {
-//   apiKey: "AIzaSyBcXtmREL52-gFg7AoVr1O_tyHs-OFPPRA",
-//   authDomain: "testnotification-2aeb8.firebaseapp.com",
-//   databaseURL: "https://testnotification-2aeb8.firebaseio.com/",
-//   storageBucket: "gs://testnotification-2aeb8.appspot.com",
-//   messagingSenderId: '1084167454656',
-//   projectId: 'testnotification-2aeb8'
-// };
 
 @NgModule({
   declarations: [
@@ -123,9 +111,11 @@ import { TermsPageModule } from '../pages/terms/terms.module';
     RootProvider,
     ItemsApiProvider,
     UserProvider,
+    OneSignal,
     AutoCompleteProvider,
     Database,
-    CartProvider
+    CartProvider,
+    NotificationsProvider
     
   ]
 })
