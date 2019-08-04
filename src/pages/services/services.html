@@ -1,10 +1,12 @@
 <ion-header>
     <ion-navbar>
-            <button ion-button menuToggle><ion-icon name="ios-menu-outline"></ion-icon></button>
+        <button ion-button menuToggle>
+            <ion-icon color="primary" name="ios-menu-outline"></ion-icon>
+        </button>
 
-            <div class="logo-container">
-                <img  src="assets/imgs/logo.png">
-            </div>
+        <ion-title>
+            <img src="assets/imgs/logo.png">
+        </ion-title>
 
     </ion-navbar>
 </ion-header>
@@ -13,10 +15,12 @@
 <ion-content padding class="bg-color">
     <div class="list-container" *ngIf="ready">
         <ion-scroll scrollY="true" class="list">
-    <ion-card *ngFor="let item of category.children" (click)="appointment(item)" class="card">
-        <figure><img [src]="item.images[0]"></figure>
-        <div class="name">{{item.name}}</div>
-    </ion-card>
-</ion-scroll>
-</div>
+            <ion-card *ngFor="let item of category.children" (click)="appointment(item)" class="card">
+                <figure>
+                    <img [src]="item.images[0]">
+                </figure>
+                <div class="name">{{item.name}}</div>
+            </ion-card>
+        </ion-scroll>
+    </div>
 </ion-content>

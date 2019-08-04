@@ -1,3 +1,32 @@
 page-notifications {
 
+    .content {
+        background-image: url(../assets/imgs/bg.png) !important;
+        background-repeat: round;
+
+        .notifyCard {
+            background-color: color($colors, light, base);
+            border-radius: 20px;
+            display: flex;
+
+            .icon {
+                margin: 10px !important;
+                font-size: 23px;
+                margin-top: 6px !important;
+
+                @include ltr {
+                    text-align: left !important;
+                }
+
+                @include rtl {
+                    text-align: right !important;
+                }
+            }
+
+            p {
+                margin-top: 8px;
+                color: color($colors, primary, base) !important;
+            }
+        }
+    }
 }

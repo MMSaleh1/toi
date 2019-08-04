@@ -82,7 +82,7 @@ page-cart {
                         border-bottom-left-radius: 1rem;
                         border-top-left-radius: 1rem;
                         color: color($colors,primary);
-                        height: 4.5vh;
+                        height: 6.5vh;
                         padding-bottom: 2.5rem;
                         box-shadow: 0 0 0 0;
                     }
@@ -95,6 +95,7 @@ page-cart {
                         text-align: center;
                         /* padding-bottom: 3vw; */
                         height: 4vh;
+                        margin-top: -7px;
                     }
 
                 .remove-button {
@@ -116,6 +117,7 @@ page-cart {
                     color: color($colors,dark);
                     background-color: transparent;
                     font-size: 4vw; 
+                    margin-top: -20px;
                     align-self: initial;
                     margin-left: 34vw;
                     box-shadow: 0 0 0 0 ;
@@ -146,9 +148,9 @@ page-cart {
         }
         .confirm-button{
             border-radius: 4rem;
-            font-size: 5vw;
-            width: 30vw;
-            height: 6vh;
+            font-size: 17px;
+            width: 120px;
+            height: 30px;
           
         }
 
