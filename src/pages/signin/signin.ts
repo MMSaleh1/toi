@@ -10,6 +10,7 @@ import { HomePage } from '../home/home';
 
 import {User , UserProvider} from '../../providers/user/user';
 import { ItemsApiProvider } from '../../providers/items-api/items-api';
+import { NotificationsProvider } from '../../providers/notifications/notifications';
 @Component({
   selector: 'page-signin',
   templateUrl: 'signin.html'
@@ -23,6 +24,7 @@ export class SigninPage {
     , public storage : Storage
     , public itemProv : ItemsApiProvider
     , public events : Events
+    , public notifiCtrl: NotificationsProvider
     ) {
     this.buildForm();
 
@@ -60,6 +62,10 @@ export class SigninPage {
         if(bool == true){
          
            this.user = User.getInstance();
+           let token = await this.notifiCtrl.getDeviceId();
+           this.userProvider.updateDeviceToken(this.user.id,token);
+           this.user.deviceID = token;
+           console.log(this.user);
            this.storage.set('user',this.user);
            this.events.publish('logedin')
            loading.dismiss(); 

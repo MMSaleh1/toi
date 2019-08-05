@@ -15,6 +15,7 @@ import { SigninPage } from '../signin/signin';
 
 import { User, UserProvider } from '../../providers/user/user';
 import { Storage } from '@ionic/storage';
+import { NotificationsProvider } from '../../providers/notifications/notifications';
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html'
@@ -23,7 +24,14 @@ export class SignupPage {
   public regesterForm: FormGroup;
   public user: User;
 
-  constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public loadCtrl: LoadingController, public userProvider: UserProvider, public events: Events, public storage: Storage) {
+  constructor(public navCtrl: NavController
+    , public formBuilder: FormBuilder
+    , public loadCtrl: LoadingController
+    , public userProvider: UserProvider
+    , public events: Events
+    , public storage: Storage
+    , public notifiCtrl : NotificationsProvider
+    ) {
     this.buildForm();
 
   }
@@ -74,8 +82,8 @@ export class SignupPage {
     } else {
       if (this.regesterForm.valid) {
         loading.present();
-
-        let add = await this.userProvider.RegesterNop(this.regesterForm.value.userName, this.regesterForm.value.password, this.regesterForm.value.email, this.regesterForm.value.phone);
+        let token = await this.notifiCtrl.getDeviceId();
+        let add = await this.userProvider.RegesterNop(this.regesterForm.value.userName, this.regesterForm.value.password, this.regesterForm.value.email, this.regesterForm.value.phone,token);
         console.log(add);
         loading.dismiss();
         if (add == true) {

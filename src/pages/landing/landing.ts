@@ -18,11 +18,13 @@ import { SigninPage } from '../signin/signin';
 })
 export class LandingPage {
 
+  
   selectedSegment : number;
   public user :User;
   public skipReady
   config = {};
   constructor(public navCtrl: NavController, public navParams: NavParams, public userProv :UserProvider , public events : Events) {
+    this.test("145",192,"hello",false);
    this.skipReady= false;
     this.getUser().then();
    this.selectedSegment = 1;
@@ -43,7 +45,6 @@ export class LandingPage {
   async getUser(){
      this.user= await this.userProv.getUser();
     console.log(this.user);
-    this.events.publish('logedin');
     if(this.user != undefined && this.user.id != "-1"){
       
       this.userProv.getHistory(this.user.id).then(data=>{
@@ -58,6 +59,7 @@ export class LandingPage {
           }
         }
       });
+      this.events.publish('logedin')
       this.skipReady =true;
    //this.navCtrl.setRoot(TabsPage)
     }else{
@@ -86,6 +88,7 @@ export class LandingPage {
   skip(){
     if(this.skipReady == true){
       if(this.user != undefined && this.user.id != "-1"){
+        this.events.publish('logedin')
         this.navCtrl.setRoot(TabsPage)
       }else{
         this.navCtrl.setRoot(SigninPage);
@@ -96,6 +99,9 @@ export class LandingPage {
 
   ionViewDidLoad() {
    
+  }
+  test(...a){
+    console.log(a);
   }
 
 }

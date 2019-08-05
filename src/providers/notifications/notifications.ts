@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 // import { AngularFirestore} from 'angularfire2/firestore';
 import { UserProvider, User } from './../user/user';
 import { OneSignal } from '@ionic-native/onesignal';
+import { Platform } from 'ionic-angular';
 
 /*
   Generated class for the NotificationsProvider provider.
@@ -17,17 +18,19 @@ import { OneSignal } from '@ionic-native/onesignal';
 export class NotificationsProvider {
   public user: User;
 
-  constructor(public http: HttpClient,
-    private oneSignal: OneSignal,
-    public userProv: UserProvider) {
+  constructor(public http: HttpClient
+    ,private oneSignal: OneSignal
+    ,public userProv: UserProvider
+    ,public platform : Platform
+    ) {
     console.log('Hello NotificationsProvider Provider');
-    //  this.user = userProv.getUser();
+      
   }
   public async init() {
     this.user = await this.userProv.getUser();
     this.oneSignal.startInit('47d5cac0-673c-430a-82ce-0cd2fea2e5fd', '690713618535');
     this.oneSignal.getIds().then(data=>{
-      console.log(data);
+      console.log(data.userId);
     });
     this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
 
@@ -41,6 +44,17 @@ export class NotificationsProvider {
 
     this.oneSignal.endInit();
 
+  }
+
+  public async getDeviceId(){
+    if(this.platform.is('cordova')){
+      let data = await this.oneSignal.getIds();
+    return data.userId;
+    }else{
+      return '0';
+    }
+
+    
   }
 
 

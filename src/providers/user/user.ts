@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { RootProvider} from '../root/root';
 import { Events } from 'ionic-angular';
+import { NotificationsProvider } from '../notifications/notifications';
 /*
   Generated class for the UserProvider provider.
 
@@ -14,11 +15,12 @@ import { Events } from 'ionic-angular';
 export class UserProvider extends RootProvider {
 
   private userApiController:string = 'users/';
-  
+
   private logInActionString = "loginn?";
   private regesterActionString = "user_reg?";
   private getHistoryActionString = "get_user_order?";
   private updateUserActionString = "edit_profile/";
+  private updateDeviceTokenActionString ="update_token_id?";
 
   private addressApiController = "address/";
   private addAddressActionString = "add_user_address?"
@@ -47,23 +49,25 @@ export class UserProvider extends RootProvider {
   
 
   public user: User; 
+  public notificationsCtrl: NotificationsProvider;
 
 
-
-  constructor(public http: HttpClient, public storage : Storage , public event : Events) {
+  constructor(public http: HttpClient, public storage : Storage , public event : Events ) {
     super(http);
+   
   }
 
-  public async RegesterNop(Username:string,password:string,email:string,PhoneNumber:string): Promise<any>{
+  public async RegesterNop(Username:string,password:string,email:string,PhoneNumber:string,deviceId): Promise<any>{
     return new Promise((resolve)=>{
       let date = new Date();
       console.log(date);
-      let temp = `${RootProvider.APIURL}${this.userApiController}${this.regesterActionString}token_id=0&mail=${email}&name=${Username}&phone=${PhoneNumber}&address=""&password=${password}`;
+     
+      let temp = `${RootProvider.APIURL}${this.userApiController}${this.regesterActionString}token_id=${deviceId}&mail=${email}&name=${Username}&phone=${PhoneNumber}&address=""&password=${password}`;
       console.log(temp);
       this.http.get(temp).subscribe((data:any)=>{
         console.log(data);
         if( data != undefined && data.length>0 && data[0].error_name !="already exist"){
-          this.user = User.getInstance(data[0].ID,Username,password,email,"Male",PhoneNumber);
+          this.user = User.getInstance(data[0].ID,Username,password,email,"Male",PhoneNumber,[],deviceId);
           this.storage.set('toi-user',this.user);
           this.event.publish('logedin');
           resolve(true);
@@ -83,7 +87,7 @@ export class UserProvider extends RootProvider {
         console.log(data[0]);
         if(data != null && data != undefined && data.length>0 && data[0].error_name != "wrong_password" && data[0].error_name != "already exist"){
           console.log(data[0].id+ "  : "+data[0].name+"  :  "+data[0].password+"  :  "+data[0].mail)
-          this.user = User.getInstance(data[0].id,data[0].name,data[0].password,data[0].mail,"Male",data[0].phone);
+          this.user = User.getInstance(data[0].id,data[0].name,data[0].password,data[0].mail,"Male",data[0].phone,[],data[0]);
           this.storage.set('toi-user',this.user);
           this.event.publish('logedin');
           console.log(this.user);
@@ -93,6 +97,24 @@ export class UserProvider extends RootProvider {
         }
       })
     })
+  }
+
+
+  public async updateDeviceToken(user_id , device_id):Promise<any>{
+    let temp =`${RootProvider.APIURL}${this.userApiController}${this.updateDeviceTokenActionString}user_id=${user_id}&token_id=${device_id}`;
+
+    return new Promise((resolve)=>{
+      this.http.get(temp).subscribe(data=>{
+        if(data!= undefined){
+          resolve(true);
+        }else{
+          resolve(false)
+        }
+      
+      })
+    })
+   
+
   }
 
   public async logOut(){
@@ -220,7 +242,7 @@ export class UserProvider extends RootProvider {
         console.log(data);
         if(data != undefined){
           this.user = data;  
-           resolve(User.getInstance(this.user.id,this.user.name,this.user.password,this.user.email,this.user.gender,this.user.phone,this.user.fName,this.user.lName,this.user.addresses));
+           resolve(User.getInstance(this.user.id,this.user.name,this.user.password,this.user.email,this.user.gender,this.user.phone,this.user.addresses,this.user.deviceID));
   
         }else{
           resolve(User.getInstance());
@@ -425,22 +447,22 @@ export class User {
   email: string;
   phone: string;
   image : string; 
-
+  deviceID: string;
   
   private static instance: User = null;
   static isCreating: boolean = false;
 
-  constructor(id: string = "-1", name: string = "", gender: string = "Male", password: string = "", email: string = "", phone: string = "",lName :string ="",fName: string = "",address: Address[] = new Array()) {
+  constructor(id: string = "-1", name: string = "", gender: string = "Male", password: string = "", email: string = "", phone: string = "",address: Address[] = new Array(),deviceId :string ='0') {
    
     if (User.isCreating) {
       throw new Error("An Instance Of User Singleton Already Exists");
     } else {
-      this.setData(id, name, password, email,gender, phone,address);
+      this.setData(id, name, password, email,gender, phone,address , deviceId);
       User.isCreating = true;
     }
   }
 
-  public setData(id: string = "-1", name: string = "", password: string = "", email: string = "", gender: string = "", phone: string = "", address: Address[] = new Array()) {
+  public setData(id: string = "-1", name: string = "", password: string = "", email: string = "", gender: string = "", phone: string = "", address: Address[] = new Array(),deviceId : string ="0") {
     
     this.id = id;
     this.name = name;
@@ -450,16 +472,17 @@ export class User {
     this.password = password;
     this.email = email;
     this.phone = phone;
+    this.deviceID = deviceId;
   }
 
-  static getInstance(id: string = "-1", name: string = "",  password: string = "", email: string = "",gender: string = "", phone: string = "",fName:string="",lName:string="",address: Address[] = new Array()) {
+  static getInstance(id: string = "-1", name: string = "",  password: string = "", email: string = "",gender: string = "", phone: string = "",address: Address[] = new Array(),deviceId :string="0") {
     if (User.isCreating === false && id !="-1") {
       //User.isCreating = false;
-      User.instance = new User(id, name, gender, password, email, phone,lName,fName, address);
+      User.instance = new User(id, name, gender, password, email, phone, address,deviceId);
       console.log(User.instance);
     }
     if (id != "-1") {
-      User.instance.setData(id, name,password, email,gender, phone,address);
+      User.instance.setData(id, name,password, email,gender, phone,address,deviceId);
     }
     return User.instance;
   }
