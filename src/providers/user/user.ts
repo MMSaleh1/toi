@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { RootProvider} from '../root/root';
 import { Events } from 'ionic-angular';
-import { NotificationsProvider } from '../notifications/notifications';
 import { HelperToolsProvider } from '../helper-tools/helper-tools';
 /*
   Generated class for the UserProvider provider.
@@ -50,8 +49,6 @@ export class UserProvider extends RootProvider {
   
 
   public user: User; 
-  public notificationsCtrl: NotificationsProvider;
-
 
   constructor(public http: HttpClient, 
     private helperTools: HelperToolsProvider,
@@ -92,7 +89,7 @@ export class UserProvider extends RootProvider {
         console.log(data[0]);
         if(data != null && data != undefined && data.length>0 && data[0].error_name != "wrong_password" && data[0].error_name != "already exist"){
           console.log(data[0].id+ "  : "+data[0].name+"  :  "+data[0].password+"  :  "+data[0].mail)
-          this.user = User.getInstance(data[0].id,data[0].name,data[0].password,data[0].mail,"Male",data[0].phone,[],data[0]);
+          this.user = User.getInstance(data[0].id,data[0].name,data[0].password,data[0].mail,"Male",data[0].phone,[]);
           this.storage.set('toi-user',this.user);
           this.event.publish('logedin');
           console.log(this.user);
@@ -262,9 +259,9 @@ export class UserProvider extends RootProvider {
    
   }
 
-  public async addAddress(address : string,stateId :string,userId:string):Promise<any>{
+  public async addAddress(address : string,stateId :string,userId:string,lat , lng):Promise<any>{
 
-    let temp = `${RootProvider.APIURL}${this.addressApiController}${this.addAddressActionString}address=${address}&longg=0&latt=0&user_id=${userId}&area_id=${stateId}`;
+    let temp = `${RootProvider.APIURL}${this.addressApiController}${this.addAddressActionString}address=${address}&longg=${lng}&latt=${lat}&user_id=${userId}&area_id=${stateId}`;
     console.log(temp);
     return new Promise((resolve)=>{
       this.http.get(temp).subscribe((data:any)=>{
