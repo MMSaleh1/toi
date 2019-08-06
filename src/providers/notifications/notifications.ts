@@ -5,8 +5,9 @@ import { Injectable } from '@angular/core';
 // import { Platform } from 'ionic-angular';
 // import { AngularFirestore} from 'angularfire2/firestore';
 import { UserProvider, User } from './../user/user';
-import { OneSignal } from '@ionic-native/onesignal';
+import { OneSignal,OSNotification } from '@ionic-native/onesignal';
 import { Platform } from 'ionic-angular';
+import { TabsPage } from '../../pages/tabs/tabs';
 
 /*
   Generated class for the NotificationsProvider provider.
@@ -38,7 +39,10 @@ export class NotificationsProvider {
       // do something when notification is received
     });
 
-    this.oneSignal.handleNotificationOpened().subscribe(() => {
+    this.oneSignal.handleNotificationOpened().subscribe((data) => {
+      console.log("nofication Opend");
+      console.log(data.notification.payload.additionalData);
+
       // do something when a notification is opened
     });
 
