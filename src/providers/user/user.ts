@@ -5,6 +5,7 @@ import { Storage } from '@ionic/storage';
 import { RootProvider} from '../root/root';
 import { Events } from 'ionic-angular';
 import { NotificationsProvider } from '../notifications/notifications';
+import { HelperToolsProvider } from '../helper-tools/helper-tools';
 /*
   Generated class for the UserProvider provider.
 
@@ -52,7 +53,10 @@ export class UserProvider extends RootProvider {
   public notificationsCtrl: NotificationsProvider;
 
 
-  constructor(public http: HttpClient, public storage : Storage , public event : Events ) {
+  constructor(public http: HttpClient, 
+    private helperTools: HelperToolsProvider,
+    public storage : Storage , 
+    public event : Events ) {
     super(http);
    
   }
@@ -66,12 +70,13 @@ export class UserProvider extends RootProvider {
       console.log(temp);
       this.http.get(temp).subscribe((data:any)=>{
         console.log(data);
+        this.helperTools.ShowLoadingSpinnerOnly();
         if( data != undefined && data.length>0 && data[0].error_name !="already exist"){
           this.user = User.getInstance(data[0].ID,Username,password,email,"Male",PhoneNumber,[],deviceId);
           this.storage.set('toi-user',this.user);
           this.event.publish('logedin');
           resolve(true);
-
+          this.helperTools.DismissLoading();
         }else{
           resolve(false)
         }
@@ -356,7 +361,7 @@ export class UserProvider extends RootProvider {
     })
   }
 
-  public async getorderItems(orderId: string):Promise<any>{
+  public async getorderItems(orderId: string,date:any):Promise<any>{
     let temp = `${RootProvider.APIURL}${this.statusApiContoller}${this.getOrderItemActionString}order_id=${orderId}`;
     console.log(temp);
     return new Promise((resolve)=>{
@@ -367,7 +372,7 @@ export class UserProvider extends RootProvider {
           console.log(data);
           let items = new Array<orderItem>();
           for(let i = 0 ; i < data.length;i++){
-            items.push(new orderItem(data[i].product_name,data[i].cost));
+            items.push(new orderItem(data[i].product_name,data[i].cost,date));
           }
           resolve(items);
 
@@ -622,11 +627,12 @@ export class orderStatus{
 export class orderItem{
   productName: string;
   cost: number;
-  
+  date: string
 
-  constructor(ProductName,cost){ 
+  constructor(ProductName,cost, date){ 
     this.productName = ProductName;
     this.cost = cost;
+    this.date = date
   }
 
 

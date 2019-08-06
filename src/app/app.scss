@@ -6,6 +6,10 @@
     background-color: color($colors, dark);
 }
 
+.alert-button {
+    color: color($colors, dark) !important;
+}
+
 .logo-container {
     width: 50%;
     margin: auto;
@@ -15,9 +19,41 @@
     }
 }
 
+.loading-md .loading-wrapper {
+    background: transparent;
+    box-shadow: none;
+    height: 150px;
+    width: 150px;
+}
+
+.loading-ios .loading-wrapper {
+    background: transparent;
+    box-shadow: none;
+    height: 150px;
+    width: 150px;
+}
+
+
 .menu-list {
     background-color: transparent;
     margin-top: 15px !important;
+}
+
+.toolbar-ios {
+    min-height: 55px;
+}
+
+.info-container {
+    height: 26vw;
+    padding: 3vh 0 0 0vw;
+    text-align: center;
+
+    .name-container {
+        font-size: 17px;
+        font-weight: 600;
+        color: white;
+        text-align: center;
+    }
 }
 
 ion-title {
@@ -33,6 +69,10 @@ ion-title {
     img {
         width: 60px;
     }
+}
+
+.header .title {
+    position: absolute;
 }
 
 .cart-badge {
@@ -65,9 +105,14 @@ ion-title {
 }
 
 .user-img {
-
+    margin-top: 55px;
     border-radius: 50%;
-    width: 100%;
+    height: 90px;
+    width: 90px;
+}
+
+.list-ios>.item-block:first-child {
+    border-top: 0px;
 }
 
 

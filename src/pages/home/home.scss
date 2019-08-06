@@ -1,20 +1,34 @@
 page-home {
     .header-icon {
         font-size: 30px !important;
-        margin-right: 8px;
+        margin-right: 10px;
     }
 
     .scroll-content {
         padding-right: 0 !important;
         padding-left: 0 !important;
         padding-top: 0 !important;
+        background-color: color($colors, dark);
+
+    }
+    .swiper-container{
+        border-radius:10px !important;
+    }
+
+    h4 {
+        color: color($colors, primary);
+        font-size: 25px;
+        margin-left: 10px;
+        margin-top: 20px !important;
     }
 
     .category-container {
-        height: 59vh;
+        height: 56vh;
+        margin-top: 5vh;
+        vertical-align: middle !important;
 
         .slider {
-            height: 56vh;
+            height: 55vh;
 
             .slide {
                 height: 59vh;
@@ -40,7 +54,7 @@ page-home {
 
     .icon-left {
         position: absolute;
-        top: 27vh;
+        top: 35vh;
         font-size: 5rem;
         left: 5vw;
         z-index: 999;
@@ -48,7 +62,7 @@ page-home {
     }
 
     .icon-right {
-        top: 27vh;
+        top: 35vh;
         position: absolute;
         font-size: 5rem;
         right: 5vw;

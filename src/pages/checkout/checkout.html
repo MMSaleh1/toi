@@ -11,45 +11,49 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="bg-color" padding>
+<ion-content class="bg-color" no-padding>
   <div *ngIf="ready">
     <div>
       <ion-segment class="segmentConainer" mode="md" [(ngModel)]="tab">
-        <ion-segment-button class="segmentButton" value="new">
+        <ion-segment-button  class="segmentButton" value="new">
           New Address
         </ion-segment-button>
-        <ion-segment-button class="segmentButton" value="payment">
+        <ion-segment-button disabled="true" class="segmentButton" value="payment">
           Payment
         </ion-segment-button>
       </ion-segment>
     </div>
     <div *ngIf="tab == 'new'">
       <div class="newAddress-container">
-        <div class="full-address-container">
-          <ion-input type="text" class="full-address" placeholder="TYPE HERE" [(ngModel)]="address">
-            <ion-icon name="ios-pin"></ion-icon>
-          </ion-input>
-        </div>
+        <h4>Select government</h4>
         <ion-item class="government-container">
+          <ion-label>Select government</ion-label>
           <ion-select placeholder="Government" [(ngModel)]="selectedGovernment">
             <ion-option *ngFor="let item of governments" [value]="item">{{item.name}}</ion-option>
-
           </ion-select>
         </ion-item>
+        <h4>Select area</h4>
         <ion-item class="government-container">
+          <ion-label>Select area</ion-label>
           <ion-select placeholder="Area" [(ngModel)]="selectedArea">
             <ion-option *ngFor="let item of selectedGovernment.areas" [value]="item">{{item.name}}</ion-option>
-
           </ion-select>
         </ion-item>
-
+        <h4>Address extra info</h4>
+        <div class="full-address-container">
+          <ion-textarea type="text" class="full-address" placeholder="Address extra info.." [(ngModel)]="address"
+            (ionFocus)="getLocation()">
+            <ion-icon name="ios-pin"></ion-icon>
+          </ion-textarea>
+        </div>
       </div>
     </div>
     <div *ngIf="tab == 'payment'">
       <diV class="payment-container">
         <div class="payment-text">SELECT A PAYMENT METHOD</div>
         <div class="button-container">
-          <div [class]="paymentMethodClass" (tap)="choosePaymentMithod()">Cash</div>
+          <div [class]="paymentMethodClass" class="selectDiv" (tap)="choosePaymentMithod('cash')">Cash</div>
+          <div  (tap)="choosePaymentMithod('credit')" class="selectDiv">Credit</div>
         </div>
       </diV>
 
@@ -60,13 +64,13 @@
   </div>
 </ion-content>
 <ion-footer>
-  <ion-navbar>
+  <!-- <ion-navbar> -->
 
-    <div *ngIf="tab == 'new' " class="button-container">
-      <button class="confirm-button" ion-button (tap)="addAddress()">CONFIRM LOCATION</button>
-    </div>
-    <div *ngIf="orderReady && tab == 'payment'" class="button-container">
-      <button ionbutton class="confirm-button" (tap)="order()">Order</button>
-    </div>
-  </ion-navbar>
+  <div *ngIf="tab == 'new' " class="button-container">
+    <button class="confirm-button" ion-button (tap)="addAddress()">CONFIRM LOCATION</button>
+  </div>
+  <div *ngIf="orderReady && tab == 'payment'" class="button-container">
+    <button ionbutton class="confirm-button" (tap)="order()">Order Now</button>
+  </div>
+  <!-- </ion-navbar> -->
 </ion-footer>

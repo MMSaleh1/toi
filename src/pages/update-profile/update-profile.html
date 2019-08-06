@@ -12,6 +12,13 @@
 </ion-header>
 
 <ion-content padding class="bg-img">
+  <div class="image-container">
+    <img class="profile-image" src="assets/imgs/signup_male.png">
+    <button color="light" ion-button icon-only class="btn">
+      <ion-icon color="primary" name="create"></ion-icon>
+    </button>
+  </div>
+
 
   <form *ngIf="ready" [formGroup]="updateForm" (ngSubmit)="update()">
     <ion-list *ngIf="ready">

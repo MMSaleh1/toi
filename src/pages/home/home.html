@@ -1,13 +1,17 @@
-<ion-header>
+<ion-header no-border>
     <ion-navbar>
-        <button ion-button menuToggle>
+        <!-- <button ion-button menuToggle end>
             <ion-icon color="primary" name="ios-menu"></ion-icon>
-        </button>
-
+        </button> -->
+        <ion-buttons left>
+            <button ion-button menuToggle end>
+                <ion-icon color="primary" name="ios-menu"></ion-icon>
+            </button>
+        </ion-buttons>
         <ion-title>
             <img src="assets/imgs/logo.png">
         </ion-title>
-        <ion-buttons start>
+        <ion-buttons right>
             <button (tap)="cart()" class="cart-button" ion-button icon-only>
                 <ion-icon color="primary" class="header-icon" name="custom-cart-icon"></ion-icon>
             </button>
@@ -17,12 +21,13 @@
     </ion-navbar>
 </ion-header>
 <ion-content padding scrollY="false">
-
+    <h4>Choose Category</h4>
     <div class="category-container">
-        <ion-slides slidesPerView="1" pager="true" class="slider" #slides>
-            <ion-slide class="slide" *ngFor="let item of cates">
+        <ion-slides *ngIf="cates && cates.length" slidesPerView="1" effect="fade" pager="true" autoplay="2000"
+            loop="true" class="slider" #slides>
+            <ion-slide class="slide" *ngFor="let item of cates" (tap)="toServices(item)">
                 <img class="slide-image" [src]="item.images[0]">
-                <button ion-button class="cate-button" (tap)="toServices(item)">{{item.name}} </button>
+                <button ion-button class="cate-button" >{{item.name}} </button>
             </ion-slide>
         </ion-slides>
     </div>

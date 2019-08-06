@@ -17,17 +17,20 @@
 
         <div class="info-container">
             <div class="name-container">{{user.name}}</div>
+            <div class="name-container">{{user.email}}</div>
+
         </div>
 
     </div>
+
+    <div class="selections">
+        <div class="footer-options">
+            <div class="options-container">
+                <ion-item class="option-item" (tap)="toPage('2')">Update my profile</ion-item>
+                <ion-item class="option-item" (tap)="toPage('1')">My appointments</ion-item>
+                <ion-item style="border-bottom: none !important" class="option-item" (tap)="toPage('3')">My payment info</ion-item>
+            </div>
+        </div>
+    </div>
 </ion-content>
 
-<ion-footer>
-    <ion-toolbar class="footer-options">
-        <div class="options-container">
-            <ion-item class="option-item" (tap)="toPage('2')">Update my profile</ion-item>
-            <ion-item class="option-item" (tap)="toPage('1')">My appointments</ion-item>
-            <ion-item class="option-item" (tap)="toPage('3')">My payment info</ion-item>
-        </div>
-    </ion-toolbar>
-</ion-footer>

@@ -47,41 +47,45 @@ page-services {
             margin: 0px 0vw 0 28vw;
         }
       }
-     
-    .card {
-        display: inline-grid;
-        width: 35vw;
-        height: 27vh;
-       
-        background-color: transparent;
-        box-shadow: inherit;
-        figure {
-            margin: 0;
-            border-radius: 50%;
-            height: 35vw;
-            width: 35vw;
-            
-            background-color: #231f20;
-            img {
-        
-            height: 35vw;
-            border-radius: inherit;
-            }
-            }
-        
-        .name {
-            color: #fff;
-            position: relative;
-            font-size: 4vw;
-            font-weight: 500;
-            text-align: center;
-        }
-    }
+      .card-md,
+      .card-ios {
+          margin: 0px !important;
+      }
 
-    .list-container{
-        padding-top: 4vh;
-        .list{
-            height: 80vh;
+     
+
+
+    .CategoryCard {
+        height: 100px;
+        width: 95% !important;
+        margin: 0px !important;
+        display: block;
+        margin: auto !important;
+        // margin-top: 10px !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        margin-top: 15px !important;
+        border-radius: 10px !important;
+        background-color: #3e3c3d;
+    
+        img {
+            background-color: #231f20;
+            float: left;
+            height: 100%;
+            width: 115px !important;
+            display: block;
+            margin: auto;
+            margin-right: 10px;
+            border-radius: 10px !important;
+        }
+    
+        p {
+            text-align: left;
+            margin: 5px 5px 0px 0px !important;
+            font-size: 16px;
+            color: color($colors, secondary, base);
+            font-weight: bold;
+            text-overflow: ellipsis !important;
+            overflow: hidden !important;
         }
     }
 }

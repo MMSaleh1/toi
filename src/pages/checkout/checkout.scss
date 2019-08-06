@@ -1,109 +1,197 @@
 page-checkout {
-    .segment-md .segment-button{
-        color : color($colors,dark);
-    }
-    .segment-md .segment-button.segment-activated {
-        color : color($colors,primary);
+    .segment-md .segment-button {
+        color: color($colors, dark);
     }
 
-    .bg-color{
-        background-color: color($colors,secondary);
+    .segment-md .segment-button.segment-activated {
+        color: color($colors, primary);
     }
-    .segmentContainer{
+
+    .bg-color {
+        background-color: color($colors, secondary);
+    }
+
+    .item {
+        padding-left: 0px;
+    }
+
+    .item-inner {
+        border-bottom: 0px !important;
+        padding-right: 0px;
+    }
+
+    .segmentContainer {
         height: 8vh;
-        .segmentButton{
+
+        .segmentButton {
             font-size: 2rem;
         }
     }
+
+    h4 {
+        text-align: left;
+        margin-left: 10px;
+        margin-bottom: 35px;
+    }
+
+    ion-select {
+        max-width: 100%;
+        width: 100%;
+
+        .select-icon {
+            .select-icon-inner {
+                margin-top: 0px !important;
+            }
+        }
+
+        .select-text {
+            text-align: left;
+            margin-left: -15px;
+        }
+    }
+
+    .selectDiv {
+        font-size: 2rem;
+        background-color: white;
+        height: 60px;
+        padding: 2.2vh 0vw 0 10vw;
+        font-weight: 700;
+        width: 95%;
+        border-radius: 20px;
+        margin: auto;
+        margin-top: 15px;
+    }
+
     .newAddress-container {
         height: 55vh;
 
         .full-address-container {
             margin: auto;
-            margin-top: 7vh;
-            width: 74vw;
-            height: 6vh;
-        
+            // margin-top: 7vh;
+            width: 95%;
+            // height: 6vh;
+
             .full-address {
                 width: 100%;
-                height: 5vh;
-                border-radius: 3rem;
-                padding: 0 0 0 4rem;
+                // height: 15vh;
+                border-radius: 10px;
+                // padding: 0 0 0 4rem;
                 background-color: white;
+
+                ::placeholder {
+                    text-align: center !important;
+                    padding-top: 20px
+                }
             }
+
         }
-        .government-container{
-            width: 80vw;
-            height: 7vh;
-            background-color: transparent;
-            box-shadow: 0 0 0 0;
+
+        textarea {
+            max-width: 100%;
+            width: 100%;
+            height: 100px;
+            text-align: center !important;
+            padding: 10px;
         }
-    
+
+
+
+        .government-container {
+            height: 40px;
+            border-radius: 15px;
+            width: 95%;
+            display: block;
+            margin: auto;
+            min-height: 45px;
+        }
+
 
     }
 
-    .button-container{
+    .button-container {
         margin: auto;
-        
+
         width: 66vw;
-        .confirm-button{
+
+        .confirm-button {
             border-radius: 5rem;
             margin: auto;
             width: 66vw;
-            height: 4vh;
+            height: 50px;
+            color: color($colors, secondary);
+            background-color: color($colors, light) !important;
             font-size: 1.3rem;
         }
     }
-    .payment-container{
+
+    .payment-container {
         .payment-text {
             margin: auto;
-            margin-top: 8vh;
+            margin-top: 5vh;
             font-size: 1.7rem;
-            width: 62vw;
             font-weight: 700;
+            margin-left: 10px;
         }
+
         .button-container {
             width: 100vw;
             margin-top: 16vh;
+
             .payment-method {
                 font-size: 2rem;
-                background-color: white;
-                height: 7.5vh;
-                padding: 2.2vh 0vw 0 10vw;
-                border-top-left-radius: 4rem;
-                border-bottom-left-radius: 4rem;
-                margin-left: 8vw;
-                font-weight: 700;
-            }
-            .payment-method-active{
-                border: solid thin color($colors,golden);
                 font-size: 2rem;
                 background-color: white;
-                height: 7.5vh;
+                height: 60px;
                 padding: 2.2vh 0vw 0 10vw;
-                border-top-left-radius: 4rem;
-                border-bottom-left-radius: 4rem;
-                margin-left: 8vw;
                 font-weight: 700;
+                width: 95%;
+                border-radius: 20px;
+                margin: auto;
+                margin-top: 15px;
+
+
+            }
+
+            .payment-method-active {
+                border: solid thin color($colors, golden);
+                font-size: 2rem;
+                background-color: white;
+                height: 60px;
+                padding: 2.2vh 0vw 0 10vw;
+                font-weight: 700;
+                width: 95%;
+                border-radius: 20px;
+                margin: auto;
+                margin-top: 15px;
             }
         }
 
-        
+
     }
-    .order-button-container{
+
+    ion-footer {
+        bottom: 25px;
+    }
+
+    .order-button-container {
         margin: 30vh 0 0 19vw;
-        
-        .order-button{
+
+        .order-button {
             border-radius: 4rem;
             font-size: 1.5rem;
             width: 54vw;
             height: 3.9vh;
-            color:  #ffffff;
-            background-color: color($colors,primary);
+            color: color($colors, secondary);
+            background-color: color($colors, light) !important;
 
         }
     }
-   
 
-   
+    .footer-md::before,
+    .footer-ios::before {
+        background-image: none !important;
+
+    }
+
+
 }

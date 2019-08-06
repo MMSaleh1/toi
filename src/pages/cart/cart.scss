@@ -1,30 +1,77 @@
 page-cart {
 
-    .gender-container{
+    .gender-container {
         height: 6vh;
-        .gender-item{
-            height: 6vh;
+
+        .gender-item {
+            height: 40px;
+            border-radius: 15px;
+            width: 95%;
+            display: block;
+            margin: auto;
+            min-height: 45px;
+        }
+
+        h5 {
+            margin-left: 10px;
+            margin-bottom: 20px;
         }
     }
 
-    .bg-color{
-        background-color: color($colors,secondary);
+    .item {
+        padding-left: 0px;
     }
 
-    .content-wrapper{
-        margin: 2vh 0vw 0vh 10vw;
+    ion-select {
+        max-width: 100%;
+        width: 100%;
+
+        .select-icon {
+            .select-icon-inner {
+                margin-top: 0px !important;
+            }
+        }
+
+        .select-text {
+            text-align: left;
+            margin-left: -15px;
+        }
+    }
+
+
+    .item-inner {
+        border-bottom: 0px !important;
+        padding-right: 0px;
+    }
+
+    .bg-color {
+        background-color: color($colors, secondary);
+    }
+
+    .quant-warpper {
+        display: flex;
+    }
+
+    .content-wrapper {
+        // margin: 2vh 0vw 0vh 10vw;
         border-bottom-left-radius: 20px;
-        width:100%;
+        width: 95%;
+        display: block;
+        margin: auto;
+
         .category-info-container {
-            width: 100vw;
+            // width: 10÷0vw;
             background-color: black;
-            padding: 3vh 0 4vh 17vw;
+            padding: 3vh 0 4vh 5vw;
             border-top-left-radius: 30px;
-        
+            border-top-right-radius: 30px;
+            box-shadow: 1px -2px 9px 0px;
+            height: 75px;
+
             .category-info-text {
                 font-size: 2.6rem;
                 font-weight: 800;
-                font-family:'app-font';
+                font-family: 'app-font';
                 display: inline-block;
                 color: #f1efee;
                 padding: 0px 0rem 0vh 0;
@@ -32,126 +79,182 @@ page-cart {
             }
         }
 
-        .list-container{
+        .list-container {
             height: 30vh;
-            .scroll-content{
+
+            .scroll-content {
                 padding: 0;
             }
         }
 
-        .list-container-short{
+        .list-container-short {
             height: 15vh;
-            .scroll-content{
+
+            .scroll-content {
                 padding: 0;
             }
         }
-        .items-container{
-           
-            .item{
-                padding-left: 9vw;
+
+        .items-container {
+
+            // margin-top: 50px;
+            .item {
+                padding-left: 3vw;
                 padding-bottom: 0vh;
                 padding-top: 2vh;
-               
-            }
-                .item-name{
-                       
-                    font-size: 4vw;
-                    font-weight: 600;
-                    font-family:'app-font-bold';
-                    padding: 0 0 2vh 0;
-                    width: 70%;
-                    display: inline-block;
-                }
-                .item-price {
-                    display: inline-block;
-                    width: 25%;
-                    color: color($colors,primary);
-                    font-size: 5vw;
-                }
-                .qunat-container {
-                        width: 41%;
-                        height: 5vh;
-                        border-radius: 30px;
-                        border: solid;
-                        border-color: color($colors,primary);
-                        display: inline-block;
-                .add-button.button {
-                        width: 10vw;
-                        display: inline-block;
-                        background-color: transparent;
-                        border-bottom-left-radius: 1rem;
-                        border-top-left-radius: 1rem;
-                        color: color($colors,primary);
-                        height: 6.5vh;
-                        padding-bottom: 2.5rem;
-                        box-shadow: 0 0 0 0;
-                    }
 
-                    .quant-display {
-                        display: inline-block;
-                        width: 5vw;
-                        color: color($colors,primary);
-                        vertical-align: middle;
-                        text-align: center;
-                        /* padding-bottom: 3vw; */
-                        height: 4vh;
-                        margin-top: -7px;
-                    }
+            }
+
+            .item-name {
+                font-family: 'app-font-bold';
+                padding: 0 0 2vh 0;
+                width: 70%;
+                display: inline-block;
+
+                p {
+                    color: color($colors, dark);
+                    text-align: left;
+                    font-size: 17px;
+                    font-weight: 600;
+                    margin-left: 5px;
+                }
+            }
+
+            .item-price {
+                display: inline-block;
+                width: 25%;
+
+                p {
+                    color: color($colors, primary);
+                    text-align: right;
+                    font-size: 19px;
+                    margin-right: -10px !important;
+                }
+            }
+
+            .qunat-container {
+                height: 40px;
+                border-radius: 30px;
+                border: solid;
+                border-color: color($colors, primary);
+                display: inline-block;
+
+                .add-button.button {
+                    width: 35px;
+                    display: inline-block;
+                    background-color: transparent;
+                    border-bottom-left-radius: 30px;
+                    border-bottom-right-radius: 30px;
+                    color: color($colors, primary);
+                    height: 50px;
+                    padding-bottom: 2.5rem;
+                    box-shadow: 0 0 0 0;
+                }
+
+                .quant-display {
+                    display: inline-block;
+                    width: 10px;
+                    color: color($colors, primary);
+                    vertical-align: middle;
+                    text-align: center;
+                    /* padding-bottom: 3vw; */
+                    height: 30px;
+                    margin-top: -7px;
+                }
 
                 .remove-button {
-                        width: 10vw;
-                        display: inline-block;
-                        background-color: transparent;
-                        border-bottom-right-radius: 1rem;
-                        border-top-right-radius: 1rem;
-                        color: color($colors,primary);
-                        height: 4.5vh;
-                        padding-bottom: 2.5rem;
-                        box-shadow: 0 0 0 0;
-                        height: 6vh;
-                    }
-                    
-                }
-                .delete-button{
+                    width: 35px;
                     display: inline-block;
-                    color: color($colors,dark);
                     background-color: transparent;
-                    font-size: 4vw; 
-                    margin-top: -20px;
-                    align-self: initial;
-                    margin-left: 34vw;
-                    box-shadow: 0 0 0 0 ;
+                    border-bottom-right-radius: 1rem;
+                    border-top-right-radius: 1rem;
+                    color: color($colors, primary);
+                    height: 50px;
+                    padding-bottom: 2.5rem;
+                    box-shadow: 0 0 0 0;
                 }
-                .item-list-footer {
-                    background-color: color($colors,secondary);
-                    color: color($colors,dark);
-                    height: 10vh;
-                    border-bottom-left-radius: 3rem;
-                    padding: 2.5rem;
-                    box-shadow: 6px -2px 9px 0px;
-                    .footer-name {
-                        display: inline-block;
-                        margin-right: 20vw;
-                        font-size: 1.8rem;
-                        font-family: 'app-font';
-                        font-weight: 800;
-                    }
 
-                    .total-price {
+            }
+
+            .delete-button {
+                display: inline-block;
+                color: color($colors, dark);
+                background-color: transparent;
+                font-size: 15px;
+                margin-top: -20px;
+                align-self: initial;
+                box-shadow: 0 0 0 0;
+                margin-right: 10px;
+                margin-left: auto !important;
+                display: block;
+                margin-top: 0px;
+            }
+
+            .item-list-footer {
+                display: flex !important;
+                background-color: color($colors, secondary);
+                color: color($colors, dark);
+                height: 82px;
+                border-bottom-left-radius: 30px;
+                border-bottom-right-radius: 30px;
+                padding: 12px;
+                box-shadow: 1px -2px 9px 0px;
+
+                .footer-name {
+                    // display: inline-block;
+                    font-family: 'app-font';
+                    font-weight: 800;
+
+                    p {
+                        margin-right: 140px;
                         font-size: 1.8rem;
-                        display: inline-block;
-                        color :color($colors,primary);
+                        text-align: right !important;
+
                     }
                 }
-                
+
+                .total-price {
+                    // display: inline-block;
+
+                    p {
+                        font-size: 1.8rem;
+                        color: color($colors, dark);
+                        text-align: right !important;
+                    }
+                }
             }
+
         }
-        .confirm-button{
-            border-radius: 4rem;
-            font-size: 17px;
-            width: 120px;
-            height: 30px;
-          
+    }
+
+    .confirm-button {
+        border-radius: 4rem;
+        font-size: 17px;
+        width: 130px;
+        height: 40px;
+        display: block;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+
+    .noItems {
+        text-align: center;
+        margin-top: 10vh;
+        h4 {
+            margin-top: -80px;
+            padding-left: 10px;
+            padding-right: 10px;
         }
+    }
+
+    .bookNow{
+        border-radius: 4rem;
+        font-size: 17px;
+        width: 130px;
+        height: 40px;
+        display: block;
+        margin: auto;
+        margin-top: 50px;
+    }
 
 }

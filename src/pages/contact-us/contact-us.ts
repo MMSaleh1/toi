@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController} from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User, UserProvider } from '../../providers/user/user';
+import { HelperToolsProvider } from '../../providers/helper-tools/helper-tools';
 
 /**
  * Generated class for the ContactUsPage page.
@@ -21,7 +22,12 @@ export class ContactUsPage {
   user : User;
   public ready:boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams , public formBuilder : FormBuilder , public userProv :UserProvider , public menuctrl: MenuController) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams , 
+    public formBuilder : FormBuilder,
+    public userProv :UserProvider, 
+    private helperTools: HelperToolsProvider,
+    public menuctrl: MenuController) {
     this.ready=false;
     if(this.menuctrl.isOpen()){
       this.menuctrl.toggle();
@@ -51,6 +57,7 @@ export class ContactUsPage {
   async sendData(){
     let temp = await this.userProv.sendMassage(this.user.id,this.contact.value.contact,this.user.name,this.user.email,this.user.phone);
     if(temp){
+      this.helperTools.ShowAlertWithTranslation('Done', "Thanks for sharing your thoughts with us.")
       this.navCtrl.setRoot(TabsPage);
     }else{
       alert("network Error");
