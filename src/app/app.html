@@ -3,10 +3,14 @@
 <ion-menu [content]="mycontent" side="start" menuId="first" class="side-menu">
   <ion-content class="menu-container">
     <div class="logo-container">
-      <img class="logo" src="assets/imgs/logo.png">
+      <!-- <img class="logo" src="assets/imgs/logo.png"> -->
     </div>
     <diV *ngIf="isLogedin">
       <div class="img-container"><img class="user-img" src="assets/imgs/signup_male.png"></div>
+      <div class="info-container">
+        <div *ngIf="user.name" class="name-container">{{user.name}}</div>
+        <div *ngIf="user.email" class="name-container">{{user.email}}</div>
+      </div>
     </diV>
     <ion-list class="menu-list">
       <ion-item class="menu-item" (tap)="toPage('2')">Home</ion-item>

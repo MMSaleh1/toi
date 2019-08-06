@@ -1,0 +1,46 @@
+page-map-modal {
+    ion-navbar {
+        @include ltr() {
+            direction: ltr;
+        }
+
+        @include rtl() {
+            direction: rtl;
+        }
+    }
+
+    .toolbar-title {
+        padding: 0px !important;
+        text-align: center;
+        color: color($colors, primary, base) !important;
+        font-weight: bold;
+    }
+
+    ion-header {
+        box-shadow: 0px 2px 15px -3px #a0a0a0 !important;
+
+        .closeBtn {
+            color: color($colors, primary, base) !important;
+            font-weight: bold;
+            font-size: 18px;
+            margin-right: 5px;
+        }
+    }
+
+    .content {
+        #map {
+            height: 100%;
+        }
+    }
+
+    ion-footer {
+        height: 60px;
+
+        .currentPos {
+            background-color: color($colors, dark, base) !important;
+            color: color($colors, secondary, base) !important;
+            font-weight: bold;
+            height: 100% !important;
+        }
+    }
+}

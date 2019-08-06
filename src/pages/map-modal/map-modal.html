@@ -1,0 +1,28 @@
+<ion-header no-border text-center>
+
+  <ion-navbar color="light">
+    <ion-title>Pick your place</ion-title>
+    <ion-buttons end>
+      <button class="closeBtn" ion-button icon-only (click)="closeModal()">
+        <ion-icon item-right name="ios-close-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+
+
+
+
+
+  <div id="map" #map>
+  </div>
+
+</ion-content>
+<ion-footer>
+  <button color="primary" class="currentPos" ion-button full clear (click)="done()">
+    Done
+  </button>
+</ion-footer>

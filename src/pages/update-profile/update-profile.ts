@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage,LoadingController, NavController, NavParams } from 'ionic-angular';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { User, UserProvider } from '../../providers/user/user';
+import { HelperToolsProvider } from '../../providers/helper-tools/helper-tools';
 /**
  * Generated class for the UpdateProfilePage page.
  *
@@ -20,7 +21,12 @@ export class UpdateProfilePage {
   public ready = false;
   
   
-  constructor(public navCtrl: NavController, public navParams: NavParams,public formBuilder : FormBuilder,public userProv :UserProvider,public loaderCtrl : LoadingController) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    public formBuilder : FormBuilder,
+    private helperTools: HelperToolsProvider,
+    public userProv :UserProvider,
+    public loaderCtrl : LoadingController) {
     this.buildForm();
   }
 
@@ -40,14 +46,12 @@ export class UpdateProfilePage {
   }
 
   public async update(){
-    let loading = this.loaderCtrl.create({
-      content: 'Updating ,Please Wait'
-    });
     console.log(this.updateForm.value.userName);
     if(this.updateForm.valid){
-      loading.present();
+      this.helperTools.ShowLoadingSpinnerOnly();
       this.userProv.updateProfile(this.user.id,this.updateForm.value.userName,this.updateForm.value.phone,this.updateForm.value.email,this.updateForm.value.password,"").then(data=>{
-        loading.dismiss();
+        this.helperTools.DismissLoading();
+        this.helperTools.ShowAlertWithTranslation('Done', "Profile has been updated successfully, Thank you.")
         this.navCtrl.pop();
       })
     }

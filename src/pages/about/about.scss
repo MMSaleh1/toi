@@ -1,112 +1,132 @@
 page-about {
-   
-    .list-container{
-        height: 90vh;
+
+    .list-container {
+        height: 100%;
     }
+
     .about-container {
         .about-item-contaier {
             margin: 0 0 7vh 0;
         }
+
         color: white;
         font-family: 'app-font';
         padding: 7rem 4rem 4rem 4rem;
+
         .about-header {
             padding: 2vh 0 3vh 0;
-            font-size:5vw;
+            font-size: 5vw;
             font-weight: 600;
         }
-        .about-content{
+
+        .about-content {
             font-size: 4vw;
         }
+
         .about-img-container {
             width: 37vw;
             height: 14vh;
             float: right;
             margin: -5vh 0 0rem 0rem;
-        
+
         }
     }
 
-.testimonial-container{
-    background-color: color($colors,secondary);
-    .testimonial-header {
-        height: 10vh;
-        background-color: color($colors,primary);
-        color: color($colors,secondary);
-        font-size: 8vw;
-        font-family: "app-dont";
-        text-align: center;
-        padding: 2vh 0 0px 0;
-    }
+    .testimonial-container {
+        background-color: color($colors, secondary);
 
-    .arrow-down {
-        width: 0;
-        height: 0vw;
-        border-left: 5vw solid transparent;
-        border-right: 5vw solid transparent;
-        margin: auto;
-        margin-top: -1px;
-        border-top: 5vw solid color($colors,primary);
-      }
-      .testimonial-items-container{
-        margin-top: 4vh;
-        margin-bottom: 0;
-    
-         
-          .testimonial-item{
-            width: 90vw;
-            background-color: white;
-            padding: 3vh 0 4vh 5vw;
-            border-top-left-radius: 15px;
-            border-bottom-left-radius: 15px;
-            margin: 0 0 7vh 10vw;
-            height: auto;
-            display: inline-flex;
-            box-shadow: 3px 3px 4px 1px grey;
-        
+        .testimonial-header {
+            height: 10vh;
+            background-color: color($colors, primary);
+            color: color($colors, secondary);
+            font-size: 8vw;
+            font-family: "app-dont";
+            text-align: center;
+            padding: 2vh 0 0px 0;
+        }
 
-            .block1{
-                display: inline-block;
-                .item-image{
-                    right: 11vw;
-                    background: color($colors,primary);
-                    border-radius: 50%;
-                    width: 12vw;
-                    height: 12vw;
-                    bottom: 21vh;
-                    position: relative;
-                    
-                  }
+        .arrow-down {
+            width: 0;
+            height: 0vw;
+            border-left: 5vw solid transparent;
+            border-right: 5vw solid transparent;
+            margin: auto;
+            margin-top: -1px;
+            border-top: 5vw solid color($colors, primary);
+        }
 
-                  .star-container{
-                    width: 3vw;
-                    height: 11vh;
-                    margin: 3vh 0 0 0;
-                    .star-icon{
-                        color: color($colors,secondary);
-                        font-size : 3vw;
+        .testimonial-items-container {
+            margin-top: 4vh;
+            margin-bottom: 0;
+            height: 100%;
+
+            .testimonial-item {
+                width: 90vw;
+                background-color: white;
+                // padding: 3vh;
+                // border-top-left-radius: 15px;
+                border-radius: 15px;
+                height: auto;
+                margin: auto;
+                margin-bottom: 15px;
+                display: block !important;
+                box-shadow: 3px 3px 4px 1px grey;
+
+
+                .block1 {
+                    display: inline-block;
+                    margin: 10px;
+
+                    // margin-top: 10px;
+                    .item-image {
+                        right: 0vw;
+                        background: color($colors, primary);
+                        border-radius: 50%;
+                        width: 45px;
+                        height: 45px;
+                        bottom: 14vh;
+                        position: relative;
+
+                    }
+
+                    .star-container {
+                        width: 3vw;
+                        right: -15px;
+                        height: 11vh;
+                        margin: 3vh 0 0 0;
+                        top: 32px;
+                        position: relative;
+
+                        .star-icon {
+                            color: color($colors, secondary);
+                            font-size: 14px;
+                        }
                     }
                 }
-            }
-            
-            .text-container{
-                display: inline-block;
-                width: 65vw;
-                margin: -1vh 0 0 -2vh;
-                .text-header{
+
+                .text-container {
+                    display: inline-block;
                     width: 65vw;
-                    font-size:6vw;
-                    font-weight: 800;
-                    padding: 0vh 0 0 0vh;
-                    margin: 0 0 2vh 0;
+                    margin: -1vh 0 0 -2vh;
+                    position: absolute;
+
+                    .text-header {
+                        width: 65vw;
+                        font-size: 20px;
+                        font-weight: 800;
+                        padding: 0vh 0 0 0vh;
+                        margin: 28px 0 2vh 15px;
+                    }
+
+                    .text {
+                        font-size: 14px;
+                        margin-top: 17px !important;
+                        display: block;
+                    }
                 }
-                .text {
-                    font-size: 4vw;
-                }
+
             }
-         
-          }
-      }
-}
-   
+        }
+    }
+
 }

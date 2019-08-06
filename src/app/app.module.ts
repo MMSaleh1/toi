@@ -1,11 +1,17 @@
-import {  HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';
-import { AutoCompleteModule} from 'ionic2-auto-complete';
+import { AutoCompleteModule } from 'ionic2-auto-complete';
+import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+import { Diagnostic } from "@ionic-native/diagnostic";
+import { Geolocation } from "@ionic-native/geolocation";
+import { OpenNativeSettings } from "@ionic-native/open-native-settings";
+
 
 
 import { MyApp } from './app.component';
@@ -46,6 +52,11 @@ import { UpdateProfilePageModule } from '../pages/update-profile/update-profile.
 import { LandingPageModule } from '../pages/landing/landing.module';
 import { TermsPageModule } from '../pages/terms/terms.module';
 import { NotificationsProvider } from '../providers/notifications/notifications';
+import { HelperToolsProvider } from '../providers/helper-tools/helper-tools';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
+}
 
 
 
@@ -62,10 +73,17 @@ import { NotificationsProvider } from '../providers/notifications/notifications'
     SigninPage,
     SignupPage,
     TestimonialsPage,
-    
+
   ],
   imports: [
     BrowserModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      }
+    }),
     HttpClientModule,
     AutoCompleteModule,
     TabsPageModule,
@@ -102,12 +120,12 @@ import { NotificationsProvider } from '../providers/notifications/notifications'
     SigninPage,
     SignupPage,
     TestimonialsPage,
-    
+
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     RootProvider,
     ItemsApiProvider,
     UserProvider,
@@ -115,8 +133,12 @@ import { NotificationsProvider } from '../providers/notifications/notifications'
     AutoCompleteProvider,
     Database,
     CartProvider,
-    NotificationsProvider
-    
+    OpenNativeSettings,
+    Diagnostic,
+    Geolocation,
+    NotificationsProvider,
+    HelperToolsProvider
+
   ]
 })
-export class AppModule {}
+export class AppModule { }

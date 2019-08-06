@@ -11,7 +11,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content no-padding>
   <ion-segment [(ngModel)]="tab" mode="md">
     <ion-segment-button value="1">
       UPCOMING
@@ -22,27 +22,39 @@
   </ion-segment>
 
   <div *ngIf="tab =='1'">
-    <ion-scroll scrollY='true' class="list-container">
+    <!-- <ion-scroll scrollY='true' class="list-container"> -->
       <ion-list>
         <ion-item class="order-item" *ngFor="let item of onGoingOrders">
           <div class="item-name">{{item.productName}}</div>
           <div class="item-cost">{{item.cost}} LE</div>
         </ion-item>
       </ion-list>
-    </ion-scroll>
+    <!-- </ion-scroll> -->
 
+    <div *ngIf="!onGoingOrders.length" class="noItems">
+      <img src="./assets/imgs/empty_icon.png">
+      <h4>
+        You have no upcoming appointments till now.
+      </h4>
+    </div>
   </div>
 
   <div *ngIf="tab =='2'">
-    <ion-scroll scrollY='true' class="list-container">
-      <ion-list>
-        <ion-item class="order-item" *ngFor="let item of doneOrders">
-          <div class="item-name">{{item.productName}}</div>
-          <div class="item-cost">{{item.cost}} LE</div>
-        </ion-item>
-      </ion-list>
-    </ion-scroll>
+    <!-- <ion-scroll scrollY='true' class="list-container"> -->
+    <ion-list>
+      <ion-item class="order-item" *ngFor="let item of doneOrders">
+        <div class="item-name">{{item.productName}}</div>
+        <div class="item-cost">{{item.cost}} LE</div>
+      </ion-item>
+    </ion-list>
+    <!-- </ion-scroll> -->
 
+    <div *ngIf="!doneOrders.length" class="noItems">
+      <img src="./assets/imgs/empty_icon.png">
+      <h4>
+        You have no past appointments till now.
+      </h4>
+    </div>
   </div>
 
 </ion-content>

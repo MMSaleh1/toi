@@ -7,10 +7,17 @@ page-history {
     .segment-md .segment-button.segment-activated{
         color : color($colors,dark);
     }
-
+    .item-inner{
+        border-bottom:none !important;
+    }
     .order-item {
         height: 16vh;
-       
+        border-radius: 10px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        width:95% !important;
+        display: block;
+        margin: auto;
+        margin-top:10px;
     }
     .list-container{
         height: 60vh;
@@ -25,6 +32,15 @@ page-history {
     .item-cost {
         display: inline-block;
         width: 12vw;
+        font-weight: bold;
         color: color($colors,primary);
+    }
+    .noItems{
+        text-align: center;
+        h4{
+            margin-top: -80px;
+            padding-left:10px;
+            padding-right: 10px;
+        }
     }
 }

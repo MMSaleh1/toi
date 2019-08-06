@@ -16,6 +16,7 @@ import { SigninPage } from '../signin/signin';
 import { User, UserProvider } from '../../providers/user/user';
 import { Storage } from '@ionic/storage';
 import { NotificationsProvider } from '../../providers/notifications/notifications';
+import { HelperToolsProvider } from '../../providers/helper-tools/helper-tools';
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html'
@@ -29,9 +30,10 @@ export class SignupPage {
     , public loadCtrl: LoadingController
     , public userProvider: UserProvider
     , public events: Events
+    , private helperTools: HelperToolsProvider
     , public storage: Storage
-    , public notifiCtrl : NotificationsProvider
-    ) {
+    , public notifiCtrl: NotificationsProvider
+  ) {
     this.buildForm();
 
   }
@@ -74,18 +76,15 @@ export class SignupPage {
   }
 
   public async onRegester() {
-    let loading = this.loadCtrl.create({
-      content: 'Logging in ,Please Wait'
-    });
     if (this.regesterForm.value.passwordConfirm != this.regesterForm.value.password) {
       alert("Password does Not Match")
     } else {
       if (this.regesterForm.valid) {
-        loading.present();
+        this.helperTools.ShowLoadingSpinnerOnly();
         let token = await this.notifiCtrl.getDeviceId();
-        let add = await this.userProvider.RegesterNop(this.regesterForm.value.userName, this.regesterForm.value.password, this.regesterForm.value.email, this.regesterForm.value.phone,token);
+        let add = await this.userProvider.RegesterNop(this.regesterForm.value.userName, this.regesterForm.value.password, this.regesterForm.value.email, this.regesterForm.value.phone, token);
         console.log(add);
-        loading.dismiss();
+        this.helperTools.DismissLoading();
         if (add == true) {
           this.user = User.getInstance();
           this.storage.set('user', this.user);
@@ -97,13 +96,13 @@ export class SignupPage {
           this.navCtrl.setRoot(TabsPage);
 
         } else {
-          alert("this user name is used Please try a new one");
+          this.helperTools.ShowAlertWithTranslation('Error', "This user name is already in use, Please try a new one or Login.")
         }
 
 
 
       } else {
-        alert("Invaled fields");
+        this.helperTools.ShowAlertWithTranslation('Error', "Invalid fields.")
       }
 
     }

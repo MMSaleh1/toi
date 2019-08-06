@@ -30,7 +30,6 @@ export class MyApp {
   public user: User;
   rootPage: any = LandingPage;
   isLogedin: boolean = false;
-
   constructor(
     public platform: Platform
     , statusBar: StatusBar
@@ -41,12 +40,14 @@ export class MyApp {
     , public menuCntrl: MenuController
     , public toastCtrl: ToastController,
   ) {
+
     platform.ready().then(() => {
+      this.isLogedin=false;
       this.menuCntrl.enable(false);
       this.event.subscribe('logedin', () => {
-
-        this.isLogedin = true;
-        this.menuCntrl.enable(true);
+        this.getUser();
+       
+        
         // alert("ready");
 
       });
@@ -64,7 +65,11 @@ export class MyApp {
     });
   }
 
-
+  async getUser(){
+    this.user = await this.userProv.getUser();
+    this.isLogedin = true;
+    this.menuCntrl.enable(true);
+  }
   toPage(number: string) {
     if (number == '1') {
       this.rootPage = ContactUsPage;

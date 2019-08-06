@@ -1,8 +1,14 @@
 <ion-header>
     <ion-navbar>
-        <button ion-button menuToggle>
+        <ion-buttons end>
+            <button (tap)="navToCart()" class="cart-button" ion-button icon-only>
+                <ion-icon color="primary" class="header-icon" name="custom-cart-icon"></ion-icon>
+            </button>
+            <ion-badge *ngIf="cartProv.cartQuant > 0" class="cart-badge">{{cartProv.cartQuant}}</ion-badge>
+        </ion-buttons>
+        <!-- <button ion-button menuToggle>
             <ion-icon color="primary" name="ios-menu-outline"></ion-icon>
-        </button>
+        </button> -->
 
         <ion-title>
             <img src="assets/imgs/logo.png">
@@ -15,20 +21,26 @@
 <ion-content class="bg-color" padding>
 
     <div class="content-wrapper">
-        <div class="category-info-container">
-            <img class="category-info-img" [src]="category.images[0]">
-            <div class="category-info-text">{{category.name}}</div>
-        </div>
+
         <div class="items-container">
-            <ion-scroll no-padding scrollY="true" class="item-list">
-                <ion-list>
-                    <ion-item *ngFor="let item of products " class="item">
-                        <div class="item-name">{{item.name}}</div>
-                        <div class="item-price">{{item.price}} LE</div>
-                        <button *ngIf="checkIfExsist(item.id)" ionbutton class="book-button" (tap)="addtoCart(item)">Book Now</button>
-                    </ion-item>
-                </ion-list>
-            </ion-scroll>
+            <div class="category-info-container">
+                <img class="category-info-img" [src]="category.images[0]">
+                <div class="category-info-text">{{category.name}}</div>
+            </div>
+            <div class="item-list">
+                <div class="itemCont">
+                    <ion-list>
+                        <br>
+                        <ion-item *ngFor="let item of products " class="item">
+                            <div class="item-name">{{item.name}}</div>
+                            <div class="item-price">{{item.price}} LE</div>
+                            <button *ngIf="checkIfExsist(item.id)" ionbutton class="book-button"
+                                (tap)="addtoCart(item)">Book Now</button>
+                            <button *ngIf="!checkIfExsist(item.id)" ionbutton class="book-button">Booked</button>
+                        </ion-item>
+                    </ion-list>
+                </div>
+            </div>
         </div>
     </div>
 </ion-content>

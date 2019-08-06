@@ -12,15 +12,18 @@
 </ion-header>
 
 
-<ion-content padding class="bg-color">
+<ion-content no-padding class="bg-color">
     <div class="list-container" *ngIf="ready">
-        <ion-scroll scrollY="true" class="list">
-            <ion-card *ngFor="let item of category.children" (click)="appointment(item)" class="card">
-                <figure>
-                    <img [src]="item.images[0]">
-                </figure>
-                <div class="name">{{item.name}}</div>
-            </ion-card>
-        </ion-scroll>
+        <!-- <ion-card *ngFor="let item of category.children" (click)="appointment(item)" class="singleService">
+            <div class="imageContainer">
+                <img [src]="item.images[0]">
+            </div>
+            <h5 class="name">{{item.name}}</h5>
+        </ion-card> -->
+        <ion-card *ngFor="let item of category.children" class="CategoryCard" (click)="appointment(item)">
+            <img [src]="item.images[0]">
+            <p>{{item.name}}</p>
+        </ion-card>
+
     </div>
 </ion-content>

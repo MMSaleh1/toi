@@ -1,83 +1,120 @@
 page-appointment {
-   
 
-
-    .bg-color{
-        background-color: color($colors,secondary);
+    .header-icon {
+        font-size: 30px !important;
+        margin-right: 10px;
     }
 
-    .content-wrapper{
-        margin: 14vh 0vw 0vh 10vw;
-        border-bottom-left-radius: 20px;
-        width:100%;
+    .bg-color {
+        background-color: color($colors, secondary);
+    }
+
+    .item-md,
+    .item-ios {
+        padding: 0px;
+        border-bottom: none !important;
+    }
+
+    ion-label {
+        text-align: center;
+    }
+
+    .item-inner {
+        padding-right: 0px !important;
+        border-bottom: none !important;
+    }
+    .content-wrapper {
+        margin: auto;
+        width: 100%;
+        border-radius: 10px;
+
         .category-info-container {
-            width: 100vw;
+            // width: 91vw;
             background-color: black;
             padding: 0vw 0 1vh 2vw;
-           
+            border-top-right-radius: 20px !important;
+            border-top-left-radius: 20px !important;
 
             .category-info-img {
-                right: 12vw;
-                background: color($colors,primary);
+                background: color($colors, primary);
+                left: 65vw;
+                background: #ccc2b2;
                 border-radius: 50%;
                 width: 20vw;
-                bottom: 4vh;
+                bottom: -0.75vh;
                 position: relative;
             }
 
             .category-info-text {
-                font-size: 7vw;
+                font-size: 22px;
                 font-weight: 800;
                 font-family: 'app-font-bold';
-
                 display: inline-block;
-                color: color($colors,secondary);
+                color: color($colors, secondary);
                 padding: 0px 0rem 0vh 0;
                 margin-bottom: 0rem;
-                bottom: 4vh;
-                right: 13vw;
+                bottom: 3vh;
+                right: 20vw;
                 position: relative;
             }
         }
 
-        .items-container{
-            .item-list{
-                height: 45vh;
-                .scroll-content{
+        .itemCont {
+            border-bottom-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+            padding-bottom: 1px !important;
+            background: #fff;
+
+        }
+
+        .items-container {
+            .item-list {
+                height: auto;
+
+                .scroll-content {
                     padding: 0 !important;
                 }
             }
-            .item{
-                padding-left: 9vw;
-                padding-bottom: 3vh;
-                
+
+            .item {
+                // padding-left: 9vw;
+                // padding-bottom: 3vh;
             }
-                .item-name{
-                       
-                    font-size: 5vw;
-                    font-weight: 600;
-                    font-family: 'app-font-bold';
-                    padding: 0 0 2vh 0;
-                    width: 55vw;
-                    white-space: normal;
-                    display: inline-block;
-                }
-                .item-price {
-                    display: inline-block;
-                    font-size: 5vw;
-                    font-family: 'app-font';
-                }
-            
-                
-                .book-button {
-                    width: 40%;
-                    font-size: 4vw;
-                    color: color($colors,secondary);
-                    background-color: color($colors,primary);
-                    height: 5vh;
-                    border-radius: 20px;
-                    display: block;
-                }
+
+            .item-name {
+
+                font-size: 5vw;
+                font-weight: 600;
+                font-family: 'app-font-bold';
+                padding: 0 0 3vh 0;
+                width: 55vw;
+                white-space: normal;
+                display: inline-block;
+                text-align: left;
+                margin-left: 10px;
+            }
+
+            .item-price {
+                display: inline-block;
+                font-size: 5vw;
+                font-family: 'app-font';
+                text-align: right;
+                margin-right: 10px;
+
+            }
+
+
+            .book-button {
+                width: 40%;
+                font-size: 4vw;
+                color: color($colors, secondary);
+                background-color: color($colors, primary);
+                height: 5vh;
+                border-radius: 20px;
+                display: block;
+                margin: auto;
+                margin-top: 15px !important;
             }
         }
+    }
 }
