@@ -47,37 +47,38 @@
           </ion-textarea>
         </div>
       </div>
+      <div *ngIf="tab == 'new' " class="button-container">
+        <button class="confirm-button" ion-button (tap)="addAddress()">CONFIRM LOCATION</button>
+      </div>
     </div>
     <div *ngIf="tab == 'payment'">
       <diV class="payment-container">
         <div class="payment-text">SELECT A PAYMENT METHOD</div>
         <div class="button-container">
-          <div [class]="paymentMethodClass" class="selectDiv" (tap)="choosePaymentMithod('cash')">Cash</div>
-          <div  (tap)="choosePaymentMithod('credit')" class="selectDiv">Credit</div>
+          <div [class]="paymentMethodClass" class="selectDiv" (tap)="choosePaymentMithod('cash')"><p>Cash</p></div>
+          <div  (tap)="choosePaymentMithod('credit')" class="selectDiv"><p>Credit</p></div>
         </div>
       </diV>
 
-
+      <div *ngIf="orderReady && tab == 'payment'" class="button-container">
+        <button ionbutton class="confirm-button" (tap)="order()">Order Now</button>
+      </div>
     </div>
 
 
   </div>
 
-    <div *ngIf="tab == 'new' " class="button-container">
-    <button class="confirm-button" ion-button (tap)="addAddress()">CONFIRM LOCATION</button>
-  </div>
-  <div *ngIf="orderReady && tab == 'payment'" class="button-container">
-    <button ionbutton class="confirm-button" (tap)="order()">Order Now</button>
-  </div>
+
+
 </ion-content>
 <!-- <ion-footer> -->
   <!-- <ion-navbar> -->
 
-  <div *ngIf="tab == 'new' " class="button-container">
+  <!-- <div *ngIf="tab == 'new' " class="button-container">
     <button class="confirm-button" ion-button (tap)="addAddress()">CONFIRM LOCATION</button>
   </div>
   <div *ngIf="orderReady && tab == 'payment'" class="button-container">
     <button ionbutton class="confirm-button" (tap)="order()">Order Now</button>
-  </div>
+  </div> -->
   <!-- </ion-navbar> -->
 <!-- </ion-footer> -->

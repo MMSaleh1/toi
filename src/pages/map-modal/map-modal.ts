@@ -52,8 +52,8 @@ export class MapModalPage {
   }
 
   ionViewDidLoad() {
-    // this.checkIfLocationEnablenOrNot();
-    this.InitMap();
+    this.checkIfLocationEnablenOrNot();
+    // this.InitMap();
   }
 
   ionViewDidEnter() {
