@@ -48,7 +48,7 @@
         </div>
       </div>
       <div *ngIf="tab == 'new' " class="button-container">
-        <button class="confirm-button" ion-button (tap)="addAddress()">CONFIRM LOCATION</button>
+        <button ion-button class="confirm-button"  (tap)="addAddress()">CONFIRM LOCATION</button>
       </div>
     </div>
     <div *ngIf="tab == 'payment'">
@@ -61,7 +61,7 @@
       </diV>
 
       <div *ngIf="orderReady && tab == 'payment'" class="button-container">
-        <button ionbutton class="confirm-button" (tap)="order()">Order Now</button>
+        <button ion-button class="confirm-button" (tap)="order()">Order Now</button>
       </div>
     </div>
 

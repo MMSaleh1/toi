@@ -103,16 +103,17 @@ ion-title {
 }
 
 .img-container {
-    width: 30%;
-    margin: auto;
+    width: 100%;
     border-radius: 50%;
 }
 
 .user-img {
+    height: 90px !important;
+    width: 90px !important;
+    margin: auto;
+    display: block;
     margin-top: 55px;
-    border-radius: 50%;
-    height: 90px;
-    width: 90px;
+    border-radius: 50% !important;
 }
 
 .list-ios>.item-block:first-child {

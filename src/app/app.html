@@ -5,7 +5,7 @@
     <div class="logo-container">
       <!-- <img class="logo" src="assets/imgs/logo.png"> -->
     </div>
-    <diV *ngIf="isLogedin">
+    <diV *ngIf="isLogedin && user">
       <div class="img-container"><img class="user-img" src="assets/imgs/signup_male.png"></div>
       <div class="info-container">
         <div *ngIf="user.name" class="name-container">{{user.name}}</div>
