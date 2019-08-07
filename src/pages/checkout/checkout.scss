@@ -54,12 +54,15 @@ page-checkout {
         font-size: 2rem;
         background-color: white;
         height: 60px;
-        padding: 2.2vh 0vw 0 10vw;
+        padding: 15px;
         font-weight: 700;
         width: 95%;
         border-radius: 20px;
         margin: auto;
         margin-top: 15px;
+        p{
+            margin: 3px;
+        }
     }
 
     .newAddress-container {
@@ -116,12 +119,14 @@ page-checkout {
         .confirm-button {
             border-radius: 5rem;
             margin: auto;
-            width: 66vw;
-            height: 50px;
-            color: color($colors, secondary);
-            background-color: color($colors, light) !important;
+            display: block;
+            width: 50vw;
+            height: 40px;
+            color: #f1efee;
+            background-color: #231f20 !important;
             font-size: 1.3rem;
-        }
+            margin-top: 80px;
+            margin-bottom: 30px;        }
     }
 
     .payment-container {
@@ -142,13 +147,15 @@ page-checkout {
                 font-size: 2rem;
                 background-color: white;
                 height: 60px;
-                padding: 2.2vh 0vw 0 10vw;
+                padding:15px;
                 font-weight: 700;
                 width: 95%;
                 border-radius: 20px;
                 margin: auto;
                 margin-top: 15px;
-
+                p{
+                    margin:3px !important;
+                }
 
             }
 
@@ -157,12 +164,15 @@ page-checkout {
                 font-size: 2rem;
                 background-color: white;
                 height: 60px;
-                padding: 2.2vh 0vw 0 10vw;
+                padding:15px;
                 font-weight: 700;
                 width: 95%;
                 border-radius: 20px;
                 margin: auto;
                 margin-top: 15px;
+                p{
+                    margin: 3px;
+                }
             }
         }
 

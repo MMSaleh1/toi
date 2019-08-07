@@ -1,3 +1,4 @@
+import { HelperToolsProvider } from './../providers/helper-tools/helper-tools';
 import { TabsPage } from './../pages/tabs/tabs';
 import { ContactUsPage } from './../pages/contact-us/contact-us';
 import { Component } from '@angular/core';
@@ -36,25 +37,26 @@ export class MyApp {
     , splashScreen: SplashScreen
     , public userProv: UserProvider
     , public event: Events
+    , private helperTools: HelperToolsProvider
     , private notifyCtrl: NotificationsProvider
     , public menuCntrl: MenuController
     , public toastCtrl: ToastController,
   ) {
 
     platform.ready().then(() => {
-      this.isLogedin=false;
+      this.isLogedin = false;
       this.menuCntrl.enable(false);
       this.event.subscribe('logedin', () => {
         this.getUser();
-       
-        
-        // alert("ready");
 
+
+        // alert("ready");
       });
-     
-      if(this.platform.is('cordova')){
+      this.helperTools.IntializeUSerCurrentPosition();
+
+      if (this.platform.is('cordova')) {
         this.notifyCtrl.init();
-       
+
       }
 
 
@@ -65,7 +67,7 @@ export class MyApp {
     });
   }
 
-  async getUser(){
+  async getUser() {
     this.user = await this.userProv.getUser();
     this.isLogedin = true;
     this.menuCntrl.enable(true);
