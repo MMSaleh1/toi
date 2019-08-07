@@ -133,11 +133,11 @@ page-cart {
             }
 
             .qunat-container {
-                height: 40px;
+                height: 38px;
                 border-radius: 30px;
                 border: solid;
                 border-color: color($colors, primary);
-                display: inline-block;
+                display: flex;
 
                 .add-button.button {
                     width: 35px;
@@ -146,8 +146,8 @@ page-cart {
                     border-bottom-left-radius: 30px;
                     border-bottom-right-radius: 30px;
                     color: color($colors, primary);
-                    height: 50px;
-                    padding-bottom: 2.5rem;
+                    // height: 50px;
+                    // padding-bottom: 2.5rem;
                     box-shadow: 0 0 0 0;
                 }
 
@@ -158,8 +158,8 @@ page-cart {
                     vertical-align: middle;
                     text-align: center;
                     /* padding-bottom: 3vw; */
-                    height: 30px;
-                    margin-top: -7px;
+                    // height: 30px;
+                    margin-top: 5px;
                 }
 
                 .remove-button {
@@ -169,8 +169,8 @@ page-cart {
                     border-bottom-right-radius: 1rem;
                     border-top-right-radius: 1rem;
                     color: color($colors, primary);
-                    height: 50px;
-                    padding-bottom: 2.5rem;
+                    // height: 50px;
+                    // padding-bottom: 2.5rem;
                     box-shadow: 0 0 0 0;
                 }
 
@@ -204,9 +204,11 @@ page-cart {
                     // display: inline-block;
                     font-family: 'app-font';
                     font-weight: 800;
-
+                    display: block;
+                    margin-left: 10px;
+                    margin-right: auto;
                     p {
-                        margin-right: 140px;
+                        // margin-right: 140px;
                         font-size: 1.8rem;
                         text-align: right !important;
 
@@ -215,6 +217,9 @@ page-cart {
 
                 .total-price {
                     // display: inline-block;
+                    display: block;
+                    margin-left: auto;
+                    margin-right: 10px;
 
                     p {
                         font-size: 1.8rem;

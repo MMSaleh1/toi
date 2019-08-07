@@ -56,6 +56,10 @@
     }
 }
 
+ion-header {
+    box-sizing: unset !important;
+}
+
 ion-title {
     position: absolute;
     left: 50%;
