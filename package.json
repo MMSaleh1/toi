@@ -65,12 +65,12 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
-      "onesignal-cordova-plugin": {},
       "cordova-plugin-geolocation": {
         "GEOLOCATION_USAGE_DESCRIPTION": "To get the user current position for the stylist"
       },
       "cordova-open-native-settings": {},
-      "cordova.plugins.diagnostic": {}
+      "cordova.plugins.diagnostic": {},
+      "onesignal-cordova-plugin": {}
     },
     "platforms": [
       "browser",
