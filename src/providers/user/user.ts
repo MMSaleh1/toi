@@ -260,9 +260,9 @@ export class UserProvider extends RootProvider {
    
   }
 
-  public async addAddress(address : string,stateId :string,userId:string):Promise<any>{
+  public async addAddress(address : string,stateId :string,userId:string,long,latt):Promise<any>{
 
-    let temp = `${RootProvider.APIURL}${this.addressApiController}${this.addAddressActionString}address=${address}&longg=0&latt=0&user_id=${userId}&area_id=${stateId}`;
+    let temp = `${RootProvider.APIURL}${this.addressApiController}${this.addAddressActionString}address=${address}&longg=${long}&latt=${latt}&user_id=${userId}&area_id=${stateId}`;
     console.log(temp);
     return new Promise((resolve)=>{
       this.http.get(temp).subscribe((data:any)=>{

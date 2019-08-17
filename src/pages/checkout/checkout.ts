@@ -79,7 +79,7 @@ export class CheckoutPage {
       this.helperTools.ShowAlertWithTranslation('Alert', "Please select government and area.")
 
     } else {
-      this.addressid = await (this.userProv.addAddress(this.address, this.selectedArea.id, this.user.id));
+      this.addressid = await (this.userProv.addAddress(this.address, this.selectedArea.id, this.user.id,this.user_pos.lng,this.user_pos.lat));
       console.log(this.addressid);
       this.tab = "payment";
     }
