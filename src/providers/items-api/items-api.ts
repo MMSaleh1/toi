@@ -112,7 +112,7 @@ export class ItemsApiProvider extends RootProvider {
        // console.log("107")
         let items: Product[] = new Array();
         for (let i = 0; i < data.length; i++) {
-           if(data[i].available == "1"){
+           if(data[i].avaliable == "1"){
           let images = new Array<string>();
           images.push(data[i].img1);
           images.push(data[i].img2);
