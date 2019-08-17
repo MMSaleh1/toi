@@ -1,5 +1,4 @@
 page-cart {
-
     .gender-container {
         height: 6vh;
 
@@ -13,9 +12,13 @@ page-cart {
         }
 
         h5 {
-            margin-left: 10px;
+            margin-left: 15px;
             margin-bottom: 20px;
+            color: white;
+            font-family: 'app-font';
+            
         }
+        
     }
 
     .item {
@@ -45,7 +48,7 @@ page-cart {
     }
 
     .bg-color {
-        background-color: color($colors, secondary);
+        background-color: color($colors, dark);
     }
 
     .quant-warpper {
@@ -66,10 +69,11 @@ page-cart {
             border-top-left-radius: 30px;
             border-top-right-radius: 30px;
             box-shadow: 1px -2px 9px 0px;
-            height: 75px;
+            height: 60px;
+            border: 2px solid #ccc2b2;
 
             .category-info-text {
-                font-size: 2.6rem;
+                font-size: 1.8rem;
                 font-weight: 800;
                 font-family: 'app-font';
                 display: inline-block;
@@ -233,13 +237,19 @@ page-cart {
     }
 
     .confirm-button {
-        border-radius: 4rem;
-        font-size: 17px;
-        width: 130px;
-        height: 40px;
+        font-size: 15px;
         display: block;
         margin: auto;
         margin-bottom: 20px;
+
+        height: 100px;
+        border: solid thick #f9a618;
+        background: transparent;
+        color: #f1e2c8;
+        border-radius: 50%; 
+        width: 100px;
+        -webkit-box-shadow: 0 0 8px 0px #f9a618;
+        box-shadow: 0 0 8px 0px #f9a618;
     }
 
     .noItems {

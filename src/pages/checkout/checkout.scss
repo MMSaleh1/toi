@@ -1,14 +1,20 @@
 page-checkout {
-    .segment-md .segment-button {
-        color: color($colors, dark);
+    .segment-button {
+        color: color($colors, light) ;
+        opacity: 1 !important;
+    }
+    .segment-button-disabled {
+        color: color($colors, light) ;
+        opacity: 1 !important;
     }
 
-    .segment-md .segment-button.segment-activated {
-        color: color($colors, primary);
+    .segment-button.segment-activated {
+        color: color($colors, golden);
+        border-color:  color($colors,golden) !important;
     }
 
     .bg-color {
-        background-color: color($colors, secondary);
+        background-color: color($colors, dark);
     }
 
     .item {
@@ -31,7 +37,8 @@ page-checkout {
     h4 {
         text-align: left;
         margin-left: 10px;
-        margin-bottom: 35px;
+        font-size: 1.7rem;
+        margin-bottom: 19px;
     }
 
     ion-select {
@@ -98,6 +105,7 @@ page-checkout {
             height: 100px;
             text-align: center !important;
             padding: 10px;
+            color: black;
         }
 
 
@@ -116,22 +124,25 @@ page-checkout {
 
     .button-container {
         margin: auto;
-
         width: 66vw;
-        margin-top: 7vh !important;
-        margin-bottom: 30px;
+        margin-top: 3vh !important;
+        margin-bottom: 20px;
+    
 
         .confirm-button {
             border-radius: 5rem;
             margin: auto;
             display: block;
-            width: 50vw;
-            height: 40px;
-            color: #f1efee;
-            background-color: #231f20 !important;
-            font-size: 1.3rem;
-            // margin-top: 80px;
-            margin-bottom: 30px;
+           
+            height: 100px;
+            border: solid thick #f9a618;
+            background: transparent;
+            color: #f1e2c8;
+            border-radius: 50%; 
+            width: 100px;
+            white-space: normal;
+           
+            box-shadow: 0 0 8px 0px #f9a618;
         }
     }
 

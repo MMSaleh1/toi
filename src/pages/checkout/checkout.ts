@@ -88,7 +88,7 @@ export class CheckoutPage {
   async order() {
     console.log(await this.userProv.Order(this.user.id, this.addressid, 0, this.cart.totalPrice, this.cart));
     this.cart.clear();
-    this.navCtrl.push(ThanksPage);
+    this.navCtrl.setRoot(ThanksPage);
   }
 
   choosePaymentMithod(type) {
@@ -129,10 +129,12 @@ export class CheckoutPage {
 
   ///////////////////////////////////////////////CONVERT LAT LNG TO TEXT//////////////////////////////////////
   latLngConverter(lat, long) {
+    this.helperTools.ShowLoadingSpinnerOnly();
     let geocoder = new google.maps.Geocoder;
     let latlng = { lat: lat, lng: long };
     geocoder.geocode({ 'location': latlng }, (results, status) => {
       this.address = results[0].formatted_address;
+      this.helperTools.DismissLoading()
       console.log(this.address);
     });
   }

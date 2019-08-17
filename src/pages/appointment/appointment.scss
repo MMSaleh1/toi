@@ -36,13 +36,15 @@ page-appointment {
             border-top-left-radius: 20px !important;
 
             .category-info-img {
-                background: color($colors, primary);
+               // background: color($colors, primary);
                 left: 65vw;
-                background: #ccc2b2;
+                //background: #ccc2b2;
                 border-radius: 50%;
                 width: 20vw;
                 bottom: -0.75vh;
                 position: relative;
+                border: 4px solid #f9a61882;
+                box-shadow: 0px 0px 17px 0px #f9a618;
             }
 
             .category-info-text {
@@ -54,7 +56,7 @@ page-appointment {
                 padding: 0px 0rem 0vh 0;
                 margin-bottom: 0rem;
                 bottom: 3vh;
-                right: 20vw;
+                right: 16vw;
                 position: relative;
             }
         }

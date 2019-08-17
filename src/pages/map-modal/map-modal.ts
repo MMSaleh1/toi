@@ -194,6 +194,7 @@ export class MapModalPage {
   }
   getTheUserCurrentPosAndPutMarker() {
     if (this.geolocation) {
+      this.helperTools.ShowLoadingSpinnerOnly();
       this.geolocation.getCurrentPosition().then(
         position => {
           let latLng = new google.maps.LatLng(
@@ -215,7 +216,7 @@ export class MapModalPage {
           google.maps.event.trigger(this.map, "resize");
           this.map.panTo(latLng);
           this.map.setZoom(14);
-
+          this.helperTools.DismissLoading()
 
           // geocodePosition(marker.getPosition());
           // this.markers.push(marker);
@@ -223,6 +224,7 @@ export class MapModalPage {
           let content = "<h4>Your current location!</h4>";
           this.addInfoWindow(marker, content);
         }
+
       );
     }
   }
