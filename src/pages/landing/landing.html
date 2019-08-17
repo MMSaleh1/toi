@@ -1,7 +1,7 @@
 <ion-content scrollY="false" class="bg-color" no-bounce>
   <!-- <ion-scroll class="landing-scroll" scrollY=false scrollX="true"> -->
 
- <swiper class="swiper-container" [config]="config">
+ <swiper id="swiper-container" class="swiper-container" [config]="config">
     <div>
       <div class="landing-item">
         <div class="segment1-upper-container">
@@ -24,7 +24,9 @@
         <div class="segment1-lower-container">
           <div class="text"> Toi Beauty Salon, Release your inner beauty! It’s all about YOU!</div>
         </div>
-        <button ion-button (tap)="skip()" class="skip-button">Continue</button>
+        <button ion-button (tap)="skip()" class="cont-button">Skip</button>
+        <!-- <button ion-button (tap)="slideToNext()" class="skip-button">Next</button> -->
+        
       </div>
 
     </div>
@@ -49,7 +51,8 @@
           <div class="text-container2">Your app for on demand beauty services! We deliver your stylist to your doorstep. </div>
         </div>
       </div>
-      <button ion-button (tap)="skip()" class="skip-button">Continue</button>
+      <button ion-button (tap)="skip()" class="cont-button">Skip</button>
+      <!-- <button ion-button (tap)="slideToNext()" class="skip-button">Next</button> -->
 
     </div>
 
@@ -78,8 +81,9 @@
       <div class="segment3-lower-container ">
         <img class="image" src="assets/imgs/p3-2.png">
       </div>
-      <button ion-button (tap)="skip()" class="skip-button">Continue</button>
-    </div>
+      <button ion-button (tap)="skip()" class="cont-button">Skip</button>
+      <!-- <button ion-button (tap)="slideToNext()" class="skip-button">Next</button> -->
+  </div>
 
   </swiper>
 

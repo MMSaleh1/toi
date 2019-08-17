@@ -10,6 +10,7 @@ import { SigninPage } from '../signin/signin';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+declare var Swiper: any;
 
 @IonicPage()
 @Component({
@@ -29,7 +30,7 @@ export class LandingPage {
     this.getUser().then();
    this.selectedSegment = 1;
    this.config = {
-    speed: 1000,
+    speed: 1500,
     paginationClickable: true,
     // spaceBetween: 30,
     centeredSlides: true,
@@ -39,6 +40,7 @@ export class LandingPage {
     slidesPerView: 1,
     effect: 'coverflow',
   };
+
 
 
   }
@@ -103,5 +105,10 @@ export class LandingPage {
   test(...a){
     console.log(a);
   }
-
+  
+  slideToNext(){
+    
+    // var mySwiper = document.querySelector('.swiper-container').swipe÷r
+    // mySwiper.slideNext();
+  }
 }

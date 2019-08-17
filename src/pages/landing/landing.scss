@@ -184,15 +184,33 @@ background-color: color($colors,dark);
 
 
 
-.skip-button{
-    width: 120px;
+.cont-button{
+    width: 80px;
     margin: auto;
     border-radius: 30px;
-    background-color: color($colors,primary);
+    background-color: transparent;
     position: absolute;
     bottom: 3vh;
     right: 2vh;
     font-size: 16px;
-    height: 30px;
+    box-shadow: 0 0 8px 0px #f9a618;
+    height: 80px;
+    border: solid thick #f9a618;
+    border-radius: 50%;
+}
+.skip-button{
+    width: 80px;
+    margin: auto;
+    border-radius: 30px;
+    background-color: transparent;
+    position: absolute;
+    bottom: 3vh;
+    left: 2vh;
+    font-size: 16px;
+    box-shadow: 0 0 8px 0px #f9a618;
+    height: 80px;
+    border: solid thick #f9a618;
+    border-radius: 50%;
+
 }
 }
