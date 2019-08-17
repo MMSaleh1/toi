@@ -26,4 +26,11 @@
         </ion-card>
 
     </div>
+
+    <div *ngIf="!category.children.length" class="noItems">
+        <img src="./assets/imgs/empty_white.png">
+        <h4>
+            There's no items in this category tiil now.
+        </h4>
+    </div>
 </ion-content>
