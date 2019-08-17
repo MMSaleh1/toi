@@ -52,8 +52,16 @@ page-services {
           margin: 0px !important;
       }
 
-     
-
+      .noItems {
+        text-align: center;
+        margin-top: 2vh;
+        h4 {
+            margin-top: -80px;
+            padding-left: 10px;
+            padding-right: 10px;
+            color:#f1efee;
+        }
+    }
 
     .CategoryCard {
         height: 100px;

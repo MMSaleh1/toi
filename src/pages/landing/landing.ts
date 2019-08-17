@@ -37,7 +37,7 @@ export class LandingPage {
     autoplayDisableOnInteraction: false,
     initialSlide: 0,
     slidesPerView: 1,
-    effect: 'fade',
+    effect: 'coverflow',
   };
 
 
