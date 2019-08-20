@@ -11,6 +11,7 @@ import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { Diagnostic } from "@ionic-native/diagnostic";
 import { Geolocation } from "@ionic-native/geolocation";
 import { OpenNativeSettings } from "@ionic-native/open-native-settings";
+import { CallNumber } from '@ionic-native/call-number';
 
 
 
@@ -141,6 +142,7 @@ export function createTranslateLoader(http: HttpClient) {
     OpenNativeSettings,
     Diagnostic,
     Geolocation,
+    CallNumber,
     NotificationsProvider,
     HelperToolsProvider
 

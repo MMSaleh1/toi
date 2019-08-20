@@ -4,6 +4,7 @@ page-home {
         margin: 0 4px;
         background-color: #f9a618;
     }
+
     .header-icon {
         font-size: 30px !important;
         margin-right: 10px;
@@ -16,8 +17,9 @@ page-home {
         background-color: color($colors, dark);
 
     }
-    .swiper-container{
-        border-radius:10px !important;
+
+    .swiper-container {
+        border-radius: 10px !important;
     }
 
     h4 {
@@ -28,12 +30,17 @@ page-home {
     }
 
     .category-container {
-        height: 56vh;
+        height: 59vh;
         margin-top: 5vh;
         vertical-align: middle !important;
 
+        .slide-zoom {
+            height: 59vh;
+
+        }
+
         .slider {
-            height: 55vh;
+            height: 59vh;
 
             .slide {
                 height: 59vh;
@@ -47,8 +54,8 @@ page-home {
             }
         }
 
-        .cate-button{
-            bottom: 17vh;
+        .cate-button {
+            bottom: 145px;
             border-radius: 50%;
             left: 2vw;
             white-space: normal;
@@ -61,6 +68,7 @@ page-home {
             -webkit-box-shadow: 0 0 8px 0px #f9a618;
             box-shadow: 0 0 8px 0px #f9a618;
         }
+
         // .cate-button {
         //     bottom: 11vh;
         //     border-radius: 28px;
