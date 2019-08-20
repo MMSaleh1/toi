@@ -23,7 +23,7 @@
 <ion-content padding scrollY="false">
     <h4>Choose Category</h4>
     <div class="category-container">
-        <ion-slides *ngIf="cates && cates.length" slidesPerView="1" pager="true" loop="true" class="slider" #slides>
+        <ion-slides *ngIf="cates && cates.length" slidesPerView="1" pager="true" class="slider" #slides>
             <ion-slide class="slide" *ngFor="let item of cates" (tap)="toServices(item)">
                 <img class="slide-image" [src]="item.images[0]">
                 <button ion-button class="cate-button">{{item.name}} </button>

@@ -1,15 +1,15 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<!-- <ion-nav [content]="content" [root]="rootPage"></ion-nav> -->
 
-<ion-menu [content]="mycontent" side="start" menuId="first" class="side-menu">
+<ion-menu [content]="content" side="start" menuId="first" class="side-menu">
   <ion-content class="menu-container">
     <div class="logo-container">
       <!-- <img class="logo" src="assets/imgs/logo.png"> -->
     </div>
-    <diV *ngIf="isLogedin && user">
-      <div class="img-container"><img class="user-img" src="assets/imgs/signup_male.png"></div>
+    <diV *ngIf="user_data">
+      <div class="img-container"><img class="user-img" src="assets/imgs/signup_female.png"></div>
       <div class="info-container">
-        <div *ngIf="user.name" class="name-container">{{user.name}}</div>
-        <div *ngIf="user.email" class="name-container">{{user.email}}</div>
+        <div *ngIf="user_data.name" class="name-container">{{user_data.name}}</div>
+        <div *ngIf="user_data.email" class="name-container">{{user_data.email}}</div>
       </div>
     </diV>
     <ion-list class="menu-list">
@@ -17,10 +17,11 @@
       <ion-item class="menu-item" (click)="toPage('3')">About Us</ion-item>
       <!-- <ion-item class="menu-item" (tap)="toPage('4')">Terms and conditions</ion-item> -->
       <ion-item class="menu-item" (click)="toPage('1')">Contact Us</ion-item>
+      <ion-item class="menu-item" (click)="toPage('4')">Call Us</ion-item>
       <!-- <ion-item class="menu-item">Rate this app</ion-item> -->
       <ion-item class="menu-item" (click)="logOut()">Log out</ion-item>
     </ion-list>
   </ion-content>
 </ion-menu>
 
-<ion-nav #mycontent [root]="rootPage"></ion-nav>
+<ion-nav #content [root]="rootPage"></ion-nav>

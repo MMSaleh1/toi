@@ -67,7 +67,7 @@ export class SigninPage {
         this.user.deviceID = token;
         console.log(this.user);
         this.storage.set('user', this.user);
-        this.events.publish('logedin')
+        this.events.publish('logedin');
         this.helperTools.DismissLoading();
         this.navCtrl.setRoot(TabsPage);
 
