@@ -53,7 +53,7 @@ export class MapModalPage {
 
   ionViewDidLoad() {
     this.checkIfLocationEnablenOrNot();
-    // this.InitMap();
+    //  this.InitMap();
   }
 
   ionViewDidEnter() {
@@ -225,7 +225,10 @@ export class MapModalPage {
           this.addInfoWindow(marker, content);
         }
 
-      );
+      ),err=>{
+        this.helperTools.DismissLoading();
+        alert(err)
+      };
     }
   }
 

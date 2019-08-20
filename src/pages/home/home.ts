@@ -1,6 +1,6 @@
 import { CartPage } from './../cart/cart';
 import { Component, ViewChild } from '@angular/core';
-import { NavController, IonicPage, ToastController, Platform, Slides } from 'ionic-angular';
+import { NavController, IonicPage, ToastController, Platform, Slides, PopoverController } from 'ionic-angular';
 
 import { MyappointmentPage } from '../myappointment/myappointment';
 import { AboutPage } from '../about/about';
@@ -13,6 +13,7 @@ import { ItemsApiProvider, Category } from './../../providers/items-api/items-ap
 import { AutoCompleteProvider } from './../../providers/auto-complete/auto-complete';
 import { Database } from '../../providers/database/database';
 import { CartProvider } from '../../providers/cart/cart';
+import { RatingComponent } from '../../components/rating/rating';
 
 
 
@@ -36,6 +37,7 @@ export class HomePage {
     ,public autoCompleteprov : AutoCompleteProvider
     ,public toastCtrl :ToastController
     , public platForm : Platform
+    ,public popOverCtrl : PopoverController
     ) {
    this.cates = new Array();
    this.getItems();
@@ -101,6 +103,12 @@ export class HomePage {
     }
     slidePrev(){
       this.slides.slidePrev();
+    }
+
+
+    public popOver(){
+      let Pover = this.popOverCtrl.create(RatingComponent);
+      Pover.present();
     }
 
     

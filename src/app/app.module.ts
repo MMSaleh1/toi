@@ -53,6 +53,8 @@ import { LandingPageModule } from '../pages/landing/landing.module';
 import { TermsPageModule } from '../pages/terms/terms.module';
 import { NotificationsProvider } from '../providers/notifications/notifications';
 import { HelperToolsProvider } from '../providers/helper-tools/helper-tools';
+import { ComponentsModule } from '../components/components.module';
+import { RatingComponent } from '../components/rating/rating';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -77,6 +79,7 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   imports: [
     BrowserModule,
+    ComponentsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -120,6 +123,8 @@ export function createTranslateLoader(http: HttpClient) {
     SigninPage,
     SignupPage,
     TestimonialsPage,
+    RatingComponent
+    
 
   ],
   providers: [

@@ -20,6 +20,7 @@ import { LandingPage } from '../pages/landing/landing';
 import { AboutPage } from '../pages/about/about';
 import { TermsPage } from '../pages/terms/terms';
 import { NotificationsProvider } from '../providers/notifications/notifications';
+import { Database } from '../providers/database/database';
 
 
 
@@ -29,6 +30,7 @@ import { NotificationsProvider } from '../providers/notifications/notifications'
 })
 export class MyApp {
   public user: User;
+  public db : Database;
   rootPage: any = LandingPage;
   isLogedin: boolean = false;
   constructor(
@@ -40,7 +42,7 @@ export class MyApp {
     , private helperTools: HelperToolsProvider
     , private notifyCtrl: NotificationsProvider
     , public menuCntrl: MenuController
-    , public toastCtrl: ToastController,
+    , public toastCtrl: ToastController
   ) {
 
     platform.ready().then(() => {
@@ -48,7 +50,7 @@ export class MyApp {
       this.menuCntrl.enable(false);
       this.event.subscribe('logedin', () => {
         this.getUser();
-
+       
 
         // alert("ready");
       });
@@ -69,8 +71,11 @@ export class MyApp {
 
   async getUser() {
     this.user = await this.userProv.getUser();
+    this.user.orderHistory = await this.userProv.getHistory(this.user.id);
     this.isLogedin = true;
     this.menuCntrl.enable(true);
+   
+    console.log(this.user);
   }
   toPage(number: string) {
     if (number == '1') {

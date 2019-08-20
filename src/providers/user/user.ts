@@ -451,6 +451,7 @@ export class User {
   phone: string;
   image : string; 
   deviceID: string;
+  orderHistory: Array<order>;
   
   private static instance: User = null;
   static isCreating: boolean = false;
@@ -460,6 +461,7 @@ export class User {
     if (User.isCreating) {
       throw new Error("An Instance Of User Singleton Already Exists");
     } else {
+      this.orderHistory=new Array();
       this.setData(id, name, password, email,gender, phone,address , deviceId);
       User.isCreating = true;
     }
@@ -593,6 +595,7 @@ export class order{
   statusName: string;
   address:string;
   orderItems : Array<orderItem>;
+  stylistName?:string;
   
   constructor(id: string,
     orderDate: string,
@@ -632,8 +635,4 @@ export class orderItem{
     this.cost = cost;
     this.date = date
   }
-
-
 }
-
-

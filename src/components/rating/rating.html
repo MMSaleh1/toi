@@ -1,0 +1,21 @@
+<!-- Generated template for the RatingComponent component -->
+
+<ion-header no-border>
+  <ion-navbar>
+    <div class="rating-title"> Please Rate Your Experiance</div>
+  </ion-navbar>
+  
+  </ion-header>
+
+<ion-content>
+    <div class="rating-container">
+        <ion-icon *ngFor="let item of fullStartsArr;let i = index"  name="star" class="star full-star" (tap)="rate(i,0)"></ion-icon>
+        <ion-icon *ngFor="let item of emptySartsArr;let i = index" name="star" class="star empty-star" (tap)="rate(i,1)"></ion-icon>
+      </div>
+      
+</ion-content>
+<ion-footer>
+
+  <button ion-button class="rating-confirm" (tap)="confirm()">Confirm</button>
+  
+</ion-footer>
