@@ -162,6 +162,12 @@ $tabs-ios-tab-text-color-active: color($colors, golden);
 }
 
 
+.tab-badge {
+ 
+  border-radius: 50% !important;
+}
+
+
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here

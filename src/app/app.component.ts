@@ -49,7 +49,7 @@ export class MyApp {
     , public toastCtrl: ToastController
   ) {
     this.initializeApp()
-    this.rememberUser();
+    // this.rememberUser();
 
   }
 
@@ -83,6 +83,7 @@ export class MyApp {
       if (data) {
         this.nav.setRoot(TabsPage)
         this.user_data = data;
+        
       }
     })
   }
@@ -93,8 +94,17 @@ export class MyApp {
     this.user_data = this.user;
     this.isLogedin = true;
     this.menuCntrl.enable(true);
+
    
-    console.log(this.user);
+   
+    this.userProv.getUSerNotifications(this.user.id).then(data=>{
+      this.user.notifications = data[0];
+      this.user.unRead = data[1];
+      console.log(this.user);
+      this.userProv.saveUser(this.user);
+      console.log(this.user);
+      
+    });
   }
   toPage(number: string) {
     if (number == '1') {

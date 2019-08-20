@@ -2,6 +2,7 @@ import { CartPage } from './../cart/cart';
 import { CartProvider } from './../../providers/cart/cart';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import { User, UserProvider } from '../../providers/user/user';
 
 /**
  * Generated class for the TabsPage page.
@@ -22,10 +23,16 @@ export class TabsPage {
   tab4Root: string ="NotificationsPage";
   selectedIndex :number;
   cart : CartProvider
-  constructor(public navCtrl: NavController, public navParams: NavParams, public menuctrl :MenuController) {
+  user : User;
+  public ready = false;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menuctrl :MenuController,public userProv : UserProvider) {
     this.selectedIndex = navParams.get('tab') || 0;
     this.cart = CartProvider.getInstance();
-    if(this.menuctrl.isOpen()){
+  this.userProv.getUser().then(data=>{
+      this.user = data;
+      this.ready = true;
+    });
+      if(this.menuctrl.isOpen()){
       this.menuctrl.toggle();
     }
     console.log(this.cart);

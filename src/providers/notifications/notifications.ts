@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
 // import { Firebase } from '@ionic-native/firebase';
 // import { Platform } from 'ionic-angular';
 // import { AngularFirestore} from 'angularfire2/firestore';
-import { UserProvider, User } from './../user/user';
-import { OneSignal,OSNotification } from '@ionic-native/onesignal';
+import { UserProvider, User, Notification } from './../user/user';
+import { OneSignal } from '@ionic-native/onesignal';
 import { Platform } from 'ionic-angular';
 import { TabsPage } from '../../pages/tabs/tabs';
 
@@ -35,14 +35,24 @@ export class NotificationsProvider {
     });
     this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
 
+
     this.oneSignal.handleNotificationReceived().subscribe(() => {
       // do something when notification is received
     });
 
     this.oneSignal.handleNotificationOpened().subscribe((data) => {
       console.log("nofication Opend");
-      console.log(data.notification.payload.additionalData);
+     // let notification = data.notification.payload.additionalData;
+    //  this.user.notifications.push(new Notification(notification.header,notification.content,notification.order_id,new Date()));
+    //  console.log(this.user);
 
+      this.userProv.getUSerNotifications(this.user.id).then(data=>{
+        this.user.notifications = data[0];
+        this.user.unRead = data[1];
+        console.log(this.user);
+        this.userProv.saveUser(this.user);
+        
+      });
       // do something when a notification is opened
     });
 

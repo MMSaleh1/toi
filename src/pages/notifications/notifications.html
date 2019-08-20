@@ -19,8 +19,30 @@
 
 <ion-content no-padding>
   <!-- *ngFor="let notify of notifications" -->
-  <ion-card class="notifyCard">
-    <ion-icon name="notifications" color="primary"></ion-icon>
-    <p>Welcome to Toi</p>
-  </ion-card>
+      <!-- <div >
+        <div class="date-container">Aug 20,19</div>
+      <ion-card class="notifyCard" >
+        <ion-icon name="notifications" color="primary"></ion-icon>
+        <div class="info">
+        <div class="header-container">Strlest Has Arrived</div>
+        <div class="text-container">Our Stylist Arrived to Your Location</div>
+        
+      </div>
+      </ion-card>
+    </div> -->
+    
+  <div *ngIf="ready">
+    <div *ngFor="let item  of user.notifications">
+      <div class="date-container">{{item.date | date : 'mediumDate' }}</div>
+    <ion-card (tap)="removeNotification()"class="notifyCard" >
+      <ion-icon name="notifications" color="primary"></ion-icon>
+      <div class="info">
+      <div class="header-container">{{item.header}}</div>
+      <div class="text-container">{{item.text}}</div>
+      
+    </div>
+    </ion-card>
+  </div>
+  </div>
+ 
 </ion-content>

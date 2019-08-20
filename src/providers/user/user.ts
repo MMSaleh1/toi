@@ -38,6 +38,9 @@ export class UserProvider extends RootProvider {
   private orderRequestActionString = "requst_order?";
   private orderCurrentActionString ="get_all_orders/"
 
+  private notificationsApiController = "notifications/";
+  private getNotificationsActionString = "get_user_notifications?";
+  private updateUserNotifications = "update_user_notifications?";
 
 
   private massageApiController ="massage/";
@@ -123,6 +126,30 @@ export class UserProvider extends RootProvider {
   public async logOut(){
     this.user= null;
     this.storage.remove('toi-user');
+  }
+
+  public async getUSerNotifications(userId : string) : Promise<any>{
+    let temp = `${RootProvider.APIURL}${this.notificationsApiController}${this.getNotificationsActionString}user_id=${userId}`;
+    console.log(temp);
+
+    return new Promise((resolve)=>{
+      this.http.get(temp).subscribe((data: any)=>{
+        if(data!= undefined){
+          let item  = new Array() ;
+          item[0] = new Array();
+          item[1] = 0;
+          for(let i =0 ; i<data.length ; i++ ){
+            if(data[i].readed == '0'){
+              item[1]++;
+             }
+             item[0].push( new Notification(data[i].notification_header,data[i].notification_contant,'',data[i].notification_date));
+          }
+          resolve(item);
+        }
+      });
+
+    })
+
   }
 
   public async updateProfile(id,name,phone,mail,password,user_img) : Promise<any>{
@@ -245,7 +272,7 @@ export class UserProvider extends RootProvider {
         console.log(data);
         if(data != undefined){
           this.user = data;  
-           resolve(User.getInstance(this.user.id,this.user.name,this.user.password,this.user.email,this.user.gender,this.user.phone,this.user.addresses,this.user.deviceID));
+           resolve(User.getInstance(this.user.id,this.user.name,this.user.password,this.user.email,this.user.gender,this.user.phone,this.user.addresses,this.user.deviceID,this.user.unRead,this.user.notifications));
   
         }else{
           resolve(User.getInstance());
@@ -258,6 +285,11 @@ export class UserProvider extends RootProvider {
 
     })
    
+  }
+
+  public async saveUser(user : User){
+    this.storage.set('toi-user',user);
+    this.user = user;
   }
 
   public async addAddress(address : string,stateId :string,userId:string,long,latt):Promise<any>{
@@ -452,22 +484,25 @@ export class User {
   image : string; 
   deviceID: string;
   orderHistory: Array<order>;
+  notifications : Array<Notification>;
+  unRead : number ;
   
   private static instance: User = null;
   static isCreating: boolean = false;
 
-  constructor(id: string = "-1", name: string = "", gender: string = "Male", password: string = "", email: string = "", phone: string = "",address: Address[] = new Array(),deviceId :string ='0') {
+  constructor(id: string = "-1", name: string = "", gender: string = "Male", password: string = "", email: string = "", phone: string = "",address: Address[] = new Array(),deviceId :string ='0',unRead:number=0,notificaions:Array<Notification>=new Array()) {
    
     if (User.isCreating) {
       throw new Error("An Instance Of User Singleton Already Exists");
     } else {
       this.orderHistory=new Array();
-      this.setData(id, name, password, email,gender, phone,address , deviceId);
+      this.notifications = new Array();
+      this.setData(id, name, password, email,gender, phone,address , deviceId,unRead,notificaions);
       User.isCreating = true;
     }
   }
 
-  public setData(id: string = "-1", name: string = "", password: string = "", email: string = "", gender: string = "", phone: string = "", address: Address[] = new Array(),deviceId : string ="0") {
+  public setData(id: string = "-1", name: string = "", password: string = "", email: string = "", gender: string = "", phone: string = "", address: Address[] = new Array(),deviceId : string ="0",unRead:number=0,notificaions:Array<Notification>=new Array()) {
     
     this.id = id;
     this.name = name;
@@ -478,16 +513,18 @@ export class User {
     this.email = email;
     this.phone = phone;
     this.deviceID = deviceId;
+    this.notifications = notificaions;
+    this.unRead = unRead;
   }
 
-  static getInstance(id: string = "-1", name: string = "",  password: string = "", email: string = "",gender: string = "", phone: string = "",address: Address[] = new Array(),deviceId :string="0") {
+  static getInstance(id: string = "-1", name: string = "",  password: string = "", email: string = "",gender: string = "", phone: string = "",address: Address[] = new Array(),deviceId :string="0",unRead:number=0,notificaions:Array<Notification>=new Array()) {
     if (User.isCreating === false && id !="-1") {
       //User.isCreating = false;
-      User.instance = new User(id, name, gender, password, email, phone, address,deviceId);
+      User.instance = new User(id, name, gender, password, email, phone, address,deviceId,unRead,notificaions);
       console.log(User.instance);
     }
     if (id != "-1") {
-      User.instance.setData(id, name,password, email,gender, phone,address,deviceId);
+      User.instance.setData(id, name,password, email,gender, phone,address,deviceId,unRead,notificaions);
     }
     return User.instance;
   }
@@ -635,4 +672,18 @@ export class orderItem{
     this.cost = cost;
     this.date = date
   }
+}
+
+export class Notification{
+ public header : string;
+ public text : string ;
+ public data : any;
+ public date : string;
+ constructor(header: string , text : string , data : any, date : any){
+   this.header = header;
+   this.data = data;
+   this.text = text;
+   this.date = date;
+
+ }
 }

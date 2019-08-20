@@ -98,7 +98,15 @@ export class LandingPage {
     if (this.skipReady == true) {
       if (this.user != undefined && this.user.id != "-1") {
         this.events.publish('logedin')
+        this.userProv.getUSerNotifications(this.user.id);
+        this.userProv.getUSerNotifications(this.user.id).then(data=>{
+          this.user.notifications = data[0];
+          this.user.unRead = data[1];
+          this.userProv.saveUser(this.user);
+          
+        });
         this.navCtrl.setRoot(TabsPage)
+       
       } else {
         this.navCtrl.setRoot(SigninPage);
       }
