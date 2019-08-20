@@ -72,7 +72,8 @@
       },
       "cordova-open-native-settings": {},
       "cordova.plugins.diagnostic": {},
-      "onesignal-cordova-plugin": {}
+      "onesignal-cordova-plugin": {},
+      "mx.ferreyra.callnumber": {}
     },
     "platforms": [
       "browser",
