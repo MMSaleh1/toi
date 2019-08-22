@@ -14,5 +14,11 @@ page-tabs {
         height: 9vh;
         background-color: color($colors,dark);
     }
+    .tab-badge{
+        color:  color($colors, golden);
+        background: transparent;
+        border: 1px solid  color($colors, golden);
+        box-shadow: 0 0 5px 0px  color($colors, golden);
+    }
   
 }

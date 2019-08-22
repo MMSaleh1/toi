@@ -81,12 +81,14 @@ ion-title {
 
 .cart-badge {
     border-radius: 50% !important;
-    color: #fff;
-    background-color: #ccc2b2;
     position: absolute;
     bottom: 3vh;
     left: 5vw;
     font-size: 3vw;
+    color: color($colors, golden);
+    background: transparent;
+    border: 1px solid  color($colors, golden);
+    box-shadow: 0 0 5px 0px  color($colors, golden);
 }
 
 .menu-item {
