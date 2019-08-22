@@ -34,7 +34,7 @@
   <div *ngIf="ready">
     <div *ngFor="let item  of user.notifications">
       <div class="date-container">{{item.date | date : 'mediumDate' }}</div>
-    <ion-card (tap)="removeNotification()"class="notifyCard" >
+    <ion-card class="notifyCard" >
       <ion-icon name="notifications" color="primary"></ion-icon>
       <div class="info">
       <div class="header-container">{{item.header}}</div>
