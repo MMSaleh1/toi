@@ -13,7 +13,7 @@
 
 
 <ion-content padding class="bg-color">
-    <div class="header-text">Contact Us</div>
+    <div class="header-text">Report a problem</div>
     <form *ngIf="ready" [formGroup]="contact" (ngSubmit)="sendData()">
         <div class="difault-form">
             <ion-list>
@@ -27,7 +27,7 @@
                     <ion-input formControlName="mobile" type="number"></ion-input>
                 </ion-item>
                 <ion-item class="form-item">
-                    <ion-input class="massage-input" formControlName="contact" type="text" placeholder="Type The Massage ..."></ion-input>
+                    <ion-input class="massage-input" formControlName="contact" type="text" placeholder="Type Your Feedback ..."></ion-input>
                 </ion-item>
 
                 <button ion-button full class="send-button">SUBMIT</button>

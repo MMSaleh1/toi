@@ -22,6 +22,7 @@ import { AboutPage } from '../pages/about/about';
 import { TermsPage } from '../pages/terms/terms';
 import { NotificationsProvider } from '../providers/notifications/notifications';
 import { CallNumber } from '@ionic-native/call-number';
+import { ContactSupportPage } from '../pages/contact-support/contact-support';
 
 
 
@@ -117,9 +118,8 @@ export class MyApp {
       this.nav.push(AboutPage)
       // this.rootPage = AboutPage;
     } else if (number == '4') {
-      this.callNumber.callNumber("01066877110", true)
-        .then(res => console.log('Launched dialer!', res))
-        .catch(err => console.log('Error launching dialer', err));
+      this.nav.push(ContactSupportPage);
+ 
 
       // this.nav.push(TermsPage)
       // this.rootPage = TermsPage;

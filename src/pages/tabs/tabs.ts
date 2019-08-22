@@ -1,7 +1,7 @@
 import { CartPage } from './../cart/cart';
 import { CartProvider } from './../../providers/cart/cart';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, Events } from 'ionic-angular';
 import { User, UserProvider } from '../../providers/user/user';
 
 /**
@@ -25,13 +25,17 @@ export class TabsPage {
   cart : CartProvider
   user : User;
   public ready = false;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public menuctrl :MenuController,public userProv : UserProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menuctrl :MenuController,public userProv : UserProvider , public events : Events) {
     this.selectedIndex = navParams.get('tab') || 0;
     this.cart = CartProvider.getInstance();
   this.userProv.getUser().then(data=>{
       this.user = data;
+      console.log(this.user);
       this.ready = true;
     });
+    this.events.subscribe('tab-change',(unread)=>{
+        this.user.unRead = unread
+    })
       if(this.menuctrl.isOpen()){
       this.menuctrl.toggle();
     }

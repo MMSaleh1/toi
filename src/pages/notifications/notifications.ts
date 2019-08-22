@@ -24,17 +24,25 @@ export class NotificationsPage {
 
   async init(){
     this.user = await this.userProv.getUser();
+    this.userProv.changeUnreadnotifications();
+    for(let i = 0 ; i<this.user.notifications.length;i++){
+      this.userProv.readUserNotifications(this.user.notifications[i].id);
+    }
+    
     this.ready = true;
   }
 
   ionViewDidLoad() {
-   
     console.log('ionViewDidLoad NotificationsPage');
+   
+    
+    
   }
 
   removeNotification(){
     this.user.unRead = this.user.unRead-1;
     this.userProv.saveUser(this.user);
+    console.log(this.user);
   }
 
 }

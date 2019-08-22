@@ -56,6 +56,7 @@ import { NotificationsProvider } from '../providers/notifications/notifications'
 import { HelperToolsProvider } from '../providers/helper-tools/helper-tools';
 import { ComponentsModule } from '../components/components.module';
 import { RatingComponent } from '../components/rating/rating';
+import { ContactSupportPageModule } from '../pages/contact-support/contact-support.module';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -105,6 +106,7 @@ export function createTranslateLoader(http: HttpClient) {
     UpdateProfilePageModule,
     LandingPageModule,
     TermsPageModule,
+    ContactSupportPageModule,
 
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp)

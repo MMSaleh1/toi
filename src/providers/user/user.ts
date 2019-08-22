@@ -40,7 +40,7 @@ export class UserProvider extends RootProvider {
 
   private notificationsApiController = "notifications/";
   private getNotificationsActionString = "get_user_notifications?";
-  private updateUserNotifications = "update_user_notifications?";
+  private updateUserNotifications = "update_user_notifications/";
 
 
   private massageApiController ="massage/";
@@ -142,12 +142,23 @@ export class UserProvider extends RootProvider {
             if(data[i].readed == '0'){
               item[1]++;
              }
-             item[0].push( new Notification(data[i].notification_header,data[i].notification_contant,'',data[i].notification_date));
+             item[0].push( new Notification(data[i].id,data[i].notification_header,data[i].notification_contant,'',data[i].notification_date));
           }
           resolve(item);
         }
       });
 
+    })
+
+  }
+
+  public async readUserNotifications(notificationId){
+    let temp = `${RootProvider.APIURL}${this.notificationsApiController}${this.updateUserNotifications}${notificationId}`;
+    // console.log(temp);
+    return new Promise((resolve)=>{
+      this.http.get(temp).subscribe((data:any)=>{
+        resolve(data);
+      });
     })
 
   }
@@ -290,6 +301,15 @@ export class UserProvider extends RootProvider {
   public async saveUser(user : User){
     this.storage.set('toi-user',user);
     this.user = user;
+  }
+
+  public changeUnreadnotifications(){
+    this.event.publish('tab-change',0);
+     this.getUser().then(data=>{
+      this.user = data;
+      this.user.unRead=0;
+    });
+   
   }
 
   public async addAddress(address : string,stateId :string,userId:string,long,latt):Promise<any>{
@@ -675,11 +695,13 @@ export class orderItem{
 }
 
 export class Notification{
+  public id : string;
  public header : string;
  public text : string ;
  public data : any;
  public date : string;
- constructor(header: string , text : string , data : any, date : any){
+ constructor(id : string ,header: string , text : string , data : any, date : any){
+   this.id = id;
    this.header = header;
    this.data = data;
    this.text = text;

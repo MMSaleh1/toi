@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon color="primary" name="ios-menu-outline"></ion-icon>
+      </button>
+
+      <ion-title>
+          <img src="assets/imgs/logo.png">
+      </ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+
+
+
+<ion-content padding class="bg-color">
+  <h4>Contact us via</h4>
+  <div class="support-button-container">
+    <button ion-button clear icon-only class="support-button" (tap)="call()"><ion-icon name="md-call" color="primary"></ion-icon></button>  
+    <button ion-button clear icon-only (tap)="mail()" class="support-button" ><ion-icon name="ios-mail" color="primary"> <a href="mailto:Customer.service@toi2go?Subgect=''"></a></ion-icon></button>
+  </div>
+
+</ion-content>
