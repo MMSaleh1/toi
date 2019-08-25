@@ -4,6 +4,11 @@ page-notifications {
         background-image: url(../assets/imgs/bg.png) !important;
         background-repeat: round;
 
+        .date {
+            margin-top: 15px;
+            display: flex;
+        }
+
         .notifyCard {
             background-color: color($colors, light, base);
             border-radius: 20px;
@@ -23,32 +28,46 @@ page-notifications {
                     text-align: right !important;
                 }
             }
-            .info{
+
+            .info {
                 color: color($colors, primary);
                 display: block;
                 margin-left: 10px;
+
                 .header-container {
-                   
+
                     margin-top: 10px;
                 }
+
                 .text-container {
                     margin-bottom: 5px;
                 }
             }
-           
+
 
             p {
                 margin-top: 11px;
                 color: color($colors, primary, base) !important;
             }
         }
-        .date-container{
+
+        .date-container {
             color: color($colors, primary);
-            margin: 6px 0 0 10px;
+            display: block;
+            margin-right: auto;
+            margin-left: 15px;
         }
+
         
-        
-     
+        .time-container {
+            color: color($colors, primary);
+            display: block;
+            margin-left: auto;
+            margin-right: 15px;
+        }
+
+
+
 
     }
 }

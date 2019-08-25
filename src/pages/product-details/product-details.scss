@@ -1,0 +1,51 @@
+page-product-details {
+    .content {
+        opacity: .5;
+        transition: opacity 300ms ease-in-out;
+        background-color: #000;
+            .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+            margin: 0 4px;
+            background-color: #f9a618;
+        }
+        .slide-zoom {
+            height: 40vh;
+            width: 95%;
+            display: block;
+            margin: auto;
+        }
+
+        .slider {
+            height: 40vh;
+            margin-top: 20px;
+            .slide {
+                height: 40vh;
+                width: 100vw;
+
+                .slide-image {
+                    border-radius: 10px;
+                    height: 40vh;
+                    width: 100vh;
+                    opacity: 0.8;
+                }
+            }
+        }
+
+        .icon-left {
+            position: absolute;
+            top: 15.5vh;
+            font-size: 5rem;
+            left: 5vw;
+            z-index: 999;
+            color: color($colors, primary);
+        }
+
+        .icon-right {
+            top: 15.5vh;
+            position: absolute;
+            font-size: 5rem;
+            right: 5vw;
+            z-index: 999;
+            color: color($colors, primary);
+        }
+    }
+}

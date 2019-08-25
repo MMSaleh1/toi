@@ -3,12 +3,13 @@ page-contact-us {
         margin: 5vh 0 3vh 0;
         color: white;
         font-size: 2.5rem;
-        padding: 0 0 0 7vw;
+        padding: 0 0 0 3vw;
         font-weight: 800;
     }
     .difault-form {
         width: 85vw;
         margin: auto;
+        margin-top: 45px;
     }
     ion-input{
         background-color: color($colors,light);

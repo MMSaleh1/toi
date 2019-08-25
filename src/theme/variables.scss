@@ -151,6 +151,7 @@ $tabs-ios-tab-text-color: color($colors, primary);
 $tabs-ios-tab-icon-color: color($colors, primary);
 $tabs-ios-tab-icon-color-active: color($colors, golden);
 $tabs-ios-tab-text-color-active: color($colors, golden);
+$modal-inset-box-shadow-color: rgba(0, 0, 0, .4);
 
 .tabs-md .tabbar{
  background-color: black !important; 

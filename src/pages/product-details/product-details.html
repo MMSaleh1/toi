@@ -1,0 +1,22 @@
+<ion-header no-border text-center>
+
+  <ion-navbar>
+    <ion-title>{{product_info?.title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no-padding>
+  <ion-slides *ngIf="sliders && sliders.length" slidesPerView="1" pager="true" class="slider" #slides>
+    <ion-slide class="slide" *ngFor="let slider of sliders">
+      <img class="slide-image" [src]="slider">
+    </ion-slide>
+  </ion-slides>
+  <div class="icon-left" (tap)="slidePrev()">
+    <ion-icon name="ios-arrow-back"></ion-icon>
+  </div>
+  <div class="icon-right" (tap)="slideNext()">
+    <ion-icon name="ios-arrow-forward"></ion-icon>
+  </div>
+</ion-content>

@@ -147,6 +147,12 @@ page-checkout {
     }
 
     .payment-container {
+        .hint{
+            color: color($colors, primary);
+            font-size: 16px;
+            margin-left: 5px;
+            margin-top: 40px;
+        }
         .payment-text {
             margin: auto;
             margin-top: 5vh;
@@ -178,7 +184,7 @@ page-checkout {
             }
 
             .payment-method-active {
-                border: solid thin color($colors, golden);
+                border: 2px solid color($colors, golden);
                 font-size: 2rem;
                 background-color: white;
                 height: 60px;

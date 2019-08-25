@@ -19,7 +19,7 @@
 
 <ion-content no-padding>
   <!-- *ngFor="let notify of notifications" -->
-      <!-- <div >
+  <!-- <div >
         <div class="date-container">Aug 20,19</div>
       <ion-card class="notifyCard" >
         <ion-icon name="notifications" color="primary"></ion-icon>
@@ -30,19 +30,22 @@
       </div>
       </ion-card>
     </div> -->
-    
+
   <div *ngIf="ready">
     <div *ngFor="let item  of user.notifications">
-      <div class="date-container">{{item.date | date : 'mediumDate' }}</div>
-    <ion-card class="notifyCard" >
-      <ion-icon name="notifications" color="primary"></ion-icon>
-      <div class="info">
-      <div class="header-container">{{item.header}}</div>
-      <div class="text-container">{{item.text}}</div>
-      
+      <div class="date">
+        <div class="date-container">{{item.date | date : 'mediumDate' }}</div>
+        <div class="time-container">{{item.date | date : 'shortTime' }}</div>
+      </div>
+      <ion-card class="notifyCard">
+        <ion-icon name="notifications" color="primary"></ion-icon>
+        <div class="info">
+          <div class="header-container">{{item.header}}</div>
+          <div class="text-container">{{item.text}}</div>
+
+        </div>
+      </ion-card>
     </div>
-    </ion-card>
   </div>
-  </div>
- 
+
 </ion-content>

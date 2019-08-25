@@ -82,7 +82,7 @@ page-home {
 
     .icon-left {
         position: absolute;
-        top: 35vh;
+        top: 37.5vh;
         font-size: 5rem;
         left: 5vw;
         z-index: 999;
@@ -90,7 +90,7 @@ page-home {
     }
 
     .icon-right {
-        top: 35vh;
+        top: 37.5vh;
         position: absolute;
         font-size: 5rem;
         right: 5vw;
@@ -100,7 +100,7 @@ page-home {
 
 
     .ads-container {
-        height: 9vh;
+        height: 5vh;
         padding: 1vh 5vw 0px 12vw;
 
         .header-container {
@@ -251,5 +251,77 @@ page-home {
 
     .vertical-scroll {
         height: 62vh;
+    }
+
+    .marketPlace {
+        h3 {
+            color: color($colors, primary);
+            font-size: 25px;
+            margin-left: 10px;
+            margin-top: 20px !important;
+        }
+
+        .ScrollProds {
+            margin-top: 25px;
+            background-color: transparent;
+            height: 200px;
+            width: 100%;
+            white-space: nowrap;
+
+            .singleProd {
+                display: inline-block;
+                width: 180px;
+                height: 190px;
+                position: relative;
+                margin-left: 2.5px;
+                margin-right: 2.5px;
+                background-color: transparent;
+                border: solid thin #f9a618;
+
+                img {
+                    background-color: red;
+                    border-radius: 0px 0px 10px 10px;
+                }
+
+                h5 {
+                    margin-top: 5px;
+                    font-weight: bold;
+                    color: color($colors, primary);
+                    margin-left: 5px;
+                    white-space: nowrap !important;
+                    text-overflow: ellipsis !important;
+                    overflow: hidden !important;
+                }
+
+                .detailsCont {
+                    height: 45px;
+                    white-space: normal !important;
+                    text-overflow: ellipsis !important;
+                    overflow: hidden !important;
+                    -webkit-line-clamp: 2 !important;
+                    -webkit-box-orient: vertical;  
+                
+                    p {
+                        color: color($colors, primary);
+                        margin-left: 5px;
+
+                    }
+                }
+
+                .price {
+                    position: absolute;
+                    border-radius: 0px 0px 5px 0px;
+                    background-color: #F33737;
+                    text-align: center !important;
+
+                    p {
+                        color: color($colors, secondary);
+                        margin: 0px;
+                        margin-left: 2.5px;
+                        margin-right: 5.5px;
+                    }
+                }
+            }
+        }
     }
 }

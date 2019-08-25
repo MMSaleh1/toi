@@ -15,7 +15,7 @@
             <button (tap)="cart()" class="cart-button" ion-button icon-only>
                 <ion-icon color="primary" class="header-icon" name="custom-cart-icon"></ion-icon>
             </button>
-            <ion-badge *ngIf="cartProv.cartQuant > 0" class="cart-badge">{{cartProv.cartQuant}}</ion-badge>
+            <ion-badge *ngIf="cartProv.cartQuant > 0" class="cart-badge"><p>{{cartProv.cartQuant}}</p></ion-badge>
         </ion-buttons>
 
     </ion-navbar>
@@ -39,7 +39,7 @@
 
 
     <!-- <button ion-button (tap)="popOver()">Test</button> -->
-    <div class="ads-container">
+    <!-- <div class="ads-container">
 
         <div class="header-container">
             <div class="header">
@@ -50,5 +50,33 @@
             <div class="body">
             </div>
         </div>
+    </div> -->
+
+    <div class="marketPlace">
+        <h3>Market Place</h3>
+
+        <ion-scroll scrollX="true" scrollY="false" class="ScrollProds">
+            <ion-card class="singleProd" (click)="goToProdDetails()">
+                <div class="price">
+                    <p>120 LE</p>
+                </div>
+                <img src="./assets/imgs/p1-1.png">
+                <h5>Product Title</h5>
+                <div class="detailsCont">
+                    <p>Product Description</p>
+                </div>
+            </ion-card>
+            <ion-card class="singleProd">
+                <div class="price">
+                    <p>130 LE</p>
+                </div>
+                <img src="./assets/imgs/p1-1.png">
+                <h5>Product Title</h5>
+                <div class="detailsCont">
+                    <p>Product Description</p>
+                </div>
+            </ion-card>
+        </ion-scroll>
+
     </div>
 </ion-content>

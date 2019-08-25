@@ -1,6 +1,6 @@
 import { CartPage } from './../cart/cart';
 import { Component, ViewChild } from '@angular/core';
-import { NavController, IonicPage, ToastController, Platform, Slides, PopoverController } from 'ionic-angular';
+import { NavController, IonicPage, ToastController, Platform, Slides, PopoverController, ModalController } from 'ionic-angular';
 
 import { MyappointmentPage } from '../myappointment/myappointment';
 import { AboutPage } from '../about/about';
@@ -14,6 +14,7 @@ import { AutoCompleteProvider } from './../../providers/auto-complete/auto-compl
 import { Database } from '../../providers/database/database';
 import { CartProvider } from '../../providers/cart/cart';
 import { RatingComponent } from '../../components/rating/rating';
+import { ProductDetailsPage } from '../product-details/product-details';
 
 
 
@@ -25,27 +26,28 @@ import { RatingComponent } from '../../components/rating/rating';
 })
 
 export class HomePage {
-  @ViewChild('slides')slides : Slides;
-  public ready : boolean= false;
-  public cates : Array<Category>;
+  @ViewChild('slides') slides: Slides;
+  public ready: boolean = false;
+  public cates: Array<Category>;
   public categorySlider: Array<any>;
-  public db :Database;
-  public cartProv : CartProvider;
-
+  public db: Database;
+  public cartProv: CartProvider;
+  product = { title: 'prod name', desc: 'product description', price: 150 }
   constructor(public navCtrl: NavController
-    ,public itemProv : ItemsApiProvider
-    ,public autoCompleteprov : AutoCompleteProvider
-    ,public toastCtrl :ToastController
-    , public platForm : Platform
-    ,public popOverCtrl : PopoverController
-    ) {
-   this.cates = new Array();
-   this.getItems();
-   this.cartProv = CartProvider.getInstance();
-  
+    , public itemProv: ItemsApiProvider
+    , public autoCompleteprov: AutoCompleteProvider
+    , public toastCtrl: ToastController
+    , public platForm: Platform
+    , private modalCtrl: ModalController
+    , public popOverCtrl: PopoverController
+  ) {
+    this.cates = new Array();
+    this.getItems();
+    this.cartProv = CartProvider.getInstance();
+
   }
-   async getItems(){
-     
+  async getItems() {
+
     this.cates = await this.itemProv.getCategories();
     this.db = Database.getInstance();
     this.db.categories = this.cates;
@@ -55,11 +57,11 @@ export class HomePage {
   }
 
 
-  ionViewDidLoad(){
+  ionViewDidLoad() {
     console.log(this.platForm);
     // if(this.platForm.is('cordova')){
     //   this.notifProv.getToken();
-    
+
     //   this.notifProv.listenToNotifications().pipe(tap(msg=>{
     //     const toast = this.toastCtrl.create({
     //       message : msg.body , 
@@ -68,48 +70,53 @@ export class HomePage {
     //     toast.present();
     //   })).subscribe()
     // }
-   
+
   }
 
-  toServices(cate: Category){
-    this.navCtrl.push(ServicesPage,{'cate' : cate});
+  toServices(cate: Category) {
+    this.navCtrl.push(ServicesPage, { 'cate': cate });
   }
 
 
-    myappointment(){
+  myappointment() {
     this.navCtrl.push(MyappointmentPage);
-    }
-     about(){
-    this.navCtrl.push(AboutPage);
-    } 
-    testimonials(){
-    this.navCtrl.push(TestimonialsPage);
-    } 
-    
-    blog(){
-    this.navCtrl.push(BlogPage);
-    }  
-    profile(){
-    this.navCtrl.push(ProfilePage);
-    }  
-    services(){
-    this.navCtrl.push(ServicesPage);
-    }
-    cart(){
-      this.navCtrl.push(CartPage);
-    }
-    slideNext(){
-      this.slides.slideNext();
-    }
-    slidePrev(){
-      this.slides.slidePrev();
-    }
-
-
-    public popOver(){
-      let Pover = this.popOverCtrl.create(RatingComponent);
-      Pover.present();
-    }
-
-    
   }
+  about() {
+    this.navCtrl.push(AboutPage);
+  }
+  testimonials() {
+    this.navCtrl.push(TestimonialsPage);
+  }
+
+  blog() {
+    this.navCtrl.push(BlogPage);
+  }
+  profile() {
+    this.navCtrl.push(ProfilePage);
+  }
+  services() {
+    this.navCtrl.push(ServicesPage);
+  }
+  cart() {
+    this.navCtrl.push(CartPage);
+  }
+  slideNext() {
+    this.slides.slideNext();
+  }
+  slidePrev() {
+    this.slides.slidePrev();
+  }
+
+
+  public popOver() {
+    let Pover = this.popOverCtrl.create(RatingComponent);
+    Pover.present();
+  }
+
+  goToProdDetails() {
+    let prodModal = this.modalCtrl.create(ProductDetailsPage, { prod_details: this.product });
+    prodModal.present();
+  }
+
+
+}

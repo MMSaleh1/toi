@@ -57,6 +57,8 @@ import { HelperToolsProvider } from '../providers/helper-tools/helper-tools';
 import { ComponentsModule } from '../components/components.module';
 import { RatingComponent } from '../components/rating/rating';
 import { ContactSupportPageModule } from '../pages/contact-support/contact-support.module';
+import { ProductDetailsPage } from '../pages/product-details/product-details';
+import { ProductDetailsPageModule } from '../pages/product-details/product-details.module';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -77,6 +79,7 @@ export function createTranslateLoader(http: HttpClient) {
     SigninPage,
     SignupPage,
     TestimonialsPage,
+    // ProductDetailsPage
 
   ],
   imports: [
@@ -94,6 +97,7 @@ export function createTranslateLoader(http: HttpClient) {
     TabsPageModule,
     HomePageModule,
     ProfilePageModule,
+    ProductDetailsPageModule,
     CartPageModule,
     NotificationsPageModule,
     CategoriesPageModule,
