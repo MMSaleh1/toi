@@ -43,14 +43,15 @@ page-signup {
         width: 141px;
         text-align: center;
         .image-uploader-icon{
-            color: color($colors, light);
+            color: color($colors, primary);
             font-size: 94px;
             margin-right: 15px;
             text-align: center;
         }
         .image-uploader-text{
-            color: white;
+            color: color($colors, primary);
             font-size: 17px;
+            margin-top: 15px;
             text-align: center;
             white-space: normal;
         }
