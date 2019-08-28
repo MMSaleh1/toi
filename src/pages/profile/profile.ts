@@ -6,6 +6,7 @@ import { SigninPage } from '../signin/signin';
 import { HistoryPage } from '../history/history';
 import { UpdateProfilePage } from '../update-profile/update-profile';
 import { HelperToolsProvider } from '../../providers/helper-tools/helper-tools';
+import { WalletPage } from '../wallet/wallet';
 
 
 @IonicPage()
@@ -35,11 +36,21 @@ export class ProfilePage {
       this.navCtrl.push(HistoryPage);
     } else if (number == '2') {
       this.navCtrl.push(UpdateProfilePage);
+    } else if (number == '3'){
+      this.navCtrl.push(WalletPage);
     }
     else {
       this.helperTools.ShowAlertWithTranslation('Alert', "Soon online payment will be available.")
     }
 
+  }
+
+  hasimage(){
+    if(this.user.image == null || this.user.image.length <1){
+      return false;
+    }else{
+      return true;
+    }
   }
 
 

@@ -38,6 +38,30 @@ page-signup {
         // height: 23vh;
     }
 
+    .image-uploader-conatainer{
+        margin: auto;
+        width: 141px;
+        text-align: center;
+        .image-uploader-icon{
+            color: color($colors, light);
+            font-size: 94px;
+            margin-right: 15px;
+            text-align: center;
+        }
+        .image-uploader-text{
+            color: white;
+            font-size: 17px;
+            text-align: center;
+            white-space: normal;
+        }
+        .image-uploader-image{
+            border-radius: 50%;
+            width: 94px;
+            height: 94px;
+        }
+    }
+    
+
     .form-container {
         margin-top: 36px;
     }

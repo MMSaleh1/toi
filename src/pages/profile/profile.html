@@ -12,7 +12,8 @@
 <ion-content class="bg-img">
     <div class="profile-container" *ngIf="ready">
         <div class="image-container">
-            <img class="profile-image" src="assets/imgs/signup_female.png">
+            <img *ngIf="!hasimage()" class="profile-image" src="assets/imgs/signup_female.png">
+            <img *ngIf="hasimage()" class="profile-image" [src]="user.image">
         </div>
 
         <div class="info-container">
@@ -28,7 +29,7 @@
             <div class="options-container">
                 <ion-item class="option-item" (tap)="toPage('2')">Update my profile</ion-item>
                 <ion-item class="option-item" (tap)="toPage('1')">My appointments</ion-item>
-                <ion-item style="border-bottom: none !important" class="option-item" (tap)="toPage('3')">My payment info</ion-item>
+                <ion-item style="border-bottom: none !important" class="option-item" (tap)="toPage('3')">My Wallet</ion-item>
             </div>
         </div>
     </div>

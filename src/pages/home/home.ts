@@ -53,6 +53,8 @@ export class HomePage {
     this.db.categories = this.cates;
     this.ready = true;
     console.log(this.cates);
+    let tempCates =await this.itemProv.getProdCategories();
+    console.log(tempCates);
     return true;
   }
 

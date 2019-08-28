@@ -20,8 +20,8 @@ export class HistoryPage {
   user: User;
   tab: string;
   allStatus: Array<orderStatus>;
-  doneOrders: Array<orderItem>;
-  onGoingOrders: Array<orderItem>;
+  doneOrders: Array<order>;
+  onGoingOrders: Array<order>;
   constructor(public navCtrl: NavController,
     private helperTools: HelperToolsProvider, public navParams: NavParams, public userProv: UserProvider, public loadingCtrl: LoadingController) {
     this.helperTools.ShowLoadingSpinnerOnly();
@@ -44,35 +44,49 @@ export class HistoryPage {
     this.user = await this.userProv.getUser();
     this.orders = await this.userProv.getHistory(this.user.id);
     this.allStatus = await this.userProv.getAllStatus();
-    for (let i = 0; i < this.orders.length; i++) {
-      this.orders[i].orderItems = await this.userProv.getorderItems(this.orders[i].id,this.orders[i].orderDate);
-    }
-    this.userProv.getUserAppointments().then(Data => {
-      console.log(Data);
-    })
+    // for (let i = 0; i < this.orders.length; i++) {
+    //   this.orders[i].orderItems = await this.userProv.getorderItems(this.orders[i].id,this.orders[i].orderDate);
+    // }
+    // this.userProv.getUserAppointments().then(Data => {
+    //   console.log(Data);
+    // })
     this.setOrders();
 
   }
 
   setOrders() {
 
-    this.doneOrders = new Array<orderItem>();
-    this.onGoingOrders = new Array<orderItem>();
+    this.doneOrders = new Array<order>();
+    this.onGoingOrders = new Array<order>();
     for (let i = 0; i < this.orders.length; i++) {
       for (let j = 0; j < this.allStatus.length; j++) {
 
         if (this.allStatus[j].id == this.orders[i].orderStatusId) {
           this.orders[i].statusName = this.allStatus[j].name;
-          if (this.orders[i].orderStatusId == '6') {
-            this.doneOrders.push(...this.orders[i].orderItems);
+          if (this.orders[i].orderStatusId == '6' || this.orders[i].orderStatusId == '4') {
+            this.doneOrders.push(this.orders[i]);
           } else {
             console.log(this.orders[i]);
             this.userProv.SaveUpcommingAppointment(this.orders[i]);
-            this.onGoingOrders.push(...this.orders[i].orderItems);
+            this.onGoingOrders.push(this.orders[i]);
           }
         }
       }
     }
+  }
+
+  getColor(id : string){
+    if(id == '4'){
+      return '#ff0000';
+    }else if(id == '6'){
+      return '#00ff00';
+    }else{
+      return '0000ff';
+    }
+
+  }
+  openDetails(order : order){
+    this.navCtrl.push('OderDetailsPage',{order : order})
   }
 
 }

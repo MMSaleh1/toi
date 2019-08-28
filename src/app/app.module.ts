@@ -1,3 +1,4 @@
+import { Camera } from '@ionic-native/camera';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -12,6 +13,8 @@ import { Diagnostic } from "@ionic-native/diagnostic";
 import { Geolocation } from "@ionic-native/geolocation";
 import { OpenNativeSettings } from "@ionic-native/open-native-settings";
 import { CallNumber } from '@ionic-native/call-number';
+import { FileTransfer } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 
 
 
@@ -44,6 +47,7 @@ import { CheckoutPageModule } from './../pages/checkout/checkout.module';
 import { ThanksPageModule } from './../pages/thanks/thanks.module';
 import { ContactUsPageModule } from './../pages/contact-us/contact-us.module';
 import { HistoryPageModule } from '../pages/history/history.module';
+import { OderDetailsPageModule} from '../pages/oder-details/oder-details.module';
 
 
 
@@ -57,8 +61,8 @@ import { HelperToolsProvider } from '../providers/helper-tools/helper-tools';
 import { ComponentsModule } from '../components/components.module';
 import { RatingComponent } from '../components/rating/rating';
 import { ContactSupportPageModule } from '../pages/contact-support/contact-support.module';
-import { ProductDetailsPage } from '../pages/product-details/product-details';
 import { ProductDetailsPageModule } from '../pages/product-details/product-details.module';
+import { WalletPageModule } from '../pages/wallet/wallet.module';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -111,6 +115,8 @@ export function createTranslateLoader(http: HttpClient) {
     LandingPageModule,
     TermsPageModule,
     ContactSupportPageModule,
+    OderDetailsPageModule,
+    WalletPageModule,
 
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp)
@@ -150,7 +156,10 @@ export function createTranslateLoader(http: HttpClient) {
     Geolocation,
     CallNumber,
     NotificationsProvider,
-    HelperToolsProvider
+    HelperToolsProvider,
+    Camera,
+    File,
+    FileTransfer
 
   ]
 })

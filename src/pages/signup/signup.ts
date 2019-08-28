@@ -17,6 +17,8 @@ import { User, UserProvider } from '../../providers/user/user';
 import { Storage } from '@ionic/storage';
 import { NotificationsProvider } from '../../providers/notifications/notifications';
 import { HelperToolsProvider } from '../../providers/helper-tools/helper-tools';
+import { RootProvider } from '../../providers/root/root';
+import { ImageProcess } from '../../providers/items-api/items-api';
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html'
@@ -24,6 +26,9 @@ import { HelperToolsProvider } from '../../providers/helper-tools/helper-tools';
 export class SignupPage {
   public regesterForm: FormGroup;
   public user: User;
+  public hasImage: boolean;
+  public base64: string = "";
+  public displayImage : string ="";
 
   constructor(public navCtrl: NavController
     , public formBuilder: FormBuilder
@@ -35,6 +40,8 @@ export class SignupPage {
     , public notifiCtrl: NotificationsProvider
   ) {
     this.buildForm();
+    this.hasImage =false;
+    console.log(new Date().getTime() + "1234425");
 
   }
 
@@ -84,30 +91,54 @@ export class SignupPage {
         let token = await this.notifiCtrl.getDeviceId();
         let add = await this.userProvider.RegesterNop(this.regesterForm.value.userName, this.regesterForm.value.password, this.regesterForm.value.email, this.regesterForm.value.phone, token);
         console.log(add);
-        this.helperTools.DismissLoading();
+        
         if (add == true) {
-          this.user = User.getInstance();
+          this.user = User.getInstance(); 
+          if(this.base64.length >  1){
+          //  console.log(this.helperTools.uploadPic(this.base64,RootProvider.UserImageUrl,name));
+            this.user.image = ImageProcess.getUserImageUrl(await this.userProvider.sendImage(this.base64));
+            // this.user.image = RootProvider.UserImageUrl+name;
+            this.userProvider.updateProfile(this.user.id,this.user.name,this.user.phone,this.user.email,this.user.password,this.user.image);
+          }
           this.storage.set('user', this.user);
           this.events.publish('logedin')
 
-
-
           console.log(this.userProvider.user);
           this.navCtrl.setRoot(TabsPage);
-
+          this.helperTools.DismissLoading();
         } else {
-          this.helperTools.ShowAlertWithTranslation('Error', "This user name is already in use, Please try a new one or Login.")
+          this.helperTools.DismissLoading();
+          setTimeout(() => {
+            this.helperTools.ShowAlertWithTranslation('Error', "This user name is already in use, Please try a new one or Login.")
+          }, 300);
+        
         }
 
 
 
       } else {
-        this.helperTools.ShowAlertWithTranslation('Error', "Invalid fields.")
+        this.helperTools.ShowAlertWithTranslation('Error', "Invalid fields.");
       }
 
     }
 
 
   }
+
+  public getPhoto(){
+    this.helperTools.OpenImage().then((data : any)=>{
+      console.log(data);
+      if(data != 'cancel'){
+        this.base64 =  data;
+        this.displayImage = 'data:image/jpeg;base64,' +data;
+      }
+      
+       //'data:image/jpeg;base64,' 
+      // this.hasImage = true;
+     
+    });
+  }
+
+
 
 }

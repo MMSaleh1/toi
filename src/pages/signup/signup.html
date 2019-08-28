@@ -1,8 +1,15 @@
 <ion-content class="bg-color" padding>
     <div padding>
-        <div class="logo bg-white fadeInUp animated delay-1" text-center>
+        <!-- <div class="logo bg-white fadeInUp animated delay-1" text-center>
             <figure class="Header-Name"> <img src="assets/imgs/logo.png"></figure>
-            <!-- <div class="Header-Name">Glam & Go</div> -->
+           
+        </div> -->
+
+        <div class="image-uploader-conatainer">
+            <ion-icon *ngIf="!(this.base64.length >  1)" (tap)="getPhoto()" class="image-uploader-icon" name="custom-camera"></ion-icon>
+            <div *ngIf="!(this.base64.length >  1)" class="image-uploader-text">Add Profile Picture</div>
+            <img *ngIf="(this.base64.length >  1)" class="image-uploader-image" [src]="displayImage">
+            
         </div>
         <!-- <h2 class="heading text-white fadeInUp animated delay-2" text-center>Register now</h2> -->
         <div class="form-container">

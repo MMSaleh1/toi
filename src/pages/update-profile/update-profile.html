@@ -12,8 +12,15 @@
 </ion-header>
 
 <ion-content padding class="bg-img">
-  <div class="image-container">
-    <img class="profile-image" src="assets/imgs/signup_female.png">
+  <div  *ngIf="ready" class="image-container">
+    <div *ngIf=" 1 > user.image.length ">
+      <img class="profile-image" *ngIf="!(displayImage.length > 1)" (tap)="getPhoto()" src="assets/imgs/signup_female.png">
+      <img class="profile-image" *ngIf="displayImage.length > 1" (tap)="getPhoto()" [src]="displayImage">
+    </div>
+    <div *ngIf="user.image.length > 1">
+        <img class="profile-image" *ngIf="!(displayImage.length > 1)"  (tap)="getPhoto()" [src]="user.image">
+    <img class="profile-image" *ngIf="displayImage.length > 1" (tap)="getPhoto()" [src]="displayImage">
+  </div>
     <button color="light" ion-button icon-only class="btn">
       <ion-icon color="primary" name="create"></ion-icon>
     </button>
@@ -21,7 +28,7 @@
 
 
   <form *ngIf="ready" [formGroup]="updateForm" (ngSubmit)="update()">
-    <ion-list *ngIf="ready">
+    <ion-list >
       <ion-item class="item">
         <ion-input type="text" formControlName="userName" value="{{user.name}}"></ion-input>
       </ion-item>

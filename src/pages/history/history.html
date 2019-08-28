@@ -24,9 +24,9 @@
   <div *ngIf="tab =='1'">
     <!-- <ion-scroll scrollY='true' class="list-container"> -->
       <ion-list>
-        <ion-item class="order-item" *ngFor="let item of onGoingOrders">
-          <div class="item-name">{{item.productName}}</div>
-          <div class="item-cost">{{item.cost}} LE</div>
+        <ion-item (tap)="openDetails(item.id)" class="order-item" *ngFor="let item of onGoingOrders">
+          <div class="item-name">{{item.id}}</div>
+          <div class="item-cost">{{item.statusName}}</div>
         </ion-item>
       </ion-list>
     <!-- </ion-scroll> -->
@@ -42,9 +42,11 @@
   <div *ngIf="tab =='2'">
     <!-- <ion-scroll scrollY='true' class="list-container"> -->
     <ion-list>
-      <ion-item class="order-item" *ngFor="let item of doneOrders">
-        <div class="item-name">{{item.productName}}</div>
-        <div class="item-cost">{{item.cost}} LE</div>
+      <ion-item (tap)="openDetails(item)" class="order-item" *ngFor="let item of doneOrders">
+        <div class="item-date">{{item.orderDate | date :'mediumDate'}}</div>
+        <div class="item-name">Id : #{{item.id}}</div>
+        <div [ngStyle]="{'color': getColor(item.orderStatusId) }" class="item-cost">{{item.statusName}}</div>
+        
       </ion-item>
     </ion-list>
     <!-- </ion-scroll> -->

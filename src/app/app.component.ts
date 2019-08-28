@@ -33,7 +33,7 @@ import { ContactSupportPage } from '../pages/contact-support/contact-support';
 export class MyApp {
   public user: User;
   @ViewChild(Nav) nav: Nav;
-  user_data = {} as any;
+  // user_data = {} as any;
   rootPage: any = LandingPage;
   isLogedin: boolean = false;
   constructor(
@@ -64,6 +64,12 @@ export class MyApp {
 
         // alert("ready");
       });
+
+      this.event.subscribe('user-updated',()=>{
+        this.getUser();
+        console.log("event triggered");
+        console.log(this.user);
+      })
       this.helperTools.IntializeUSerCurrentPosition();
 
       if (this.platform.is('cordova')) {
@@ -80,19 +86,20 @@ export class MyApp {
   }
 
   rememberUser() {
-    this.storage.get('user').then(data => {
+    this.userProv.getUser().then(data=>{
       if (data) {
         this.nav.setRoot(TabsPage)
-        this.user_data = data;
-        
+        this.user = data;
+      
       }
     })
+    
   }
 
   async getUser() {
     this.user = await this.userProv.getUser();
     this.user.orderHistory = await this.userProv.getHistory(this.user.id);
-    this.user_data = this.user;
+    this.user;
     this.isLogedin = true;
     this.menuCntrl.enable(true);
 
@@ -135,4 +142,14 @@ export class MyApp {
     this.menuCntrl.enable(false);
     this.rootPage = SigninPage;
   }
+
+  hasimage(){
+    if(this.user.image == null || this.user.image.length <1){
+      return false;
+    }else{
+      return true;
+    }
+  }
+
+
 }

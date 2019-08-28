@@ -5,11 +5,13 @@
     <div class="logo-container">
       <!-- <img class="logo" src="assets/imgs/logo.png"> -->
     </div>
-    <diV *ngIf="user_data">
-      <div class="img-container"><img class="user-img" src="assets/imgs/signup_female.png"></div>
+    <diV *ngIf="user">
+      <div class="img-container"><img *ngIf="!hasimage()" class="user-img" src="assets/imgs/signup_female.png">
+      <img *ngIf="hasimage()" class="user-img" [src]="user.image">
+    </div>
       <div class="info-container">
-        <div *ngIf="user_data.name" class="name-container">{{user_data.name}}</div>
-        <div *ngIf="user_data.email" class="name-container">{{user_data.email}}</div>
+        <div *ngIf="user.name" class="name-container">{{user.name}}</div>
+        <div *ngIf="user.email" class="name-container">{{user.email}}</div>
       </div>
     </diV>
     <ion-list class="menu-list">

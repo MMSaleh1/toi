@@ -25,6 +25,11 @@ export class ItemsApiProvider extends RootProvider {
   private vendorsApiController: string = "vendor/";
   private vendorActionString: string = "get_all_vendors?";
 
+  private prodCategoriesApiController: string = "sale_products/";
+  private prodCategoriesActionString: string = "get_product_category_mob";
+  private getProdActionString : string = "get_all_sale_product";
+
+
 
   constructor(public http: HttpClient,
     private helperTools: HelperToolsProvider, public storage: Storage) {
@@ -55,6 +60,8 @@ export class ItemsApiProvider extends RootProvider {
       });
     });
   }
+
+  //for services
   private async categoryTreeBuild(data: any) {
     let items = <Array<Product>>await this.getItemsNop();
     let catArray = new Array<Category>();
@@ -92,7 +99,7 @@ export class ItemsApiProvider extends RootProvider {
     // this.storage.set('cates',catArray);
     return catArray;
   }
-
+//categories for service
   public async getCategoriesNop() {
     let temp = `${RootProvider.APIURL}${this.categoriesApiController}${this.categoriesActionString}`;
     console.log(temp);
@@ -133,6 +140,66 @@ export class ItemsApiProvider extends RootProvider {
     })
   }
 
+
+  //categories for product
+  public async getProdCategories(){
+    let temp = `${RootProvider.APIURL}${this.prodCategoriesApiController}${this.prodCategoriesActionString}`;
+    let data = await this.ApiCall(temp);
+    console.log(data);
+    let prods = await this.getProd();
+
+    return(this.buildProdTree(data,prods));
+    //return this.categoryTreeBuild(data);
+  }
+
+  private async getProd(){
+    let temp = `${RootProvider.APIURL}${this.prodCategoriesApiController}${this.getProdActionString}`;
+    let data = await this.ApiCall(temp);
+    console.log(data);
+    return data;
+    
+  }
+
+  private buildProdTree(cates:any , prods:any){
+    let items = new Array<Product>();
+    let mainCates= new Array<Category>();
+    let subcates= new Array<Category>();
+    for(let i = 0 ; i <prods.length ; i++){
+      items.push(new Product(prods[i].category_name,prods[i].id,prods[i].product_category_id,prods[i].cost,"",1,""));
+    }
+    console.log(items);
+    for(let i = 0 ; i <cates.length;i++){
+      let images = new Array();
+      images.push(cates[i].category_img)
+      if(cates[i].parent_category_id == 0 || cates[i].parent_category_id == cates[i].id ){
+        
+        mainCates.push(new Category(cates[i].category_name,cates[i].id,new Array(),images,'0',cates[0].deleted,false,"1"))
+      }else{
+        subcates.push(new Category(cates[i].category_name,cates[i].id,new Array(),images,cates[i].parent_category_id,cates[i].deleted,false,"1"));
+      }
+    }
+    for (let i = 0; i < subcates.length; i++) {
+      for (let j = 0; j < items.length; j++) {
+        if (subcates[i].id == items[j].product_subcat) {
+          subcates[i].children.push(items[j]);
+        }
+      }
+    }
+
+    for (let i = 0; i < mainCates.length; i++) {
+      for (let j = 0; j < subcates.length; j++) {
+        if (subcates[j].parent == mainCates[i].id) {
+          mainCates[i].children.push(subcates[j])
+
+        }
+      }
+
+  }
+  console.log(mainCates);
+  return mainCates;
+
+
+  }
 
 
 }
@@ -247,6 +314,12 @@ export class ImageProcess {
 
   static getImageUrl(image: string) {
     let baseString = RootProvider.ImagesUrl;
+    image = image.slice(1, image.length);
+    return baseString + image;
+  }
+
+  static getUserImageUrl(image: string) {
+    let baseString = RootProvider.UserImageUrl;
     image = image.slice(1, image.length);
     return baseString + image;
   }

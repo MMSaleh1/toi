@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon color="primary" name="ios-menu-outline"></ion-icon>
+      </button>
+
+      <ion-title>
+          <img src="assets/imgs/logo.png">
+      </ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding  class="bg-img">
+  <ion-card class="balance-card">
+    <ion-card-header class="balance-header">
+      <ion-card-title class="balance-title">
+        <ion-icon class="balance-icon" name="custom-wallet"></ion-icon>
+        <div class="balance-text">My Balance</div>
+      </ion-card-title>
+      
+    </ion-card-header>
+    <div>
+      <ion-input type="number" class="wallet-balance" [value]="balance" disabled>
+      </ion-input>
+    </div>
+  </ion-card>
+</ion-content>

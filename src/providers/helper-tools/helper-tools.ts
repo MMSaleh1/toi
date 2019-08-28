@@ -5,6 +5,9 @@ import { ToastController, LoadingController, Loading, AlertController, ActionShe
 import { TranslateService } from '@ngx-translate/core';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Storage } from '@ionic/storage';
+import {Camera} from '@ionic-native/camera';
+import { FileTransfer ,FileUploadOptions, FileTransferObject  } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 // import { LaunchNavigator } from '@ionic-native/launch-navigator';
 // import { NativeGeocoder, NativeGeocoderReverseResult } from '@ionic-native/native-geocoder';
 // import { SharedClass } from '../SharedClass';
@@ -24,7 +27,7 @@ export class HelperToolsProvider {
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
     //private launchNavigator: LaunchNavigator,
-    //private camera: Camera,
+    private camera: Camera,
     private translate: TranslateService,
     private geolocation: Geolocation,
     private storage: Storage,
@@ -32,7 +35,9 @@ export class HelperToolsProvider {
     private actionsheetCtrl: ActionSheetController,
     private app: App,
     private menuController: MenuController,
-    private platform: Platform
+    private platform: Platform,
+    private fileTransfer : FileTransfer,
+    private file : File
   ) {
     console.log('Hello HellperToolsProvider Provider');
   }
@@ -154,78 +159,102 @@ export class HelperToolsProvider {
     })
   }
   //////////////////////////////////////////////////////CAMERA HANDLING //////////////////////////////////////////////////////
-
   // End alert Functions
-  ///////////////////////////////////////////////////
-  // CameraLoadPhoto() {
-  //   const options = {
-  //     quality: 75,
-  //     destinationType: this.camera.DestinationType.DATA_URL,
-  //     //maximumImagesCount: 4,
-  //     sourceType: this.camera.PictureSourceType.CAMERA,
-  //     // sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-  //     allowEdit: true,
-  //     encodingType: this.camera.EncodingType.JPEG,
-  //     targetWidth: 300,
-  //     targetHeight: 300,
-  //   };
-  //   return this.camera.getPicture(options);
-  // }
-  // // Load Photo from Gallery
-  // GalleryLoadPhoto() {
-  //   const options = {
-  //     quality: 75,
-  //     destinationType: this.camera.DestinationType.DATA_URL,
-  //     //maximumImagesCount: 4,
-  //     //sourceType: this.camera.PictureSourceType.CAMERA,
-  //     sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-  //     allowEdit: true,
-  //     encodingType: this.camera.EncodingType.JPEG,
-  //     targetWidth: 300,
-  //     targetHeight: 300,
-  //   };
-  //   return this.camera.getPicture(options);
-  // }
-  // OpenImage() {
-  //   return new Promise((resolve, reject) => {
-  //     let actionsheet = this.actionsheetCtrl.create({
-  //       title: 'تحميل صورة',
-  //       buttons: [
-  //         {
-  //           text: 'Pictures',
-  //           icon: 'images',
-  //           handler: () => {
-  //             this.GalleryLoadPhoto().then(DataURI => {
-  //               resolve(DataURI);
-  //             }).catch(err => {
-  //               reject(err)
-  //             });
-  //           }
-  //         },
-  //         {
-  //           text: 'Camera',
-  //           icon: 'camera',
-  //           handler: () => {
-  //             this.CameraLoadPhoto().then(URI => {
-  //               resolve(URI);
-  //             }).catch(err => {
-  //               reject(err);
-  //             })
-  //           }
-  //         },
-  //         {
-  //           text: 'الغاء',
-  //           role: 'cancel',
-  //           handler: () => {
-  //             reject('cancel');
-  //           }
-  //         }
-  //       ]
-  //     });
-  //     actionsheet.present();
-  //   })
+  /////////////////////////////////////////////////
+  CameraLoadPhoto() {
+    const options = {
+      quality: 75,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      //maximumImagesCount: 4,
+      sourceType: this.camera.PictureSourceType.CAMERA,
+      // sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+      allowEdit: true,
+      encodingType: this.camera.EncodingType.JPEG,
+      targetWidth: 300,
+      targetHeight: 300,
+    };
+    return this.camera.getPicture(options);
+  }
+  // Load Photo from Gallery
+  GalleryLoadPhoto() {
+    const options = {
+      quality: 75,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      //maximumImagesCount: 4,
+      //sourceType: this.camera.PictureSourceType.CAMERA,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      allowEdit: true,
+      encodingType: this.camera.EncodingType.JPEG,
+      targetWidth: 300,
+      targetHeight: 300,
+    };
+    return this.camera.getPicture(options);
+  }
+  OpenImage() {
+    return new Promise((resolve, reject) => {
+      let actionsheet = this.actionsheetCtrl.create({
+        title: 'تحميل صورة',
+        buttons: [
+          {
+            text: 'Pictures',
+            icon: 'images',
+            handler: () => {
+              this.GalleryLoadPhoto().then(DataURI => {
+                resolve(DataURI);
+              }).catch(err => {
+                reject(err)
+              });
+            }
+          },
+          {
+            text: 'Camera',
+            icon: 'camera',
+            handler: () => {
+              this.CameraLoadPhoto().then(URI => {
+                resolve(URI);
+              }).catch(err => {
+                reject(err);
+              })
+            }
+          },
+          {
+            text: 'الغاء',
+            role: 'cancel',
+            handler: () => {
+              resolve('cancel');
+            }
+          }
+        ]
+      });
+      actionsheet.present();
+    })
 
-  // }
+  }
+
+  //////////////////////////////////////////////////////// File Uploader to server///////////////////////////////////////////////
+
+  uploadPic(data , url , filename) {
+   this.ShowLoadingWithText("Uploading...");
+    const fileTransfer: FileTransferObject = this.fileTransfer.create();
+
+    let options: FileUploadOptions = {
+      fileKey: "photo",
+      fileName: filename,
+      chunkedMode: false,
+      mimeType: "image/jpeg",
+      headers: {}
+    }
+
+    fileTransfer.upload(data,url, options).then(data => {
+      //alert(JSON.stringify(data));
+      this.DismissLoading()
+      return data;
+    }, error => {
+     // alert("error" + JSON.stringify(error));
+      console.log(error)
+      this.DismissLoading()
+    });
+  }
   ////////////////////////////////////////////////////////IF DRIVIER APP ////////////////////////////////////////////////////////
   GetTimeTrip(Origin, Destination) {
     return new Promise((resolve, reject) => {
