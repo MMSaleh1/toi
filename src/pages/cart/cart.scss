@@ -1,4 +1,7 @@
 page-cart {
+    .content{
+        background-color: color($colors, dark);
+    }
     .gender-container {
         height: 6vh;
 
@@ -259,6 +262,8 @@ page-cart {
             margin-top: -80px;
             padding-left: 10px;
             padding-right: 10px;
+            color: #f1e2c8;
+            margin-bottom: 30px !important;
         }
     }
 

@@ -6,33 +6,47 @@ page-contact-us {
         padding: 0 0 0 3vw;
         font-weight: 800;
     }
+
     .difault-form {
         width: 85vw;
         margin: auto;
         margin-top: 45px;
     }
-    ion-input{
-        background-color: color($colors,light);
+
+    ion-input {
+        background-color: color($colors, light);
         border-radius: 20px;
         color: #fff;
         margin-bottom: 2vh;
     }
-    .difault-form .item .text-input{
+
+    .difault-form .item .text-input {
         padding-left: 3rem;
         height: 3vh;
     }
-    .difault-form .list .item-block .item-inner{
+
+    .difault-form .list .item-block .item-inner {
         background-color: transparent;
     }
-    .massage-input{
+
+    .massage-input {
         height: 15vh;
     }
 
-    .send-button{
-        width: 40%;
+    .send-button {
+        border-radius: 5rem;
         margin: auto;
-        border-radius: 30px;
-        margin-top: 15px;
-        background-color: color($colors,primary);
+        display: block;
+        margin-top: 25px;
+        margin-bottom: 20px;
+        height: 100px;
+        border: solid thick #f9a618;
+        background: transparent;
+        color: #f1e2c8;
+        border-radius: 50%;
+        width: 100px;
+        white-space: normal;
+        font-size: 14px;
+        box-shadow: 0 0 8px 0px #f9a618;
     }
 }

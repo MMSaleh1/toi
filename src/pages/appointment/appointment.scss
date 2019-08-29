@@ -1,13 +1,13 @@
 page-appointment {
-
+    .content{
+        background-color: color($colors, dark) !important;
+    }
     .header-icon {
         font-size: 30px !important;
         margin-right: 10px;
     }
 
-    .bg-color {
-        background-color: color($colors, secondary);
-    }
+
 
     .item-md,
     .item-ios {
@@ -116,6 +116,23 @@ page-appointment {
                 display: block;
                 margin: auto;
                 margin-top: 15px !important;
+            }
+            .booked-button{
+                width: 40%;
+                font-size: 4vw;
+                color: color($colors, secondary);
+                height: 5vh;
+                border-radius: 20px;
+                display: block;
+                margin: auto;
+                margin-top: 15px !important;
+                border: solid thin #f9a618;
+                background: color($colors, dark);
+                color: #f1e2c8;
+                // border-radius: 50%; 
+                -webkit-box-shadow: 0 0 8px 0px #f9a618;
+                box-shadow: 0 0 8px 0px #f9a618;
+        
             }
         }
     }
