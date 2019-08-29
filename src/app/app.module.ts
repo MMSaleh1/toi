@@ -15,6 +15,7 @@ import { OpenNativeSettings } from "@ionic-native/open-native-settings";
 import { CallNumber } from '@ionic-native/call-number';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 
 
@@ -155,6 +156,7 @@ export function createTranslateLoader(http: HttpClient) {
     Diagnostic,
     Geolocation,
     CallNumber,
+    EmailComposer,
     NotificationsProvider,
     HelperToolsProvider,
     Camera,

@@ -20,6 +20,8 @@ export class NotificationsPage {
   public ready : boolean = false;
   constructor(public navCtrl: NavController, public navParams: NavParams ,public  userProv : UserProvider) {
     this.init();
+    // this.removeNotification()
+    
   }
 
   async init(){

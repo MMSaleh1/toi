@@ -23,16 +23,18 @@
 
   <div *ngIf="tab =='1'">
     <!-- <ion-scroll scrollY='true' class="list-container"> -->
-      <ion-list>
-        <ion-item (tap)="openDetails(item.id)" class="order-item" *ngFor="let item of onGoingOrders">
-          <div class="item-name">{{item.id}}</div>
-          <div class="item-cost">{{item.statusName}}</div>
-        </ion-item>
-      </ion-list>
+    <ion-list>
+      <ion-item (tap)="openDetails(item.id)" class="order-item" *ngFor="let item of onGoingOrders">
+        <div class="item-name">{{item.id}}</div>
+        <div class="item-cost">
+          <p>{{item.statusName}}</p>
+        </div>
+      </ion-item>
+    </ion-list>
     <!-- </ion-scroll> -->
 
     <div *ngIf="!onGoingOrders.length" class="noItems">
-      <img src="./assets/imgs/empty_icon.png">
+      <img src="./assets/imgs/empty_white.png">
       <h4>
         You have no upcoming appointments till now.
       </h4>
@@ -45,8 +47,12 @@
       <ion-item (tap)="openDetails(item)" class="order-item" *ngFor="let item of doneOrders">
         <div class="item-date">{{item.orderDate | date :'mediumDate'}}</div>
         <div class="item-name">Id : #{{item.id}}</div>
-        <div [ngStyle]="{'color': getColor(item.orderStatusId) }" class="item-cost">{{item.statusName}}</div>
-        
+        <div class="container">
+          <div class="item-price">Total price : {{item.totalPrice}} LE</div>
+          <div class="item-cost">
+            <p [ngStyle]="{'color': getColor(item.orderStatusId) }">{{item.statusName}}</p>
+          </div>
+        </div>
       </ion-item>
     </ion-list>
     <!-- </ion-scroll> -->

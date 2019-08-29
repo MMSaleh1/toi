@@ -14,14 +14,14 @@
 <ion-content padding>
   <div class="order-header">
     <div class="order-date">{{order.orderDate | date :'mediumDate'}}</div>
-    <div class="accept-date">{{order.acceptDate | date :'mediumDate'}}</div>
-    <div class="order-price">{{order.totalPrice}}</div>
+    <!-- <div class="accept-date">{{order.acceptDate | date :'mediumDate'}}</div> -->
+    <div class="order-price">{{order.totalPrice}} LE</div>
     <div [ngStyle]="{'color': getColor() }" class="order-status">{{order.statusName}}</div>
   </div>
   <ion-scroll *ngIf="ready"  ScrollY="true"class="items-container">
     <ion-item class="item" *ngFor="let item of order.orderItems">
-      <div>{{item.productName}}</div>
-      <div *ngIf="item.stylistName != ''" class="order-stylist">{{item.stylistName}}</div>
+      <div>Item name: {{item.productName}}</div>
+      <div *ngIf="item.stylistName != ''" class="order-stylist">Stylist name: {{item.stylistName}}</div>
     </ion-item>
   </ion-scroll>
 

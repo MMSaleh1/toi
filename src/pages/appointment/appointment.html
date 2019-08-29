@@ -1,11 +1,11 @@
 <ion-header>
     <ion-navbar>
-        <ion-buttons end>
+        <!-- <ion-buttons end>
             <button (tap)="navToCart()" class="cart-button" ion-button icon-only>
                 <ion-icon color="primary" class="header-icon" name="custom-cart-icon"></ion-icon>
             </button>
             <ion-badge *ngIf="cartProv.cartQuant > 0" class="cart-badge">{{cartProv.cartQuant}}</ion-badge>
-        </ion-buttons>
+        </ion-buttons> -->
         <!-- <button ion-button menuToggle>
             <ion-icon color="primary" name="ios-menu-outline"></ion-icon>
         </button> -->
@@ -36,7 +36,7 @@
                             <div class="item-price">{{item.price}} LE</div>
                             <button *ngIf="checkIfExsist(item.id)" ionbutton class="book-button"
                                 (tap)="addtoCart(item)">Book Now</button>
-                            <button *ngIf="!checkIfExsist(item.id)" ionbutton class="book-button">Booked</button>
+                            <button *ngIf="!checkIfExsist(item.id)" ionbutton class="booked-button">Booked</button>
                         </ion-item>
                     </ion-list>
                 </div>

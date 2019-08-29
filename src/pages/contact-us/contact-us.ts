@@ -40,6 +40,7 @@ export class ContactUsPage {
    
   }
 
+
   buildForm() {
     this.contact = this.formBuilder.group({
       name: [{value: this.user.name, disabled: true}, [Validators.required]],
