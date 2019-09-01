@@ -5,8 +5,8 @@ import { ToastController, LoadingController, Loading, AlertController, ActionShe
 import { TranslateService } from '@ngx-translate/core';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Storage } from '@ionic/storage';
-import {Camera} from '@ionic-native/camera';
-import { FileTransfer ,FileUploadOptions, FileTransferObject  } from '@ionic-native/file-transfer';
+import { Camera } from '@ionic-native/camera';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 // import { LaunchNavigator } from '@ionic-native/launch-navigator';
 // import { NativeGeocoder, NativeGeocoderReverseResult } from '@ionic-native/native-geocoder';
@@ -36,8 +36,8 @@ export class HelperToolsProvider {
     private app: App,
     private menuController: MenuController,
     private platform: Platform,
-    private fileTransfer : FileTransfer,
-    private file : File
+    private fileTransfer: FileTransfer,
+    private file: File
   ) {
     console.log('Hello HellperToolsProvider Provider');
   }
@@ -233,8 +233,8 @@ export class HelperToolsProvider {
 
   //////////////////////////////////////////////////////// File Uploader to server///////////////////////////////////////////////
 
-  uploadPic(data , url , filename) {
-   this.ShowLoadingWithText("Uploading...");
+  uploadPic(data, url, filename) {
+    this.ShowLoadingWithText("Uploading...");
     const fileTransfer: FileTransferObject = this.fileTransfer.create();
 
     let options: FileUploadOptions = {
@@ -245,12 +245,12 @@ export class HelperToolsProvider {
       headers: {}
     }
 
-    fileTransfer.upload(data,url, options).then(data => {
+    fileTransfer.upload(data, url, options).then(data => {
       //alert(JSON.stringify(data));
       this.DismissLoading()
       return data;
     }, error => {
-     // alert("error" + JSON.stringify(error));
+      // alert("error" + JSON.stringify(error));
       console.log(error)
       this.DismissLoading()
     });
@@ -369,8 +369,9 @@ export class HelperToolsProvider {
   }
   //////////////////////////////////////////////////////INTIALIZE USER CURRENT POS //////////////////////////////////////////////////////
   IntializeUSerCurrentPosition() {
+    let options = { maximumAge: 3000, timeout: 30000, enableHighAccuracy: true };
     return new Promise((resolve, reject) => {
-      this.geolocation.getCurrentPosition().then(userPOS => {
+      this.geolocation.getCurrentPosition(options).then(userPOS => {
         this.currentUserPosition.lat = userPOS.coords.latitude;
         this.currentUserPosition.lng = userPOS.coords.longitude;
         resolve(this.currentUserPosition);
