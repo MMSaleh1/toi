@@ -35,13 +35,17 @@ export class ContactSupportPage {
       if (available) {
         //Now we know we can send
         this.email = {
-          to: 'Customer.service@toi2go',
+          to: 'hanafnafs@gmail.com',
+          // subject 		: 'asdasd',
+
           isHtml: true
         };
       }
     });
     this.email = {
-      to: 'Customer.service@toi2go',
+      to: 'hanafnafs@gmail.com',
+      // subject 		: 'asdasd',
+
       isHtml: true
     };
 
